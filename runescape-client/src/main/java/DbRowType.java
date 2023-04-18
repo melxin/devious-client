@@ -4,96 +4,101 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sh")
+@ObfuscatedName("sz")
 @Implements("DbRowType")
 public class DbRowType extends DualNode {
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "Lne;"
-   )
-   public static AbstractArchive field4881;
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Lkt;"
-   )
-   @Export("DBRowType_cache")
-   public static EvictingDualNodeHashTable DBRowType_cache = new EvictingDualNodeHashTable(64);
-   @ObfuscatedName("ac")
-   @Export("columnTypes")
-   Object[][] columnTypes;
-   @ObfuscatedName("ab")
-   int[][] field4880;
-   @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      intValue = 1115242547
-   )
-   @Export("tableId")
-   public int tableId = -1;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lnm;"
+	)
+	static AbstractArchive field4968;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lkh;"
+	)
+	@Export("DBRowType_cache")
+	public static EvictingDualNodeHashTable DBRowType_cache;
+	@ObfuscatedName("aw")
+	@Export("columnTypes")
+	Object[][] columnTypes;
+	@ObfuscatedName("ac")
+	int[][] field4969;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 468764621
+	)
+	@Export("tableId")
+	public int tableId;
 
-   DbRowType() {
-   }
+	static {
+		DBRowType_cache = new EvictingDualNodeHashTable(64);
+	}
 
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "(Lsy;B)V",
-      garbageValue = "-19"
-   )
-   void method8519(Buffer var1) {
-      while(true) {
-         int var2 = var1.readUnsignedByte();
-         if (var2 == 0) {
-            return;
-         }
+	DbRowType() {
+		this.tableId = -1;
+	}
 
-         this.method8522(var1, var2);
-      }
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Lsg;I)V",
+		garbageValue = "-1389710331"
+	)
+	void method8958(Buffer var1) {
+		while (true) {
+			int var2 = var1.readUnsignedByte();
+			if (var2 == 0) {
+				return;
+			}
 
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "(IB)[Ljava/lang/Object;",
-      garbageValue = "-99"
-   )
-   @Export("getColumnType")
-   public Object[] getColumnType(int var1) {
-      return this.columnTypes == null ? null : this.columnTypes[var1];
-   }
+			this.method8971(var1, var2);
+		}
+	}
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(Lsy;II)V",
-      garbageValue = "-2101784162"
-   )
-   void method8522(Buffer var1, int var2) {
-      if (var2 == 3) {
-         int var3 = var1.readUnsignedByte();
-         if (this.columnTypes == null) {
-            this.columnTypes = new Object[var3][];
-            this.field4880 = new int[var3][];
-         }
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(IB)[Ljava/lang/Object;",
+		garbageValue = "-88"
+	)
+	@Export("getColumnType")
+	public Object[] getColumnType(int var1) {
+		return this.columnTypes == null ? null : this.columnTypes[var1];
+	}
 
-         for(int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) {
-            int var5 = var1.readUnsignedByte();
-            int[] var6 = new int[var5];
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(Lsg;II)V",
+		garbageValue = "789571995"
+	)
+	void method8971(Buffer var1, int var2) {
+		if (var2 == 3) {
+			int var3 = var1.readUnsignedByte();
+			if (this.columnTypes == null) {
+				this.columnTypes = new Object[var3][];
+				this.field4969 = new int[var3][];
+			}
 
-            for(int var7 = 0; var7 < var5; ++var7) {
-               var6[var7] = var1.readUShortSmart();
-            }
+			for (int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) {
+				int var5 = var1.readUnsignedByte();
+				int[] var6 = new int[var5];
 
-            this.columnTypes[var4] = Clock.method3525(var1, var6);
-            this.field4880[var4] = var6;
-         }
-      } else if (var2 == 4) {
-         this.tableId = var1.packBytesToInt();
-      }
+				for (int var7 = 0; var7 < var5; ++var7) {
+					var6[var7] = var1.readUShortSmart();
+				}
 
-   }
+				this.columnTypes[var4] = class377.method7250(var1, var6);
+				this.field4969[var4] = var6;
+			}
+		} else if (var2 == 4) {
+			this.tableId = var1.method9078();
+		}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "8396928"
-   )
-   void method8524() {
-   }
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-2078088696"
+	)
+	void method8961() {
+	}
 }

@@ -4,114 +4,99 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cv")
+@ObfuscatedName("ch")
 @Implements("Script")
 public class Script extends DualNode {
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "Lkt;"
-   )
-   @Export("Script_cached")
-   static EvictingDualNodeHashTable Script_cached = new EvictingDualNodeHashTable(128);
-   @ObfuscatedName("as")
-   @ObfuscatedSignature(
-      descriptor = "Lbw;"
-   )
-   @Export("pcmPlayerProvider")
-   public static class50 pcmPlayerProvider;
-   @ObfuscatedName("oe")
-   @ObfuscatedSignature(
-      descriptor = "Lmy;"
-   )
-   static Widget field975;
-   @ObfuscatedName("al")
-   String field965;
-   @ObfuscatedName("ac")
-   @Export("opcodes")
-   int[] opcodes;
-   @ObfuscatedName("ab")
-   @Export("intOperands")
-   int[] intOperands;
-   @ObfuscatedName("an")
-   @Export("stringOperands")
-   String[] stringOperands;
-   @ObfuscatedName("ao")
-   @ObfuscatedGetter(
-      intValue = -643585665
-   )
-   @Export("localIntCount")
-   int localIntCount;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = -1479313491
-   )
-   @Export("localStringCount")
-   int localStringCount;
-   @ObfuscatedName("aq")
-   @ObfuscatedGetter(
-      intValue = 208680291
-   )
-   @Export("intArgumentCount")
-   int intArgumentCount;
-   @ObfuscatedName("ap")
-   @ObfuscatedGetter(
-      intValue = 492927757
-   )
-   @Export("stringArgumentCount")
-   int stringArgumentCount;
-   @ObfuscatedName("ar")
-   @ObfuscatedSignature(
-      descriptor = "[Lrz;"
-   )
-   @Export("switches")
-   IterableNodeHashTable[] switches;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lkh;"
+	)
+	@Export("Script_cached")
+	static EvictingDualNodeHashTable Script_cached;
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lno;"
+	)
+	@Export("NetCache_currentResponse")
+	public static NetFileRequest NetCache_currentResponse;
+	@ObfuscatedName("an")
+	String field961;
+	@ObfuscatedName("aw")
+	@Export("opcodes")
+	int[] opcodes;
+	@ObfuscatedName("ac")
+	@Export("intOperands")
+	int[] intOperands;
+	@ObfuscatedName("au")
+	@Export("stringOperands")
+	String[] stringOperands;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = 2144970855
+	)
+	@Export("localIntCount")
+	int localIntCount;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = -1897224143
+	)
+	@Export("localStringCount")
+	int localStringCount;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = -1203198865
+	)
+	@Export("intArgumentCount")
+	int intArgumentCount;
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = 1178893217
+	)
+	@Export("stringArgumentCount")
+	int stringArgumentCount;
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "[Lro;"
+	)
+	@Export("switches")
+	IterableNodeHashTable[] switches;
 
-   Script() {
-   }
+	static {
+		Script_cached = new EvictingDualNodeHashTable(128);
+	}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(II)[Lrz;",
-      garbageValue = "-2130489863"
-   )
-   @Export("newIterableNodeHashTable")
-   IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
-      return new IterableNodeHashTable[var1];
-   }
+	Script() {
+	}
 
-   @ObfuscatedName("kp")
-   @ObfuscatedSignature(
-      descriptor = "([Lmy;IIIZI)V",
-      garbageValue = "-1823735571"
-   )
-   @Export("resizeInterface")
-   static void resizeInterface(Widget[] var0, int var1, int var2, int var3, boolean var4) {
-      for(int var5 = 0; var5 < var0.length; ++var5) {
-         Widget var6 = var0[var5];
-         if (var6 != null && var6.parentId == var1) {
-            PcmPlayer.alignWidgetSize(var6, var2, var3, var4);
-            Tiles.alignWidgetPosition(var6, var2, var3);
-            if (var6.scrollX > var6.scrollWidth - var6.width) {
-               var6.scrollX = var6.scrollWidth - var6.width;
-            }
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(II)[Lro;",
+		garbageValue = "-1544314186"
+	)
+	@Export("newIterableNodeHashTable")
+	IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
+		return new IterableNodeHashTable[var1];
+	}
 
-            if (var6.scrollX < 0) {
-               var6.scrollX = 0;
-            }
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "-2065195027"
+	)
+	public static int method2137(int var0, int var1) {
+		int var2;
+		for (var2 = 1; var1 > 1; var1 >>= 1) {
+			if ((var1 & 1) != 0) {
+				var2 = var0 * var2;
+			}
 
-            if (var6.scrollY > var6.scrollHeight - var6.height) {
-               var6.scrollY = var6.scrollHeight - var6.height;
-            }
+			var0 *= var0;
+		}
 
-            if (var6.scrollY < 0) {
-               var6.scrollY = 0;
-            }
-
-            if (var6.type == 0) {
-               class278.revalidateWidgetScroll(var0, var6, var4);
-            }
-         }
-      }
-
-   }
+		if (var1 == 1) {
+			return var0 * var2;
+		} else {
+			return var2;
+		}
+	}
 }

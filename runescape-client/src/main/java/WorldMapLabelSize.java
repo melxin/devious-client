@@ -7,123 +7,120 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("jd")
 @Implements("WorldMapLabelSize")
 public class WorldMapLabelSize {
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "Ljd;"
-   )
-   @Export("WorldMapLabelSize_small")
-   public static final WorldMapLabelSize WorldMapLabelSize_small = new WorldMapLabelSize(1, 0, 4);
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Ljd;"
-   )
-   @Export("WorldMapLabelSize_medium")
-   public static final WorldMapLabelSize WorldMapLabelSize_medium = new WorldMapLabelSize(2, 1, 2);
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Ljd;"
-   )
-   @Export("WorldMapLabelSize_large")
-   public static final WorldMapLabelSize WorldMapLabelSize_large = new WorldMapLabelSize(0, 2, 0);
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = -736489631
-   )
-   final int field2816;
-   @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      intValue = -1775270611
-   )
-   final int field2817;
-   @ObfuscatedName("ao")
-   @ObfuscatedGetter(
-      intValue = 1071305795
-   )
-   final int field2813;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Ljd;"
+	)
+	@Export("WorldMapLabelSize_small")
+	public static final WorldMapLabelSize WorldMapLabelSize_small;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Ljd;"
+	)
+	@Export("WorldMapLabelSize_medium")
+	public static final WorldMapLabelSize WorldMapLabelSize_medium;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Ljd;"
+	)
+	@Export("WorldMapLabelSize_large")
+	public static final WorldMapLabelSize WorldMapLabelSize_large;
+	@ObfuscatedName("fq")
+	@ObfuscatedSignature(
+		descriptor = "Lnd;"
+	)
+	static Archive field2868;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = 868350029
+	)
+	final int field2861;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 513003821
+	)
+	final int field2858;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = 2106192169
+	)
+	final int field2863;
 
-   WorldMapLabelSize(int var1, int var2, int var3) {
-      this.field2816 = var1;
-      this.field2817 = var2;
-      this.field2813 = var3;
-   }
+	static {
+		WorldMapLabelSize_small = new WorldMapLabelSize(0, 0, 4);
+		WorldMapLabelSize_medium = new WorldMapLabelSize(2, 1, 2);
+		WorldMapLabelSize_large = new WorldMapLabelSize(1, 2, 0);
+	}
 
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "(FI)Z",
-      garbageValue = "-160354962"
-   )
-   boolean method4794(float var1) {
-      return var1 >= (float)this.field2813;
-   }
+	WorldMapLabelSize(int var1, int var2, int var3) {
+		this.field2861 = var1;
+		this.field2858 = var2;
+		this.field2863 = var3;
+	}
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(I)[Ljd;",
-      garbageValue = "280981839"
-   )
-   static WorldMapLabelSize[] method4795() {
-      return new WorldMapLabelSize[]{WorldMapLabelSize_small, WorldMapLabelSize_medium, WorldMapLabelSize_large};
-   }
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(FB)Z",
+		garbageValue = "0"
+	)
+	boolean method5046(float var1) {
+		return var1 >= (float)this.field2863;
+	}
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(IIS)I",
-      garbageValue = "-20257"
-   )
-   static int method4800(int var0, int var1) {
-      if (var0 == -2) {
-         return 12345678;
-      } else if (var0 == -1) {
-         if (var1 < 0) {
-            var1 = 0;
-         } else if (var1 > 127) {
-            var1 = 127;
-         }
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ljd;",
+		garbageValue = "1545697832"
+	)
+	static WorldMapLabelSize method5047(int var0) {
+		WorldMapLabelSize[] var1 = new WorldMapLabelSize[]{WorldMapLabelSize_small, WorldMapLabelSize_medium, WorldMapLabelSize_large};
+		WorldMapLabelSize[] var2 = var1;
 
-         var1 = 127 - var1;
-         return var1;
-      } else {
-         var1 = (var0 & 127) * var1 / 128;
-         if (var1 < 2) {
-            var1 = 2;
-         } else if (var1 > 126) {
-            var1 = 126;
-         }
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			WorldMapLabelSize var4 = var2[var3];
+			if (var0 == var4.field2858) {
+				return var4;
+			}
+		}
 
-         return (var0 & 'ﾀ') + var1;
-      }
-   }
+		return null;
+	}
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "([BI)Ljn;",
-      garbageValue = "-999397643"
-   )
-   static WorldMapSprite method4796(byte[] var0) {
-      return var0 == null ? new WorldMapSprite() : new WorldMapSprite(class139.method3105(var0).pixels);
-   }
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(Lsq;B)V",
+		garbageValue = "7"
+	)
+	static final void method5053(PacketBuffer var0) {
+		for (int var1 = 0; var1 < Players.Players_pendingUpdateCount; ++var1) {
+			int var2 = Players.Players_pendingUpdateIndices[var1];
+			Player var3 = Client.players[var2];
+			int var4 = var0.readUnsignedByte();
+			if ((var4 & 8) != 0) {
+				var4 += var0.readUnsignedByte() << 8;
+			}
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(B)[Lhe;",
-      garbageValue = "-106"
-   )
-   static VerticalAlignment[] method4799() {
-      return new VerticalAlignment[]{VerticalAlignment.field2036, VerticalAlignment.field2034, VerticalAlignment.VerticalAlignment_centered};
-   }
+			if ((var4 & 16384) != 0) {
+				var4 += var0.readUnsignedByte() << 16;
+			}
 
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "(IS)I",
-      garbageValue = "16256"
-   )
-   public static int method4793(int var0) {
-      --var0;
-      var0 |= var0 >>> 1;
-      var0 |= var0 >>> 2;
-      var0 |= var0 >>> 4;
-      var0 |= var0 >>> 8;
-      var0 |= var0 >>> 16;
-      return var0 + 1;
-   }
+			ClientPreferences.method2501(var0, var2, var3, var4);
+		}
+
+	}
+
+	@ObfuscatedName("hn")
+	@ObfuscatedSignature(
+		descriptor = "(IZZZZI)Lnd;",
+		garbageValue = "2134354855"
+	)
+	@Export("newArchive")
+	static Archive newArchive(int var0, boolean var1, boolean var2, boolean var3, boolean var4) {
+		ArchiveDisk var5 = null;
+		if (JagexCache.JagexCache_dat2File != null) {
+			var5 = new ArchiveDisk(var0, JagexCache.JagexCache_dat2File, class370.JagexCache_idxFiles[var0], 1000000);
+		}
+
+		return new Archive(var5, WorldMapID.masterDisk, var0, var1, var2, var3, var4);
+	}
 }

@@ -4,71 +4,83 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("he")
+@ObfuscatedName("hn")
 @Implements("VerticalAlignment")
 public enum VerticalAlignment implements MouseWheel {
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "Lhe;"
-   )
-   field2034(1, 0),
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Lhe;"
-   )
-   @Export("VerticalAlignment_centered")
-   VerticalAlignment_centered(2, 1),
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lhe;"
-   )
-   field2036(0, 2);
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lhn;"
+	)
+	field2059(2, 0),
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lhn;"
+	)
+	@Export("VerticalAlignment_centered")
+	VerticalAlignment_centered(1, 1),
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lhn;"
+	)
+	field2054(0, 2);
 
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = -1414458079
-   )
-   @Export("value")
-   public final int value;
-   @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      intValue = -2110724161
-   )
-   @Export("id")
-   final int id;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "[[Lmq;"
+	)
+	@Export("Widget_interfaceComponents")
+	public static Widget[][] Widget_interfaceComponents;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = 578864459
+	)
+	@Export("value")
+	public final int value;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = -1332614023
+	)
+	@Export("id")
+	final int id;
 
-   VerticalAlignment(int var3, int var4) {
-      this.value = var3;
-      this.id = var4;
-   }
+	VerticalAlignment(int var3, int var4) {
+		this.value = var3;
+		this.id = var4;
+	}
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-1409646049"
-   )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.id;
-   }
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "741942848"
+	)
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.id;
+	}
 
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "1334130459"
-   )
-   public static void method3716() {
-      while(true) {
-         ArchiveDiskAction var0;
-         synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-            var0 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_responseQueue.removeLast();
-         }
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;I)I",
+		garbageValue = "270279938"
+	)
+	@Export("hashString")
+	public static int hashString(CharSequence var0) {
+		int var1 = var0.length();
+		int var2 = 0;
 
-         if (var0 == null) {
-            return;
-         }
+		for (int var3 = 0; var3 < var1; ++var3) {
+			var2 = (var2 << 5) - var2 + class100.charToByteCp1252(var0.charAt(var3));
+		}
 
-         var0.archive.load(var0.archiveDisk, (int)var0.key, var0.data, false);
-      }
-   }
+		return var2;
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-504948756"
+	)
+	static final void method3825(String var0) {
+		UserComparator5.addGameMessage(30, "", var0);
+	}
 }

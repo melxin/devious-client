@@ -7,238 +7,257 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("px")
+@ObfuscatedName("pn")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-   @ObfuscatedName("aj")
-   @Export("thread")
-   Thread thread;
-   @ObfuscatedName("al")
-   @Export("inputStream")
-   InputStream inputStream;
-   @ObfuscatedName("ac")
-   @ObfuscatedGetter(
-      intValue = -686104627
-   )
-   @Export("capacity")
-   int capacity;
-   @ObfuscatedName("ab")
-   @Export("buffer")
-   byte[] buffer;
-   @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      intValue = 1482773295
-   )
-   @Export("position")
-   int position = 0;
-   @ObfuscatedName("ao")
-   @ObfuscatedGetter(
-      intValue = -7223263
-   )
-   @Export("limit")
-   int limit = 0;
-   @ObfuscatedName("av")
-   @Export("exception")
-   IOException exception;
+	@ObfuscatedName("af")
+	@Export("thread")
+	Thread thread;
+	@ObfuscatedName("an")
+	@Export("inputStream")
+	InputStream inputStream;
+	@ObfuscatedName("aw")
+	@ObfuscatedGetter(
+		intValue = -1464241637
+	)
+	@Export("capacity")
+	int capacity;
+	@ObfuscatedName("ac")
+	@Export("buffer")
+	byte[] buffer;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 160772207
+	)
+	@Export("position")
+	int position;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = 1652063427
+	)
+	@Export("limit")
+	int limit;
+	@ObfuscatedName("aq")
+	@Export("exception")
+	IOException exception;
 
-   BufferedSource(InputStream var1, int var2) {
-      this.inputStream = var1;
-      this.capacity = var2 + 1;
-      this.buffer = new byte[this.capacity];
-      this.thread = new Thread(this);
-      this.thread.setDaemon(true);
-      this.thread.start();
-   }
+	BufferedSource(InputStream var1, int var2) {
+		this.position = 0;
+		this.limit = 0;
+		this.inputStream = var1;
+		this.capacity = var2 + 1;
+		this.buffer = new byte[this.capacity];
+		this.thread = new Thread(this);
+		this.thread.setDaemon(true);
+		this.thread.start();
+	}
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(IB)Z",
-      garbageValue = "16"
-   )
-   @Export("isAvailable")
-   boolean isAvailable(int var1) throws IOException {
-      if (var1 == 0) {
-         return true;
-      } else if (var1 > 0 && var1 < this.capacity) {
-         synchronized(this) {
-            int var3;
-            if (this.position <= this.limit) {
-               var3 = this.limit - this.position;
-            } else {
-               var3 = this.capacity - this.position + this.limit;
-            }
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-1797531866"
+	)
+	@Export("isAvailable")
+	boolean isAvailable(int var1) throws IOException {
+		if (var1 == 0) {
+			return true;
+		} else if (var1 > 0 && var1 < this.capacity) {
+			synchronized(this) {
+				int var3;
+				if (this.position <= this.limit) {
+					var3 = this.limit - this.position;
+				} else {
+					var3 = this.capacity - this.position + this.limit;
+				}
 
-            if (var3 < var1) {
-               if (this.exception != null) {
-                  throw new IOException(this.exception.toString());
-               } else {
-                  this.notifyAll();
-                  return false;
-               }
-            } else {
-               return true;
-            }
-         }
-      } else {
-         throw new IOException();
-      }
-   }
+				if (var3 < var1) {
+					if (this.exception != null) {
+						throw new IOException(this.exception.toString());
+					} else {
+						this.notifyAll();
+						return false;
+					}
+				} else {
+					return true;
+				}
+			}
+		} else {
+			throw new IOException();
+		}
+	}
 
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-1649077050"
-   )
-   @Export("available")
-   int available() throws IOException {
-      synchronized(this) {
-         int var2;
-         if (this.position <= this.limit) {
-            var2 = this.limit - this.position;
-         } else {
-            var2 = this.capacity - this.position + this.limit;
-         }
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "25"
+	)
+	@Export("available")
+	int available() throws IOException {
+		synchronized(this) {
+			int var2;
+			if (this.position <= this.limit) {
+				var2 = this.limit - this.position;
+			} else {
+				var2 = this.capacity - this.position + this.limit;
+			}
 
-         if (var2 <= 0 && this.exception != null) {
-            throw new IOException(this.exception.toString());
-         } else {
-            this.notifyAll();
-            return var2;
-         }
-      }
-   }
+			if (var2 <= 0 && this.exception != null) {
+				throw new IOException(this.exception.toString());
+			} else {
+				this.notifyAll();
+				return var2;
+			}
+		}
+	}
 
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-1796520433"
-   )
-   @Export("readUnsignedByte")
-   int readUnsignedByte() throws IOException {
-      synchronized(this) {
-         if (this.limit == this.position) {
-            if (this.exception != null) {
-               throw new IOException(this.exception.toString());
-            } else {
-               return -1;
-            }
-         } else {
-            int var2 = this.buffer[this.position] & 255;
-            this.position = (this.position + 1) % this.capacity;
-            this.notifyAll();
-            return var2;
-         }
-      }
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(S)I",
+		garbageValue = "28528"
+	)
+	@Export("readUnsignedByte")
+	int readUnsignedByte() throws IOException {
+		synchronized(this) {
+			if (this.limit == this.position) {
+				if (this.exception != null) {
+					throw new IOException(this.exception.toString());
+				} else {
+					return -1;
+				}
+			} else {
+				int var2 = this.buffer[this.position] & 255;
+				this.position = (this.position + 1) % this.capacity;
+				this.notifyAll();
+				return var2;
+			}
+		}
+	}
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "([BIII)I",
-      garbageValue = "-617991622"
-   )
-   @Export("read")
-   int read(byte[] var1, int var2, int var3) throws IOException {
-      if (var3 >= 0 && var2 >= 0 && var3 + var2 <= var1.length) {
-         synchronized(this) {
-            int var5;
-            if (this.position <= this.limit) {
-               var5 = this.limit - this.position;
-            } else {
-               var5 = this.capacity - this.position + this.limit;
-            }
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "([BIII)I",
+		garbageValue = "-744884869"
+	)
+	@Export("read")
+	int read(byte[] var1, int var2, int var3) throws IOException {
+		if (var3 >= 0 && var2 >= 0 && var3 + var2 <= var1.length) {
+			synchronized(this) {
+				int var5;
+				if (this.position <= this.limit) {
+					var5 = this.limit - this.position;
+				} else {
+					var5 = this.capacity - this.position + this.limit;
+				}
 
-            if (var3 > var5) {
-               var3 = var5;
-            }
+				if (var3 > var5) {
+					var3 = var5;
+				}
 
-            if (var3 == 0 && this.exception != null) {
-               throw new IOException(this.exception.toString());
-            } else {
-               if (var3 + this.position <= this.capacity) {
-                  System.arraycopy(this.buffer, this.position, var1, var2, var3);
-               } else {
-                  int var6 = this.capacity - this.position;
-                  System.arraycopy(this.buffer, this.position, var1, var2, var6);
-                  System.arraycopy(this.buffer, 0, var1, var6 + var2, var3 - var6);
-               }
+				if (var3 == 0 && this.exception != null) {
+					throw new IOException(this.exception.toString());
+				} else {
+					if (var3 + this.position <= this.capacity) {
+						System.arraycopy(this.buffer, this.position, var1, var2, var3);
+					} else {
+						int var6 = this.capacity - this.position;
+						System.arraycopy(this.buffer, this.position, var1, var2, var6);
+						System.arraycopy(this.buffer, 0, var1, var6 + var2, var3 - var6);
+					}
 
-               this.position = (var3 + this.position) % this.capacity;
-               this.notifyAll();
-               return var3;
-            }
-         }
-      } else {
-         throw new IOException();
-      }
-   }
+					this.position = (var3 + this.position) % this.capacity;
+					this.notifyAll();
+					return var3;
+				}
+			}
+		} else {
+			throw new IOException();
+		}
+	}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "535821760"
-   )
-   @Export("close")
-   void close() {
-      synchronized(this) {
-         if (this.exception == null) {
-            this.exception = new IOException("");
-         }
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1118938495"
+	)
+	@Export("close")
+	void close() {
+		synchronized(this) {
+			if (this.exception == null) {
+				this.exception = new IOException("");
+			}
 
-         this.notifyAll();
-      }
+			this.notifyAll();
+		}
 
-      try {
-         this.thread.join();
-      } catch (InterruptedException var3) {
-      }
+		try {
+			this.thread.join();
+		} catch (InterruptedException var3) {
+		}
 
-   }
+	}
 
-   public void run() {
-      while(true) {
-         int var1;
-         synchronized(this) {
-            while(true) {
-               if (this.exception != null) {
-                  return;
-               }
+	public void run() {
+		while (true) {
+			int var1;
+			synchronized(this) {
+				while (true) {
+					if (this.exception != null) {
+						return;
+					}
 
-               if (this.position == 0) {
-                  var1 = this.capacity - this.limit - 1;
-               } else if (this.position <= this.limit) {
-                  var1 = this.capacity - this.limit;
-               } else {
-                  var1 = this.position - this.limit - 1;
-               }
+					if (this.position == 0) {
+						var1 = this.capacity - this.limit - 1;
+					} else if (this.position <= this.limit) {
+						var1 = this.capacity - this.limit;
+					} else {
+						var1 = this.position - this.limit - 1;
+					}
 
-               if (var1 > 0) {
-                  break;
-               }
+					if (var1 > 0) {
+						break;
+					}
 
-               try {
-                  this.wait();
-               } catch (InterruptedException var10) {
-               }
-            }
-         }
+					try {
+						this.wait();
+					} catch (InterruptedException var10) {
+					}
+				}
+			}
 
-         int var7;
-         try {
-            var7 = this.inputStream.read(this.buffer, this.limit, var1);
-            if (var7 == -1) {
-               throw new EOFException();
-            }
-         } catch (IOException var11) {
-            IOException var3 = var11;
-            synchronized(this) {
-               this.exception = var3;
-               return;
-            }
-         }
+			int var7;
+			try {
+				var7 = this.inputStream.read(this.buffer, this.limit, var1);
+				if (var7 == -1) {
+					throw new EOFException();
+				}
+			} catch (IOException var11) {
+				IOException var3 = var11;
+				synchronized(this) {
+					this.exception = var3;
+					return;
+				}
+			}
 
-         synchronized(this) {
-            this.limit = (var7 + this.limit) % this.capacity;
-         }
-      }
-   }
+			synchronized(this) {
+				this.limit = (var7 + this.limit) % this.capacity;
+			}
+		}
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(Lmq;I)I",
+		garbageValue = "590181687"
+	)
+	static int method8029(Widget var0) {
+		if (var0.type != 11) {
+			--SecureRandomCallable.Interpreter_stringStackSize;
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
+			return 1;
+		} else {
+			String var1 = Interpreter.Interpreter_stringStack[--SecureRandomCallable.Interpreter_stringStackSize];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var0.method6378(var1);
+			return 1;
+		}
+	}
 }

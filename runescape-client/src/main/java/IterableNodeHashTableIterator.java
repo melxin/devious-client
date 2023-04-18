@@ -4,88 +4,98 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rp")
+@ObfuscatedName("rj")
 @Implements("IterableNodeHashTableIterator")
 public class IterableNodeHashTableIterator implements Iterator {
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "Lrz;"
-   )
-   @Export("hashTable")
-   IterableNodeHashTable hashTable;
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Lru;"
-   )
-   @Export("head")
-   Node head;
-   @ObfuscatedName("ac")
-   @Export("index")
-   int index;
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "Lru;"
-   )
-   @Export("last")
-   Node last = null;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lro;"
+	)
+	@Export("hashTable")
+	IterableNodeHashTable hashTable;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lrp;"
+	)
+	@Export("head")
+	Node head;
+	@ObfuscatedName("aw")
+	@Export("index")
+	int index;
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "Lrp;"
+	)
+	@Export("last")
+	Node last;
 
-   @ObfuscatedSignature(
-      descriptor = "(Lrz;)V"
-   )
-   IterableNodeHashTableIterator(IterableNodeHashTable var1) {
-      this.hashTable = var1;
-      this.start();
-   }
+	@ObfuscatedSignature(
+		descriptor = "(Lro;)V"
+	)
+	public IterableNodeHashTableIterator(IterableNodeHashTable var1) {
+		this.last = null;
+		this.hashTable = var1;
+		this.start();
+	}
 
-   @ObfuscatedName("aj")
-   @Export("start")
-   void start() {
-      this.head = this.hashTable.buckets[0].previous;
-      this.index = 1;
-      this.last = null;
-   }
+	@ObfuscatedName("af")
+	@Export("start")
+	void start() {
+		this.head = this.hashTable.buckets[0].previous;
+		this.index = 1;
+		this.last = null;
+	}
 
-   public Object next() {
-      Node var1;
-      if (this.hashTable.buckets[this.index - 1] != this.head) {
-         var1 = this.head;
-         this.head = var1.previous;
-         this.last = var1;
-         return var1;
-      } else {
-         do {
-            if (this.index >= this.hashTable.size) {
-               return null;
-            }
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "()Lrp;"
+	)
+	public Node method8686() {
+		this.start();
+		return (Node)this.next();
+	}
 
-            var1 = this.hashTable.buckets[this.index++].previous;
-         } while(var1 == this.hashTable.buckets[this.index - 1]);
+	public Object next() {
+		Node var1;
+		if (this.hashTable.buckets[this.index - 1] != this.head) {
+			var1 = this.head;
+			this.head = var1.previous;
+			this.last = var1;
+			return var1;
+		} else {
+			do {
+				if (this.index >= this.hashTable.size) {
+					return null;
+				}
 
-         this.head = var1.previous;
-         this.last = var1;
-         return var1;
-      }
-   }
+				var1 = this.hashTable.buckets[this.index++].previous;
+			} while(var1 == this.hashTable.buckets[this.index - 1]);
 
-   public boolean hasNext() {
-      if (this.hashTable.buckets[this.index - 1] != this.head) {
-         return true;
-      } else {
-         while(this.index < this.hashTable.size) {
-            if (this.hashTable.buckets[this.index++].previous != this.hashTable.buckets[this.index - 1]) {
-               this.head = this.hashTable.buckets[this.index - 1].previous;
-               return true;
-            }
+			this.head = var1.previous;
+			this.last = var1;
+			return var1;
+		}
+	}
 
-            this.head = this.hashTable.buckets[this.index - 1];
-         }
+	public boolean hasNext() {
+		if (this.hashTable.buckets[this.index - 1] != this.head) {
+			return true;
+		} else {
+			while (this.index < this.hashTable.size) {
+				if (this.hashTable.buckets[this.index++].previous != this.hashTable.buckets[this.index - 1]) {
+					this.head = this.hashTable.buckets[this.index - 1].previous;
+					return true;
+				}
 
-         return false;
-      }
-   }
+				this.head = this.hashTable.buckets[this.index - 1];
+			}
 
-   public void remove() {
-      this.last.remove();
-      this.last = null;
-   }
+			return false;
+		}
+	}
+
+	public void remove() {
+		this.last.remove();
+		this.last = null;
+	}
 }

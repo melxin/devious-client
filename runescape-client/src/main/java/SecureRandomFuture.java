@@ -4,79 +4,153 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cf")
+@ObfuscatedName("cj")
 @Implements("SecureRandomFuture")
 public class SecureRandomFuture {
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lne;"
-   )
-   @Export("HitSplatDefinition_fontsArchive")
-   public static AbstractArchive HitSplatDefinition_fontsArchive;
-   @ObfuscatedName("aj")
-   @Export("executor")
-   ExecutorService executor = Executors.newSingleThreadExecutor();
-   @ObfuscatedName("al")
-   @Export("future")
-   Future future;
+	@ObfuscatedName("oo")
+	@ObfuscatedGetter(
+		intValue = 1457791911
+	)
+	@Export("selectedSpellFlags")
+	static int selectedSpellFlags;
+	@ObfuscatedName("af")
+	@Export("executor")
+	ExecutorService executor;
+	@ObfuscatedName("an")
+	@Export("future")
+	Future future;
 
-   SecureRandomFuture() {
-      this.future = this.executor.submit(new SecureRandomCallable());
-   }
+	SecureRandomFuture() {
+		this.executor = Executors.newSingleThreadExecutor();
+		this.future = this.executor.submit(new SecureRandomCallable());
+	}
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "141845738"
-   )
-   @Export("shutdown")
-   void shutdown() {
-      this.executor.shutdown();
-      this.executor = null;
-   }
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1244424155"
+	)
+	@Export("shutdown")
+	void shutdown() {
+		this.executor.shutdown();
+		this.executor = null;
+	}
 
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "(I)Z",
-      garbageValue = "-2139546026"
-   )
-   @Export("isDone")
-   boolean isDone() {
-      return this.future.isDone();
-   }
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "85"
+	)
+	@Export("isDone")
+	boolean isDone() {
+		return this.future.isDone();
+	}
 
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "(I)Ljava/security/SecureRandom;",
-      garbageValue = "-1649323244"
-   )
-   @Export("get")
-   SecureRandom get() {
-      try {
-         return (SecureRandom)this.future.get();
-      } catch (Exception var2) {
-         return class392.method7406();
-      }
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/security/SecureRandom;",
+		garbageValue = "14"
+	)
+	@Export("get")
+	SecureRandom get() {
+		try {
+			return (SecureRandom)this.future.get();
+		} catch (Exception var4) {
+			SecureRandom var3 = new SecureRandom();
+			var3.nextInt();
+			return var3;
+		}
+	}
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(I)[Lmf;",
-      garbageValue = "1229624350"
-   )
-   static GameBuild[] method2123() {
-      return new GameBuild[]{GameBuild.WIP, GameBuild.BUILDLIVE, GameBuild.LIVE, GameBuild.RC};
-   }
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-1033120927"
+	)
+	public static int method2128() {
+		return ++MouseHandler.MouseHandler_idleCycles - 1;
+	}
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(B)[Lml;",
-      garbageValue = "-8"
-   )
-   public static StudioGame[] method2124() {
-      return new StudioGame[]{StudioGame.game5, StudioGame.oldscape, StudioGame.game3, StudioGame.runescape, StudioGame.game4, StudioGame.stellardawn};
-   }
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;",
+		garbageValue = "-86032975"
+	)
+	public static String method2130(CharSequence var0) {
+		String var1 = FloorUnderlayDefinition.base37DecodeLong(class172.method3585(var0));
+		if (var1 == null) {
+			var1 = "";
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;IZB)I",
+		garbageValue = "-45"
+	)
+	public static int method2122(CharSequence var0, int var1, boolean var2) {
+		if (var1 >= 2 && var1 <= 36) {
+			boolean var3 = false;
+			boolean var4 = false;
+			int var5 = 0;
+			int var6 = var0.length();
+
+			for (int var7 = 0; var7 < var6; ++var7) {
+				char var8 = var0.charAt(var7);
+				if (var7 == 0) {
+					if (var8 == '-') {
+						var3 = true;
+						continue;
+					}
+
+					if (var8 == '+') {
+						continue;
+					}
+				}
+
+				int var10;
+				if (var8 >= '0' && var8 <= '9') {
+					var10 = var8 - '0';
+				} else if (var8 >= 'A' && var8 <= 'Z') {
+					var10 = var8 - '7';
+				} else {
+					if (var8 < 'a' || var8 > 'z') {
+						throw new NumberFormatException();
+					}
+
+					var10 = var8 - 'W';
+				}
+
+				if (var10 >= var1) {
+					throw new NumberFormatException();
+				}
+
+				if (var3) {
+					var10 = -var10;
+				}
+
+				int var9 = var10 + var5 * var1;
+				if (var9 / var1 != var5) {
+					throw new NumberFormatException();
+				}
+
+				var5 = var9;
+				var4 = true;
+			}
+
+			if (!var4) {
+				throw new NumberFormatException();
+			} else {
+				return var5;
+			}
+		} else {
+			throw new IllegalArgumentException("" + var1);
+		}
+	}
 }

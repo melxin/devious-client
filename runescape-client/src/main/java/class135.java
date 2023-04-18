@@ -1,98 +1,106 @@
-import java.lang.management.GarbageCollectorMXBean;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fa")
+@ObfuscatedName("fp")
 public enum class135 implements MouseWheel {
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "Lfa;"
-   )
-   field1588(0, 0),
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Lfa;"
-   )
-   field1579(1, 1),
-   @ObfuscatedName("ac")
-   @ObfuscatedSignature(
-      descriptor = "Lfa;"
-   )
-   field1580(2, 2),
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "Lfa;"
-   )
-   field1581(3, 3),
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "Lfa;"
-   )
-   field1589(4, 4),
-   @ObfuscatedName("ao")
-   @ObfuscatedSignature(
-      descriptor = "Lfa;"
-   )
-   field1583(5, 5),
-   @ObfuscatedName("av")
-   @ObfuscatedSignature(
-      descriptor = "Lfa;"
-   )
-   field1584(6, 6),
-   @ObfuscatedName("aq")
-   @ObfuscatedSignature(
-      descriptor = "Lfa;"
-   )
-   field1585(7, 7),
-   @ObfuscatedName("ap")
-   @ObfuscatedSignature(
-      descriptor = "Lfa;"
-   )
-   field1586(8, 8);
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lfp;"
+	)
+	field1618(2, 0),
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lfp;"
+	)
+	field1615(1, 1),
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lfp;"
+	)
+	field1621(0, 2),
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "Lfp;"
+	)
+	field1617(3, 3),
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Lfp;"
+	)
+	field1619(4, 4);
 
-   @ObfuscatedName("bp")
-   @Export("garbageCollector")
-   static GarbageCollectorMXBean garbageCollector;
-   @ObfuscatedName("fg")
-   @ObfuscatedSignature(
-      descriptor = "Lmx;"
-   )
-   @Export("archive4")
-   static Archive archive4;
-   @ObfuscatedName("ar")
-   @ObfuscatedGetter(
-      intValue = -1601735427
-   )
-   final int field1582;
-   @ObfuscatedName("ak")
-   @ObfuscatedGetter(
-      intValue = 443647549
-   )
-   final int field1590;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = 1915854149
+	)
+	public final int field1620;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = -601050455
+	)
+	@Export("id")
+	final int id;
 
-   class135(int var3, int var4) {
-      this.field1582 = var3;
-      this.field1590 = var4;
-   }
+	class135(int var3, int var4) {
+		this.field1620 = var3;
+		this.id = var4;
+	}
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(I)I",
-      garbageValue = "-1409646049"
-   )
-   @Export("rsOrdinal")
-   public int rsOrdinal() {
-      return this.field1590;
-   }
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "741942848"
+	)
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.id;
+	}
 
-   @ObfuscatedName("cj")
-   @ObfuscatedSignature(
-      descriptor = "(II)Ljava/lang/Object;",
-      garbageValue = "1765946215"
-   )
-   static Object method3074(int var0) {
-      return class148.method3171((class467)SpriteMask.findEnumerated(class467.method8480(), var0));
-   }
+	@ObfuscatedName("ld")
+	@ObfuscatedSignature(
+		descriptor = "([Lmq;IIIZI)V",
+		garbageValue = "1809081725"
+	)
+	@Export("resizeInterface")
+	static void resizeInterface(Widget[] var0, int var1, int var2, int var3, boolean var4) {
+		for (int var5 = 0; var5 < var0.length; ++var5) {
+			Widget var6 = var0[var5];
+			if (var6 != null && var6.parentId == var1) {
+				class158.alignWidgetSize(var6, var2, var3, var4);
+				class192.alignWidgetPosition(var6, var2, var3);
+				if (var6.scrollX > var6.scrollWidth - var6.width) {
+					var6.scrollX = var6.scrollWidth - var6.width;
+				}
+
+				if (var6.scrollX < 0) {
+					var6.scrollX = 0;
+				}
+
+				if (var6.scrollY > var6.scrollHeight - var6.height) {
+					var6.scrollY = var6.scrollHeight - var6.height;
+				}
+
+				if (var6.scrollY < 0) {
+					var6.scrollY = 0;
+				}
+
+				if (var6.type == 0) {
+					WallDecoration.revalidateWidgetScroll(var0, var6, var4);
+				}
+			}
+		}
+
+	}
+
+	@ObfuscatedName("mi")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "0"
+	)
+	static final void method3182(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 127);
+		class20.clientPreferences.method2464(var0);
+	}
 }

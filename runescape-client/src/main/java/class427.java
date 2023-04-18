@@ -1,17 +1,18 @@
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qf")
-public class class427 extends class428 {
-   public class427(int var1) {
-      super(var1);
-   }
+@ObfuscatedName("qs")
+public class class427 {
+	@ObfuscatedName("af")
+	float[] field4689;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = 754853883
+	)
+	int field4688;
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(Lsy;IB)V",
-      garbageValue = "-66"
-   )
-   void vmethod7952(Buffer var1, int var2) {
-   }
+	class427(float[] var1, int var2) {
+		this.field4689 = var1;
+		this.field4688 = var2;
+	}
 }

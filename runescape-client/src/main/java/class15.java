@@ -12,66 +12,70 @@ import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
-@ObfuscatedName("az")
+@ObfuscatedName("ah")
 public class class15 extends SSLSocketFactory {
-   @ObfuscatedName("al")
-   @ObfuscatedSignature(
-      descriptor = "Laz;"
-   )
-   public static class15 field76;
-   @ObfuscatedName("aj")
-   SecureRandom field77 = new SecureRandom();
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lah;"
+	)
+	public static class15 field83;
+	@ObfuscatedName("af")
+	SecureRandom field82;
 
-   static {
-      if (Security.getProvider("BC") == null) {
-         Security.addProvider(new BouncyCastleProvider());
-      }
+	static {
+		if (Security.getProvider("BC") == null) {
+			Security.addProvider(new BouncyCastleProvider());
+		}
 
-   }
+	}
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;B)Ljavax/net/ssl/SSLSocket;",
-      garbageValue = "-103"
-   )
-   SSLSocket method179(String var1, TlsClientProtocol var2) {
-      return new class12(this, var2, var1);
-   }
+	public class15() {
+		this.field82 = new SecureRandom();
+	}
 
-   public Socket createSocket(Socket var1, String var2, int var3, boolean var4) throws IOException {
-      if (var1 == null) {
-         var1 = new Socket();
-      }
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;I)Ljavax/net/ssl/SSLSocket;",
+		garbageValue = "-489123832"
+	)
+	SSLSocket method208(String var1, TlsClientProtocol var2) {
+		return new class12(this, var2, var1);
+	}
 
-      if (!var1.isConnected()) {
-         var1.connect(new InetSocketAddress(var2, var3));
-      }
+	public String[] getDefaultCipherSuites() {
+		return null;
+	}
 
-      TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field77);
-      return this.method179(var2, var5);
-   }
+	public String[] getSupportedCipherSuites() {
+		return null;
+	}
 
-   public String[] getDefaultCipherSuites() {
-      return null;
-   }
+	public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
+		return null;
+	}
 
-   public String[] getSupportedCipherSuites() {
-      return null;
-   }
+	public Socket createSocket(InetAddress var1, int var2) throws IOException {
+		return null;
+	}
 
-   public Socket createSocket(String var1, int var2) throws IOException, UnknownHostException {
-      return null;
-   }
+	public Socket createSocket(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
+		return null;
+	}
 
-   public Socket createSocket(InetAddress var1, int var2) throws IOException {
-      return null;
-   }
+	public Socket createSocket(String var1, int var2, InetAddress var3, int var4) throws IOException, UnknownHostException {
+		return null;
+	}
 
-   public Socket createSocket(InetAddress var1, int var2, InetAddress var3, int var4) throws IOException {
-      return null;
-   }
+	public Socket createSocket(Socket var1, String var2, int var3, boolean var4) throws IOException {
+		if (var1 == null) {
+			var1 = new Socket();
+		}
 
-   public Socket createSocket(String var1, int var2, InetAddress var3, int var4) throws IOException, UnknownHostException {
-      return null;
-   }
+		if (!var1.isConnected()) {
+			var1.connect(new InetSocketAddress(var2, var3));
+		}
+
+		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field82);
+		return this.method208(var2, var5);
+	}
 }

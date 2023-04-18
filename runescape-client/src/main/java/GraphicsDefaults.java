@@ -4,101 +4,160 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pw")
+@ObfuscatedName("qw")
 @Implements("GraphicsDefaults")
 public class GraphicsDefaults {
-   @ObfuscatedName("aj")
-   @ObfuscatedGetter(
-      intValue = -2082911727
-   )
-   @Export("compass")
-   public int compass = -1;
-   @ObfuscatedName("al")
-   @ObfuscatedGetter(
-      intValue = 1391423821
-   )
-   public int field4575 = -1;
-   @ObfuscatedName("ac")
-   @ObfuscatedGetter(
-      intValue = -2081671237
-   )
-   @Export("mapScenes")
-   public int mapScenes = -1;
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = -1543211827
-   )
-   @Export("headIconsPk")
-   public int headIconsPk = -1;
-   @ObfuscatedName("an")
-   @ObfuscatedGetter(
-      intValue = 1634702607
-   )
-   public int field4572 = -1;
-   @ObfuscatedName("ao")
-   @ObfuscatedGetter(
-      intValue = -437135967
-   )
-   public int field4576 = -1;
-   @ObfuscatedName("av")
-   @ObfuscatedGetter(
-      intValue = -1374101135
-   )
-   public int field4577 = -1;
-   @ObfuscatedName("aq")
-   @ObfuscatedGetter(
-      intValue = 637341399
-   )
-   public int field4578 = -1;
-   @ObfuscatedName("ap")
-   @ObfuscatedGetter(
-      intValue = -827595631
-   )
-   public int field4573 = -1;
-   @ObfuscatedName("ar")
-   @ObfuscatedGetter(
-      intValue = -1043626131
-   )
-   public int field4580 = -1;
-   @ObfuscatedName("ak")
-   @ObfuscatedGetter(
-      intValue = 2077238163
-   )
-   public int field4581 = -1;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = -25531251
+	)
+	@Export("compass")
+	public int compass;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = -740583791
+	)
+	public int field4636;
+	@ObfuscatedName("aw")
+	@ObfuscatedGetter(
+		intValue = -506869823
+	)
+	@Export("mapScenes")
+	public int mapScenes;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = 84664645
+	)
+	@Export("headIconsPk")
+	public int headIconsPk;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 842447949
+	)
+	public int field4644;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1721152621
+	)
+	public int field4641;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = -1343036557
+	)
+	public int field4642;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = 1146186045
+	)
+	public int field4640;
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = 130583873
+	)
+	public int field4643;
+	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = 233709739
+	)
+	public int field4645;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = -2142254499
+	)
+	public int field4637;
 
-   @ObfuscatedName("aj")
-   @ObfuscatedSignature(
-      descriptor = "(Lne;I)V",
-      garbageValue = "1692757151"
-   )
-   @Export("decode")
-   public void decode(AbstractArchive var1) {
-      byte[] var2 = var1.takeFileFlat(DefaultsGroup.field4569.group);
-      Buffer var3 = new Buffer(var2);
+	public GraphicsDefaults() {
+		this.compass = -1;
+		this.field4636 = -1;
+		this.mapScenes = -1;
+		this.headIconsPk = -1;
+		this.field4644 = -1;
+		this.field4641 = -1;
+		this.field4642 = -1;
+		this.field4640 = -1;
+		this.field4643 = -1;
+		this.field4645 = -1;
+		this.field4637 = -1;
+	}
 
-      while(true) {
-         int var4 = var3.readUnsignedByte();
-         if (var4 == 0) {
-            return;
-         }
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(Lnm;I)V",
+		garbageValue = "-1761039075"
+	)
+	@Export("decode")
+	public void decode(AbstractArchive var1) {
+		byte[] var2 = var1.takeFileFlat(DefaultsGroup.field4635.group);
+		Buffer var3 = new Buffer(var2);
 
-         switch (var4) {
-            case 1:
-               var3.readMedium();
-               break;
-            case 2:
-               this.compass = var3.readNullableLargeSmart();
-               this.field4575 = var3.readNullableLargeSmart();
-               this.mapScenes = var3.readNullableLargeSmart();
-               this.headIconsPk = var3.readNullableLargeSmart();
-               this.field4572 = var3.readNullableLargeSmart();
-               this.field4576 = var3.readNullableLargeSmart();
-               this.field4577 = var3.readNullableLargeSmart();
-               this.field4578 = var3.readNullableLargeSmart();
-               this.field4573 = var3.readNullableLargeSmart();
-               this.field4580 = var3.readNullableLargeSmart();
-               this.field4581 = var3.readNullableLargeSmart();
-         }
-      }
-   }
+		while (true) {
+			int var4 = var3.readUnsignedByte();
+			if (var4 == 0) {
+				return;
+			}
+
+			switch(var4) {
+			case 1:
+				var3.readMedium();
+				break;
+			case 2:
+				this.compass = var3.method9108();
+				this.field4636 = var3.method9108();
+				this.mapScenes = var3.method9108();
+				this.headIconsPk = var3.method9108();
+				this.field4644 = var3.method9108();
+				this.field4641 = var3.method9108();
+				this.field4642 = var3.method9108();
+				this.field4640 = var3.method9108();
+				this.field4643 = var3.method9108();
+				this.field4645 = var3.method9108();
+				this.field4637 = var3.method9108();
+			}
+		}
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lgz;",
+		garbageValue = "-1565571529"
+	)
+	@Export("VarpDefinition_get")
+	public static VarpDefinition VarpDefinition_get(int var0) {
+		VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
+			var1 = new VarpDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("jg")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-93"
+	)
+	static final void method8084() {
+		for (GraphicsObject var0 = (GraphicsObject)Client.graphicsObjects.last(); var0 != null; var0 = (GraphicsObject)Client.graphicsObjects.previous()) {
+			if (var0.plane == GameEngine.Client_plane && !var0.isFinished) {
+				if (Client.cycle >= var0.cycleStart) {
+					var0.advance(Client.graphicsCycle);
+					if (var0.isFinished) {
+						var0.remove();
+					} else {
+						class31.scene.drawEntity(var0.plane, var0.x, var0.y, var0.z, 60, var0, 0, -1L, false);
+					}
+				}
+			} else {
+				var0.remove();
+			}
+		}
+
+	}
 }
