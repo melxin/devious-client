@@ -484,15 +484,15 @@ public class NetFileRequest extends DualNode {
 			}
 		}
 
-		IterableNodeHashTableIterator var7 = new IterableNodeHashTableIterator(var0.method2376());
+		IterableNodeHashTableIterator var7 = new IterableNodeHashTableIterator(var0.getSpotAnimations());
 
 		int var3;
-		for (class511 var6 = (class511)var7.method8686(); var6 != null; var6 = (class511)var7.next()) {
-			if (var6.field5143 != -1 && Client.cycle >= var6.field5144) {
-				var3 = ItemContainer.SpotAnimationDefinition_get(var6.field5143).sequence;
+		for (ActorSpotAnim var6 = (ActorSpotAnim) var7.method8686(); var6 != null; var6 = (ActorSpotAnim) var7.next()) {
+			if (var6.id != -1 && Client.cycle >= var6.frame) {
+				var3 = ItemContainer.SpotAnimationDefinition_get(var6.id).sequence;
 				if (var3 == -1) {
 					var6.remove();
-					--var0.field1202;
+					--var0.spotAnimationFrame;
 				} else {
 					var6.field5142 = Math.max(var6.field5142, 0);
 					SequenceDefinition var4 = ItemContainer.SequenceDefinition_get(var3);
@@ -506,7 +506,7 @@ public class NetFileRequest extends DualNode {
 
 						if (var6.field5142 >= var4.frameIds.length) {
 							var6.remove();
-							--var0.field1202;
+							--var0.spotAnimationFrame;
 						}
 					} else if (var4.isCachedModelIdSet()) {
 						++var6.field5142;
@@ -515,11 +515,11 @@ public class NetFileRequest extends DualNode {
 							KeyHandler.method386(var4, var6.field5142, var0.x, var0.y);
 						} else {
 							var6.remove();
-							--var0.field1202;
+							--var0.spotAnimationFrame;
 						}
 					} else {
 						var6.remove();
-						--var0.field1202;
+						--var0.spotAnimationFrame;
 					}
 				}
 			}

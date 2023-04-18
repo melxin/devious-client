@@ -2084,7 +2084,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 		var4.method84().method7631(var1);
 		var4.method84().method7634(class435.field4703);
 		JSONObject var5 = new JSONObject();
-		var5.method9742("accountId", var2);
+		var5.method8392("accountId", var2);
 		var4.method97(new class437(var5));
 		this.field522 = this.field661.method179(var4);
 	}
@@ -4264,7 +4264,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					var6 = var3.readUnsignedShort();
 					var5 = var3.readInt();
 					if (var55 != null) {
-						var55.method2375(0, var6, var5 >> 16, var5 & 65535);
+						var55.createSpotAnim(0, var6, var5 >> 16, var5 & 65535);
 					}
 
 					var1.serverPacket = null;
@@ -4309,7 +4309,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					var5 = var3.readUnsignedShort();
 					var6 = var3.readInt();
 					if (var56 != null) {
-						var56.method2375(0, var5, var6 >> 16, var6 & 65535);
+						var56.createSpotAnim(0, var5, var6 >> 16, var6 & 65535);
 					}
 
 					var1.serverPacket = null;
@@ -5230,7 +5230,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					var6 = var3.readUnsignedShort();
 					var5 = var3.readInt();
 					if (var71 != null) {
-						var71.method2375(var26, var6, var5 >> 16, var5 & 65535);
+						var71.createSpotAnim(var26, var6, var5 >> 16, var5 & 65535);
 					}
 
 					var1.serverPacket = null;
@@ -5476,7 +5476,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					var5 = var3.readUnsignedShort();
 					var6 = var3.readInt();
 					if (var70 != null) {
-						var70.method2375(var26, var5, var6 >> 16, var6 & 65535);
+						var70.createSpotAnim(var26, var5, var6 >> 16, var6 & 65535);
 					}
 
 					var1.serverPacket = null;

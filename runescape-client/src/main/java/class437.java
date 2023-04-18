@@ -68,7 +68,7 @@ public class class437 implements class436 {
 
 				JSONArray var2 = new JSONArray(var1);
 				this.field4708 = new JSONObject();
-				this.field4708.method9742("arrayValues", var2);
+				this.field4708.method8392("arrayValues", var2);
 			}
 
 		} catch (JSONException var3) {

@@ -626,11 +626,11 @@ public class ClientPreferences {
 		if ((var3 & 4096) != 0) {
 			var5 = var0.readUnsignedShort();
 			var13 = var0.method9111();
-			var2.method2375(0, var5, var13 >> 16, var13 & 65535);
+			var2.createSpotAnim(0, var5, var13 >> 16, var13 & 65535);
 		}
 
 		if ((var3 & 1024) != 0) {
-			var2.field1187 = var0.readByte();
+			var2.spotAnimationFrameCycle = var0.readByte();
 			var2.field1189 = var0.method9092();
 			var2.field1188 = var0.method9232();
 			var2.field1207 = var0.method9232();
@@ -638,13 +638,13 @@ public class ClientPreferences {
 			var2.field1192 = var0.readUnsignedShort() + Client.cycle;
 			var2.field1193 = var0.method9099();
 			if (var2.field1110) {
-				var2.field1187 += var2.tileX;
+				var2.spotAnimationFrameCycle += var2.tileX;
 				var2.field1189 += var2.tileY;
 				var2.field1188 += var2.tileX;
 				var2.field1207 += var2.tileY;
 				var2.pathLength = 0;
 			} else {
-				var2.field1187 += var2.pathX[0];
+				var2.spotAnimationFrameCycle += var2.pathX[0];
 				var2.field1189 += var2.pathY[0];
 				var2.field1188 += var2.pathX[0];
 				var2.field1207 += var2.pathY[0];
@@ -686,7 +686,7 @@ public class ClientPreferences {
 				var14 = var0.method9090();
 				var8 = var0.method9099();
 				var9 = var0.readInt();
-				var2.method2375(var14, var8, var9 >> 16, var9 & 65535);
+				var2.createSpotAnim(var14, var8, var9 >> 16, var9 & 65535);
 			}
 		}
 

@@ -75,7 +75,7 @@ public class ReflectionCheck extends Node {
 		int var13;
 		if (var0.spotAnimation >= Client.cycle) {
 			var11 = Math.max(1, var0.spotAnimation - Client.cycle);
-			var3 = var0.field1187 * 128 + var0.field1140 * 64;
+			var3 = var0.spotAnimationFrameCycle * 128 + var0.field1140 * 64;
 			var4 = var0.field1189 * 128 + var0.field1140 * 64;
 			var0.x += (var3 - var0.x) / var11;
 			var0.y += (var4 - var0.y) / var11;
@@ -97,7 +97,7 @@ public class ReflectionCheck extends Node {
 				if (var18) {
 					var3 = var0.field1192 - var0.spotAnimation;
 					var4 = Client.cycle - var0.spotAnimation;
-					var5 = var0.field1187 * 128 + var0.field1140 * 64;
+					var5 = var0.spotAnimationFrameCycle * 128 + var0.field1140 * 64;
 					var13 = var0.field1189 * 128 + var0.field1140 * 64;
 					var7 = var0.field1188 * 128 + var0.field1140 * 64;
 					var8 = var0.field1207 * 128 + var0.field1140 * 64;
@@ -289,7 +289,7 @@ public class ReflectionCheck extends Node {
 			var0.sequence = -1;
 			var0.spotAnimation = 0;
 			var0.field1192 = 0;
-			var0.method2377();
+			var0.clearSpotAnims();
 			var0.x = var0.pathX[0] * 128 + var0.field1140 * 64;
 			var0.y = var0.pathY[0] * 128 + var0.field1140 * 64;
 			var0.method2388();
@@ -299,7 +299,7 @@ public class ReflectionCheck extends Node {
 			var0.sequence = -1;
 			var0.spotAnimation = 0;
 			var0.field1192 = 0;
-			var0.method2377();
+			var0.clearSpotAnims();
 			var0.x = var0.pathX[0] * 128 + var0.field1140 * 64;
 			var0.y = var0.pathY[0] * 128 + var0.field1140 * 64;
 			var0.method2388();

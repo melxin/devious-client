@@ -397,25 +397,26 @@ public class SequenceDefinition extends DualNode {
 		descriptor = "(Lit;II)Lit;",
 		garbageValue = "-1926546328"
 	)
-	Model method4150(Model var1, int var2) {
+	@Export("transformSpotAnimationModel")
+	Model transformSpotAnimationModel(Model var1, int var2) {
 		Model var4;
 		if (!this.isCachedModelIdSet()) {
 			var2 = this.frameIds[var2];
 			Frames var5 = WorldMapID.getFrames(var2 >> 16);
 			var2 &= 65535;
 			if (var5 == null) {
-				return var1.method4753(true);
+				return var1.toSharedSpotAnimationModel(true);
 			} else {
-				var4 = var1.method4753(!var5.hasAlphaTransform(var2));
+				var4 = var1.toSharedSpotAnimationModel(!var5.hasAlphaTransform(var2));
 				var4.animate(var5, var2);
 				return var4;
 			}
 		} else {
 			class133 var3 = TileItem.method2675(this.SequenceDefinition_cachedModelId);
 			if (var3 == null) {
-				return var1.method4753(true);
+				return var1.toSharedSpotAnimationModel(true);
 			} else {
-				var4 = var1.method4753(!var3.method3136());
+				var4 = var1.toSharedSpotAnimationModel(!var3.method3136());
 				var4.method4761(var3, var2);
 				return var4;
 			}

@@ -225,7 +225,7 @@ public class class146 extends class139 {
 			if ((var5 & 1) != 0) {
 				var6 = var1.readUnsignedShort();
 				var7 = var1.method9110();
-				var4.method2375(0, var6, var7 >> 16, var7 & 65535);
+				var4.createSpotAnim(0, var6, var7 >> 16, var7 & 65535);
 			}
 
 			if ((var5 & 16) != 0) {
@@ -246,7 +246,7 @@ public class class146 extends class139 {
 			}
 
 			if ((var5 & 16384) != 0) {
-				var4.field1187 = var1.readByte();
+				var4.spotAnimationFrameCycle = var1.readByte();
 				var4.field1189 = var1.method9232();
 				var4.field1188 = var1.method9232();
 				var4.field1207 = var1.method9232();
@@ -255,7 +255,7 @@ public class class146 extends class139 {
 				var4.field1193 = var1.method9099();
 				var4.pathLength = 1;
 				var4.field1210 = 0;
-				var4.field1187 += var4.pathX[0];
+				var4.spotAnimationFrameCycle += var4.pathX[0];
 				var4.field1189 += var4.pathY[0];
 				var4.field1188 += var4.pathX[0];
 				var4.field1207 += var4.pathY[0];
@@ -441,7 +441,7 @@ public class class146 extends class139 {
 					var8 = var1.method9039();
 					var9 = var1.method9099();
 					var16 = var1.method9110();
-					var4.method2375(var8, var9, var16 >> 16, var16 & 65535);
+					var4.createSpotAnim(var8, var9, var16 >> 16, var16 & 65535);
 				}
 			}
 		}

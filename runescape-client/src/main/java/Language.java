@@ -6,8 +6,6 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@nk
-@lj
 @ObfuscatedName("nx")
 @Implements("Language")
 public class Language implements MouseWheel {

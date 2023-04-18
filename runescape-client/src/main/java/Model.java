@@ -525,7 +525,8 @@ public class Model extends Renderable {
 	@ObfuscatedSignature(
 		descriptor = "(Z)Lit;"
 	)
-	public Model method4753(boolean var1) {
+	@Export("toSharedSpotAnimationModel")
+	public Model toSharedSpotAnimationModel(boolean var1) {
 		if (!var1 && Model_sharedSpotAnimationModelFaceAlphas.length < this.indicesCount) {
 			Model_sharedSpotAnimationModelFaceAlphas = new byte[this.indicesCount + 100];
 		}
