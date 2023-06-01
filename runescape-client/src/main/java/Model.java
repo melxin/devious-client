@@ -1526,11 +1526,11 @@ public class Model extends Renderable {
 			int var2 = this.indices1[var1];
 			int var3 = this.indices2[var1];
 			int var4 = this.indices3[var1];
-			Rasterizer3D.field2520.field2798 = field2733[var1];
+			Rasterizer3D.clips.field2798 = field2733[var1];
 			if (this.faceAlphas == null) {
-				Rasterizer3D.field2520.field2793 = 0;
+				Rasterizer3D.clips.field2793 = 0;
 			} else {
-				Rasterizer3D.field2520.field2793 = this.faceAlphas[var1] & 255;
+				Rasterizer3D.clips.field2793 = this.faceAlphas[var1] & 255;
 			}
 
 			this.method4779(var1, modelViewportYs[var2], modelViewportYs[var3], modelViewportYs[var4], modelViewportXs[var2], modelViewportXs[var3], modelViewportXs[var4], field2692[var2], field2692[var3], field2692[var4], this.faceColors1[var1], this.faceColors2[var1], this.faceColors3[var1]);
@@ -1591,9 +1591,9 @@ public class Model extends Renderable {
 		int var9 = field2731[var6];
 		int var10 = field2731[var7];
 		if (this.faceAlphas == null) {
-			Rasterizer3D.field2520.field2793 = 0;
+			Rasterizer3D.clips.field2793 = 0;
 		} else {
-			Rasterizer3D.field2520.field2793 = this.faceAlphas[var1] & 255;
+			Rasterizer3D.clips.field2793 = this.faceAlphas[var1] & 255;
 		}
 
 		int var11;
@@ -1686,11 +1686,11 @@ public class Model extends Renderable {
 		float var17 = field2743[0];
 		float var18 = field2743[1];
 		float var19 = field2743[2];
-		Rasterizer3D.field2520.field2798 = false;
+		Rasterizer3D.clips.field2798 = false;
 		int var20 = Rasterizer3D.method4388();
 		if (var4 == 3) {
 			if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > var20 || var12 > var20 || var13 > var20) {
-				Rasterizer3D.field2520.field2798 = true;
+				Rasterizer3D.clips.field2798 = true;
 			}
 
 			this.method4779(var1, var14, var15, var16, var11, var12, var13, var17, var18, var19, field2744[0], field2744[1], field2744[2]);
@@ -1698,7 +1698,7 @@ public class Model extends Renderable {
 
 		if (var4 == 4) {
 			if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > var20 || var12 > var20 || var13 > var20 || field2740[3] < 0 || field2740[3] > var20) {
-				Rasterizer3D.field2520.field2798 = true;
+				Rasterizer3D.clips.field2798 = true;
 			}
 
 			int var22;

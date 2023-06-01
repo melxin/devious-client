@@ -23,7 +23,8 @@ public class Rasterizer3D {
 	@ObfuscatedSignature(
 		descriptor = "Ljy;"
 	)
-	public static Clips field2520;
+	@Export("clips")
+	public static Clips clips;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "Lip;"
@@ -61,9 +62,9 @@ public class Rasterizer3D {
 			Rasterizer3D_cosine[var0] = (int)(65536.0D * Math.cos((double)var0 * 0.0030679615D));
 		}
 
-		field2520 = new Clips();
-		field2516 = new class242(field2520);
-		field2523 = new class244(field2520);
+		clips = new Clips();
+		field2516 = new class242(clips);
+		field2523 = new class244(clips);
 		field2521 = field2516;
 	}
 
@@ -82,7 +83,7 @@ public class Rasterizer3D {
 		descriptor = "(Ljb;)V"
 	)
 	public static void method4371(TextureLoader var0) {
-		field2520.Rasterizer3D_textureLoader = var0;
+		clips.Rasterizer3D_textureLoader = var0;
 	}
 
 	@ObfuscatedName("av")
@@ -186,45 +187,45 @@ public class Rasterizer3D {
 
 	@ObfuscatedName("ap")
 	static int method4375() {
-		return field2520.field2803;
+		return clips.field2803;
 	}
 
 	@ObfuscatedName("ab")
 	static int method4376() {
-		return field2520.field2804;
+		return clips.field2804;
 	}
 
 	@ObfuscatedName("ak")
 	static int method4377() {
-		return field2520.clipNegativeMidX;
+		return clips.clipNegativeMidX;
 	}
 
 	@ObfuscatedName("ae")
 	@Export("Rasterizer3D_clipMidX2")
 	static int Rasterizer3D_clipMidX2() {
-		return field2520.field2808;
+		return clips.field2808;
 	}
 
 	@ObfuscatedName("af")
 	@Export("Rasterizer3D_clipMidY2")
 	static int Rasterizer3D_clipMidY2() {
-		return field2520.field2810;
+		return clips.field2810;
 	}
 
 	@ObfuscatedName("ao")
 	static int method4418() {
-		return field2520.clipNegativeMidY;
+		return clips.clipNegativeMidY;
 	}
 
 	@ObfuscatedName("aa")
 	@Export("get3dZoom")
 	public static int get3dZoom() {
-		return field2520.field2796;
+		return clips.field2796;
 	}
 
 	@ObfuscatedName("aj")
 	static int method4388() {
-		return field2520.field2800;
+		return clips.field2800;
 	}
 
 	@ObfuscatedName("ad")
@@ -243,17 +244,17 @@ public class Rasterizer3D {
 
 	@ObfuscatedName("ag")
 	static void method4414(int var0, int var1, int var2, int var3) {
-		field2520.field2800 = var2 - var0;
-		field2520.field2806 = var3 - var1;
+		clips.field2800 = var2 - var0;
+		clips.field2806 = var3 - var1;
 		method4386();
-		if (field2520.Rasterizer3D_rowOffsets.length < field2520.field2806) {
-			field2520.Rasterizer3D_rowOffsets = new int[class128.method2970(field2520.field2806)];
+		if (clips.Rasterizer3D_rowOffsets.length < clips.field2806) {
+			clips.Rasterizer3D_rowOffsets = new int[class128.method2970(clips.field2806)];
 		}
 
 		int var4 = var0 + Rasterizer2D.Rasterizer2D_width * var1;
 
-		for (int var5 = 0; var5 < field2520.field2806; ++var5) {
-			field2520.Rasterizer3D_rowOffsets[var5] = var4;
+		for (int var5 = 0; var5 < clips.field2806; ++var5) {
+			clips.Rasterizer3D_rowOffsets[var5] = var4;
 			var4 += Rasterizer2D.Rasterizer2D_width;
 		}
 
@@ -261,20 +262,20 @@ public class Rasterizer3D {
 
 	@ObfuscatedName("ar")
 	public static void method4386() {
-		field2520.method4956();
+		clips.method4956();
 	}
 
 	@ObfuscatedName("ah")
 	public static void method4387(int var0, int var1) {
-		int var2 = field2520.Rasterizer3D_rowOffsets[0];
+		int var2 = clips.Rasterizer3D_rowOffsets[0];
 		int var3 = var2 / Rasterizer2D.Rasterizer2D_width;
 		int var4 = var2 - var3 * Rasterizer2D.Rasterizer2D_width;
-		field2520.method4957(var0, var4, var1, var3);
+		clips.method4957(var0, var4, var1, var3);
 	}
 
 	@ObfuscatedName("az")
 	public static void method4407(int var0, int var1, int var2) {
-		field2520.method4955(var0, var1, var2);
+		clips.method4955(var0, var1, var2);
 	}
 
 	@ObfuscatedName("au")

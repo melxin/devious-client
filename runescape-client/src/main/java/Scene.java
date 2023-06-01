@@ -1845,14 +1845,14 @@ public class Scene {
 						float var31 = class137.method3092(var11);
 						float var32 = class137.method3092(var16);
 						float var33 = class137.method3092(var15);
-						Rasterizer3D.field2520.field2793 = 0;
+						Rasterizer3D.clips.field2793 = 0;
 						int var34;
 						int var35;
 						if ((var26 - var28) * (var25 - var29) - (var27 - var29) * (var24 - var28) > 0) {
-							Rasterizer3D.field2520.field2798 = false;
+							Rasterizer3D.clips.field2798 = false;
 							var34 = Rasterizer3D.method4388();
 							if (var26 < 0 || var28 < 0 || var24 < 0 || var26 > var34 || var28 > var34 || var24 > var34) {
-								Rasterizer3D.field2520.field2798 = true;
+								Rasterizer3D.clips.field2798 = true;
 							}
 
 							if (checkClick && containsBounds(Scene_selectedScreenX, Scene_selectedScreenY, var27, var29, var25, var26, var28, var24)) {
@@ -1871,16 +1871,16 @@ public class Scene {
 									Rasterizer3D.method4380(var27, var29, var25, var26, var28, var24, var32, var33, var31, var1.neColor, var1.nwColor, var1.seColor, var13, var9, var14, var19, var21, var18, var16, var15, var11, var1.texture);
 								}
 							} else {
-								var35 = Rasterizer3D.field2520.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
+								var35 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
 								Rasterizer3D.method4389(var27, var29, var25, var26, var28, var24, var32, var33, var31, method4689(var35, var1.neColor), method4689(var35, var1.nwColor), method4689(var35, var1.seColor));
 							}
 						}
 
 						if ((var22 - var24) * (var29 - var25) - (var23 - var25) * (var28 - var24) > 0) {
-							Rasterizer3D.field2520.field2798 = false;
+							Rasterizer3D.clips.field2798 = false;
 							var34 = Rasterizer3D.method4388();
 							if (var22 < 0 || var24 < 0 || var28 < 0 || var22 > var34 || var24 > var34 || var28 > var34) {
-								Rasterizer3D.field2520.field2798 = true;
+								Rasterizer3D.clips.field2798 = true;
 							}
 
 							if (checkClick && containsBounds(Scene_selectedScreenX, Scene_selectedScreenY, var23, var25, var29, var22, var24, var28)) {
@@ -1895,7 +1895,7 @@ public class Scene {
 							} else if (!Scene_isLowDetail) {
 								Rasterizer3D.method4380(var23, var25, var29, var22, var24, var28, var30, var31, var33, var1.swColor, var1.seColor, var1.nwColor, var10, var14, var9, var17, var18, var21, var12, var11, var15, var1.texture);
 							} else {
-								var35 = Rasterizer3D.field2520.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
+								var35 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.texture);
 								Rasterizer3D.method4389(var23, var25, var29, var22, var24, var28, var30, var31, var33, method4689(var35, var1.swColor), method4689(var35, var1.seColor), method4689(var35, var1.nwColor));
 							}
 						}
@@ -1943,7 +1943,7 @@ public class Scene {
 			SceneTileModel.field2674[var9] = class137.method3092(var12);
 		}
 
-		Rasterizer3D.field2520.field2793 = 0;
+		Rasterizer3D.clips.field2793 = 0;
 		var8 = var1.faceX.length;
 
 		for (var9 = 0; var9 < var8; ++var9) {
@@ -1960,10 +1960,10 @@ public class Scene {
 			float var20 = SceneTileModel.field2674[var11];
 			float var21 = SceneTileModel.field2674[var12];
 			if ((var13 - var14) * (var18 - var17) - (var16 - var17) * (var15 - var14) > 0) {
-				Rasterizer3D.field2520.field2798 = false;
+				Rasterizer3D.clips.field2798 = false;
 				int var22 = Rasterizer3D.method4388();
 				if (var13 < 0 || var14 < 0 || var15 < 0 || var13 > var22 || var14 > var22 || var15 > var22) {
-					Rasterizer3D.field2520.field2798 = true;
+					Rasterizer3D.clips.field2798 = true;
 				}
 
 				if (checkClick && containsBounds(Scene_selectedScreenX, Scene_selectedScreenY, var16, var17, var18, var13, var14, var15)) {
@@ -1979,7 +1979,7 @@ public class Scene {
 							Rasterizer3D.method4380(var16, var17, var18, var13, var14, var15, var19, var20, var21, var1.triangleColorA[var9], var1.triangleColorB[var9], var1.triangleColorC[var9], SceneTileModel.field2666[var10], SceneTileModel.field2666[var11], SceneTileModel.field2666[var12], SceneTileModel.field2657[var10], SceneTileModel.field2657[var11], SceneTileModel.field2657[var12], SceneTileModel.field2677[var10], SceneTileModel.field2677[var11], SceneTileModel.field2677[var12], var1.triangleTextureId[var9]);
 						}
 					} else {
-						int var23 = Rasterizer3D.field2520.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.triangleTextureId[var9]);
+						int var23 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var1.triangleTextureId[var9]);
 						Rasterizer3D.method4389(var16, var17, var18, var13, var14, var15, var19, var20, var21, method4689(var23, var1.triangleColorA[var9]), method4689(var23, var1.triangleColorB[var9]), method4689(var23, var1.triangleColorC[var9]));
 					}
 				} else if (var1.triangleColorA[var9] != 12345678) {
