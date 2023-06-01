@@ -1,33 +1,105 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lh")
+@ObfuscatedName("lj")
 public class class294 {
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "Lnm;"
-   )
-   @Export("VarcInt_archive")
-   public static AbstractArchive VarcInt_archive;
-   @ObfuscatedName("ab")
-   @ObfuscatedGetter(
-      intValue = 554168439
-   )
-   static int field3366;
-   @ObfuscatedName("ix")
-   @ObfuscatedGetter(
-      intValue = -1164741861
-   )
-   static int field3364;
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3206;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3199;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3207;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3201;
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3198;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3203;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3202;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3205;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3208;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3204;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Llj;"
+	)
+	public static final class294 field3200;
 
-   @ObfuscatedName("ab")
-   @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "-22"
-   )
-   public static void method5724() {
-      FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
-   }
+	static {
+		field3206 = new class294(4);
+		field3199 = new class294(11);
+		field3207 = new class294(5);
+		field3201 = new class294(14);
+		field3198 = new class294(16);
+		field3203 = new class294(4);
+		field3202 = new class294(2);
+		field3205 = new class294(5);
+		field3208 = new class294(7);
+		field3204 = new class294(14);
+		field3200 = new class294(6);
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "4"
+	)
+	class294(int var1) {
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "67"
+	)
+	public static void method5664(int var0) {
+		if (var0 != -1) {
+			if (class143.Widget_loadedInterfaces[var0]) {
+				Widget.Widget_archive.clearFilesGroup(var0);
+				if (class16.Widget_interfaceComponents[var0] != null) {
+					for (int var1 = 0; var1 < class16.Widget_interfaceComponents[var0].length; ++var1) {
+						if (class16.Widget_interfaceComponents[var0][var1] != null) {
+							class16.Widget_interfaceComponents[var0][var1] = null;
+						}
+					}
+
+					class16.Widget_interfaceComponents[var0] = null;
+					class143.Widget_loadedInterfaces[var0] = false;
+				}
+			}
+		}
+	}
 }

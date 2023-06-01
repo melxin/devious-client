@@ -4,54 +4,55 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gu")
+@ObfuscatedName("gm")
 @Implements("NanoClock")
 public class NanoClock extends Clock {
-   @ObfuscatedName("af")
-   @ObfuscatedGetter(
-      longValue = 5545563677173652275L
-   )
-   @Export("lastTimeNano")
-   long lastTimeNano = System.nanoTime();
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		longValue = -8751691574289395541L
+	)
+	@Export("lastTimeNano")
+	long lastTimeNano;
 
-   NanoClock() {
-   }
+	public NanoClock() {
+		this.lastTimeNano = System.nanoTime();
+	}
 
-   @ObfuscatedName("af")
-   @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-331366942"
-   )
-   @Export("mark")
-   public void mark() {
-      this.lastTimeNano = System.nanoTime();
-   }
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1909200559"
+	)
+	@Export("mark")
+	public void mark() {
+		this.lastTimeNano = System.nanoTime();
+	}
 
-   @ObfuscatedName("an")
-   @ObfuscatedSignature(
-      descriptor = "(III)I",
-      garbageValue = "-1491982008"
-   )
-   @Export("wait")
-   public int wait(int var1, int var2) {
-      long var3 = (long)var2 * 1000000L;
-      long var5 = this.lastTimeNano - System.nanoTime();
-      if (var5 < var3) {
-         var5 = var3;
-      }
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)I",
+		garbageValue = "-4"
+	)
+	@Export("wait")
+	public int wait(int var1, int var2) {
+		long var3 = (long)var2 * 1000000L;
+		long var5 = this.lastTimeNano - System.nanoTime();
+		if (var5 < var3) {
+			var5 = var3;
+		}
 
-      PlayerComposition.method6084(var5 / 1000000L);
-      long var7 = System.nanoTime();
+		FloorDecoration.method4357(var5 / 1000000L);
+		long var7 = System.nanoTime();
 
-      int var9;
-      for(var9 = 0; var9 < 10 && (var9 < 1 || this.lastTimeNano < var7); this.lastTimeNano += 1000000L * (long)var1) {
-         ++var9;
-      }
+		int var9;
+		for (var9 = 0; var9 < 10 && (var9 < 1 || this.lastTimeNano < var7); this.lastTimeNano += (long)var1 * 1000000L) {
+			++var9;
+		}
 
-      if (this.lastTimeNano < var7) {
-         this.lastTimeNano = var7;
-      }
+		if (this.lastTimeNano < var7) {
+			this.lastTimeNano = var7;
+		}
 
-      return var9;
-   }
+		return var9;
+	}
 }

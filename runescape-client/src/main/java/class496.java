@@ -1,12 +1,28 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ts")
-public interface class496 {
-   @ObfuscatedName("aw")
-   @ObfuscatedSignature(
-      descriptor = "(IS)Ljava/lang/Object;",
-      garbageValue = "-16285"
-   )
-   Object vmethod9374(int var1);
+@ObfuscatedName("th")
+public class class496 {
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = -2134872515
+	)
+	static final int field5002;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = -535117395
+	)
+	static final int field5000;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -1117362621
+	)
+	@Export("cacheGamebuild")
+	static int cacheGamebuild;
+
+	static {
+		field5002 = (int)(Math.pow(2.0D, 4.0D) - 1.0D);
+		field5000 = (int)(Math.pow(2.0D, 8.0D) - 1.0D);
+	}
 }
