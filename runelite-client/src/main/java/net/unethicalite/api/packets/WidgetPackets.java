@@ -379,7 +379,7 @@ public class WidgetPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.RESUME_PAUSEBUTTON(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAddLE(childId);
-		packetBufferNode.getPacketBuffer().writeInt(widgetId);
+		packetBufferNode.getPacketBuffer().writeIntLE(widgetId);
 		return packetBufferNode;
 	}
 
