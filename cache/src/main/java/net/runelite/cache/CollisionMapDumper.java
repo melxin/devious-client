@@ -128,6 +128,10 @@ public class CollisionMapDumper
 		{
 			outputDir = "runelite-client/src/main/resources/regions";
 		}
+		else if (outputDir.contains("%userprofile%"))
+		{
+			outputDir = outputDir.replace("%userprofile%", System.getProperty("user.home"));
+		}
 		System.out.println("Writing collision map to " + outputDir);
 		File fileLoc = new File(outputDir);
 		if (!fileLoc.isFile())
