@@ -45,7 +45,7 @@ public interface MinimapConfig extends Config
 	@ConfigItem(
 		keyName = "hideMinimap",
 		name = "Hide minimap",
-		description = "Do not show the minimap on screen (Resizable only)"
+		description = "Do not show the minimap on screen (resizable only)."
 	)
 	default boolean hideMinimap()
 	{
@@ -55,7 +55,7 @@ public interface MinimapConfig extends Config
 	@ConfigItem(
 		keyName = "item",
 		name = "Item color",
-		description = "Set the minimap color items are drawn in",
+		description = "Set the minimap color items are drawn in.",
 		section = minimapDotSection
 	)
 	Color itemColor();
@@ -63,7 +63,7 @@ public interface MinimapConfig extends Config
 	@ConfigItem(
 		keyName = "npc",
 		name = "NPC color",
-		description = "Set the minimap color NPCs are drawn in",
+		description = "Set the minimap color NPCs are drawn in.",
 		section = minimapDotSection
 	)
 	Color npcColor();
@@ -71,7 +71,7 @@ public interface MinimapConfig extends Config
 	@ConfigItem(
 		keyName = "player",
 		name = "Player color",
-		description = "Set the minimap Color players are drawn in",
+		description = "Set the minimap color players are drawn in.",
 		section = minimapDotSection
 	)
 	Color playerColor();
@@ -79,7 +79,7 @@ public interface MinimapConfig extends Config
 	@ConfigItem(
 		keyName = "friend",
 		name = "Friends color",
-		description = "Set the minimap color your friends are drawn in",
+		description = "Set the minimap color your friends are drawn in.",
 		section = minimapDotSection
 	)
 	Color friendColor();
@@ -87,7 +87,7 @@ public interface MinimapConfig extends Config
 	@ConfigItem(
 		keyName = "team",
 		name = "Team color",
-		description = "Set the minimap color your team is drawn in",
+		description = "Set the minimap color your team is drawn in.",
 		section = minimapDotSection
 	)
 	Color teamColor();
@@ -95,7 +95,7 @@ public interface MinimapConfig extends Config
 	@ConfigItem(
 		keyName = "clan", // old name from prior to clans
 		name = "Friends chat color",
-		description = "Set the minimap color your friends chat members are drawn in",
+		description = "Set the minimap color your friends chat members are drawn in.",
 		section = minimapDotSection
 	)
 	Color friendsChatColor();
@@ -103,7 +103,7 @@ public interface MinimapConfig extends Config
 	@ConfigItem(
 		keyName = "clanchat",
 		name = "Clan chat color",
-		description = "Set the minimap color your clan chat members are drawn in",
+		description = "Set the minimap color your clan chat members are drawn in.",
 		section = minimapDotSection
 	)
 	Color clanChatColor();
