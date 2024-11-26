@@ -975,6 +975,10 @@ public final class Varbits
 	public static final int COMBAT_TASK_MASTER = 12889;
 	public static final int COMBAT_TASK_GRANDMASTER = 12890;
 
+	public static final int LEAGUES_MELEE_COMBAT_MASTERY_LEVEL = 11580;
+	public static final int LEAGUES_RANGED_COMBAT_MASTERY_LEVEL = 11581;
+	public static final int LEAGUES_MAGIC_COMBAT_MASTERY_LEVEL = 11582;
+
 	/**
 	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">Draynor manor basement</a>
 	 */
