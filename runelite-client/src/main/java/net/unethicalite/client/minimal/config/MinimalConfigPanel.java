@@ -5,7 +5,6 @@ import com.google.common.base.Strings;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Sets;
 import com.google.common.primitives.Ints;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.miginfocom.swing.MigLayout;
 import net.runelite.api.events.ConfigButtonClicked;
@@ -30,11 +29,11 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.config.FixedWidthPanel;
 import net.runelite.client.plugins.config.HotkeyButton;
 import net.runelite.client.plugins.config.PluginConfigurationDescriptor;
-import net.runelite.client.plugins.config.UnitFormatter;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.DynamicGridLayout;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.PluginPanel;
+import net.runelite.client.ui.UnitFormatterFactory;
 import net.runelite.client.ui.components.ColorJButton;
 import net.runelite.client.ui.components.TitleCaseListCellRenderer;
 import net.runelite.client.ui.components.ToggleButton;
@@ -679,7 +678,7 @@ public class MinimalConfigPanel extends PluginPanel
 
 			if (units != null)
 			{
-				spinnerTextField.setFormatterFactory(new UnitFormatterFactory(units));
+				spinnerTextField.setFormatterFactory(new UnitFormatterFactory(units.value()));
 			}
 
 			return spinner;
@@ -1398,19 +1397,6 @@ public class MinimalConfigPanel extends PluginPanel
 		}
 
 		return rebuild;
-	}
-
-	@RequiredArgsConstructor
-	static final class UnitFormatterFactory extends JFormattedTextField.AbstractFormatterFactory
-	{
-		private final Units units;
-		private final Map<JFormattedTextField, JFormattedTextField.AbstractFormatter> formatters = new HashMap<>();
-
-		@Override
-		public JFormattedTextField.AbstractFormatter getFormatter(final JFormattedTextField tf)
-		{
-			return formatters.computeIfAbsent(tf, (key) -> new UnitFormatter(units.value()));
-		}
 	}
 }
 
