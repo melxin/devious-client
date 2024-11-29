@@ -159,8 +159,8 @@ public interface CameraConfig extends Config
 	// region mouse settings
 	@ConfigItem(
 		keyName = "rightClickMovesCamera",
-		name = "Right click moves camera",
-		description = "Remaps right click to middle mouse click.",
+		name = "Right-click moves camera",
+		description = "Remaps right-click to middle mouse click.",
 		position = 10,
 		section = mouseSettingsSection
 	)
@@ -171,8 +171,8 @@ public interface CameraConfig extends Config
 
 	@ConfigItem(
 		keyName = "rightClickObjects",
-		name = "Right click objects",
-		description = "Right clicking objects opens the menu when 'Right click moves camera' is on.",
+		name = "Right-click objects",
+		description = "Right-clicking objects opens the menu when 'Right-click moves camera' is on.",
 		position = 11,
 		section = mouseSettingsSection
 	)
@@ -183,8 +183,8 @@ public interface CameraConfig extends Config
 
 	@ConfigItem(
 		keyName = "rightClickExamine",
-		name = "Right click examine",
-		description = "Right clicking examinable objects opens the menu when 'Right click moves camera' is on.",
+		name = "Right-click examine",
+		description = "Right-clicking examinable objects opens the menu when 'Right-click moves camera' is on.",
 		position = 12,
 		section = mouseSettingsSection
 	)
@@ -195,9 +195,9 @@ public interface CameraConfig extends Config
 
 	@ConfigItem(
 		keyName = "rightClickMenuBlocksCamera",
-		name = "Right click menu blocks camera",
-		description = "Prevents camera movement when 'Right click moves camera' is on and the right click menu<br>" +
-			"is opened due to either 'Right click objects' or 'Right click examine' being on.",
+		name = "Right-click menu blocks camera",
+		description = "Prevents camera movement when 'Right-click moves camera' is on and the right-click menu<br>" +
+			"is opened due to either 'Right-click objects' or 'Right-click examine' being on.",
 		position = 13,
 		section = mouseSettingsSection
 	)
@@ -209,7 +209,7 @@ public interface CameraConfig extends Config
 	@ConfigItem(
 		keyName = "middleClickMenu",
 		name = "Middle-button opens menu",
-		description = "Remaps middle mouse click to right click.",
+		description = "Remaps middle mouse click to right-click.",
 		position = 14,
 		section = mouseSettingsSection
 	)
