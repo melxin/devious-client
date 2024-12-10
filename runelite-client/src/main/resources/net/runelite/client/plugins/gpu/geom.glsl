@@ -46,7 +46,7 @@ layout(std140) uniform uniforms {
 
 #include "uv.glsl"
 
-uniform vec2 textureAnimations[128];
+uniform vec2 textureAnimations[256];
 uniform int tick;
 uniform mat4 projectionMatrix;
 
