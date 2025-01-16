@@ -58,8 +58,8 @@ public interface RSServerPacket extends ServerPacket
 	@Import("MINIMAP_TOGGLE")
 	RSServerPacket MINIMAP_TOGGLE();
 
-	@Import("NPC_INFO_SMALL_VIEWPORT_1")
-	RSServerPacket NPC_INFO_SMALL_VIEWPORT_1();
+	@Import("NPC_INFO_SMALL_VIEWPORT")
+	RSServerPacket NPC_INFO_SMALL_VIEWPORT();
 
 	@Import("NPC_SPOTANIM")
 	RSServerPacket NPC_SPOTANIM();
@@ -181,8 +181,8 @@ public interface RSServerPacket extends ServerPacket
 	@Import("SYNC_CLIENT_VARCACHE")
 	RSServerPacket SYNC_CLIENT_VARCACHE();
 
-	@Import("NPC_INFO_LARGE_VIEWPORT_2")
-	RSServerPacket NPC_INFO_LARGE_VIEWPORT_2();
+	@Import("NPC_INFO_LARGE_VIEWPORT")
+	RSServerPacket NPC_INFO_LARGE_VIEWPORT();
 
 	@Import("IF_SETPOSITION")
 	RSServerPacket IF_SETPOSITION();

@@ -38,7 +38,7 @@ public interface ServerPacket
 
 	ServerPacket MINIMAP_TOGGLE();
 
-	ServerPacket NPC_INFO_SMALL_VIEWPORT_1();
+	ServerPacket NPC_INFO_SMALL_VIEWPORT();
 
 	ServerPacket NPC_SPOTANIM();
 
@@ -104,7 +104,7 @@ public interface ServerPacket
 
 	ServerPacket CHAT_FILTER_SETTINGS();
 
-	ServerPacket NPC_INFO_LARGE_VIEWPORT_2();
+	ServerPacket NPC_INFO_LARGE_VIEWPORT();
 
 	ServerPacket IF_SETPOSITION();
 
@@ -132,7 +132,7 @@ public interface ServerPacket
 				//Map.entry(NPC_INFO_SMALL_VIEWPORT_2(), "NPC_INFO_SMALL_VIEWPORT_2"),
 				Map.entry(UPDATE_FRIENDLIST(), "UPDATE_FRIENDLIST"),
 				Map.entry(MINIMAP_TOGGLE(), "MINIMAP_TOGGLE"),
-				Map.entry(NPC_INFO_SMALL_VIEWPORT_1(), "NPC_INFO_SMALL_VIEWPORT_1"),
+				Map.entry(NPC_INFO_SMALL_VIEWPORT(), "NPC_INFO_SMALL_VIEWPORT"),
 				Map.entry(NPC_SPOTANIM(), "NPC_SPOTANIM"),
 				Map.entry(RESET_CLIENT_VARCACHE(), "RESET_CLIENT_VARCACHE"),
 				Map.entry(IF_SETOBJECT(), "IF_SETOBJECT"),
@@ -165,7 +165,7 @@ public interface ServerPacket
 				Map.entry(CAM_SETANGLE(), "CAM_SETANGLE"),
 				Map.entry(PLAYER_SPOTANIM(), "PLAYER_SPOTANIM"),
 				Map.entry(CHAT_FILTER_SETTINGS(), "CHAT_FILTER_SETTINGS"),
-				Map.entry(NPC_INFO_LARGE_VIEWPORT_2(), "NPC_INFO_LARGE_VIEWPORT_2"),
+				Map.entry(NPC_INFO_LARGE_VIEWPORT(), "NPC_INFO_LARGE_VIEWPORT"),
 				Map.entry(IF_SETPOSITION(), "IF_SETPOSITION"),
 				Map.entry(UPDATE_UID192(), "UPDATE_UID192"),
 				Map.entry(DYNAMICOBJECT_SPAWN(), "DYNAMICOBJECT_SPAWN"));

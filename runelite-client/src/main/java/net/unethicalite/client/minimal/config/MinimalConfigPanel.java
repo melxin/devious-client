@@ -678,7 +678,9 @@ public class MinimalConfigPanel extends PluginPanel
 
 			if (units != null)
 			{
-				spinnerTextField.setFormatterFactory(new UnitFormatterFactory(units.value()));
+				// The existing DefaultFormatterFactory with a NumberEditorFormatter. Its model is the same SpinnerModel above.
+				JFormattedTextField.AbstractFormatterFactory delegate = spinnerTextField.getFormatterFactory();
+				spinnerTextField.setFormatterFactory(new UnitFormatterFactory(delegate, units.value()));
 			}
 
 			return spinner;
