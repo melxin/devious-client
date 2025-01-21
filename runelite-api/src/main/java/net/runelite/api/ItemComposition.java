@@ -126,6 +126,12 @@ public interface ItemComposition extends ParamHolder
 	String[] getGroundActions();
 
 	/**
+	 * The subops for each op, indexed by op id.
+	 * @return
+	 */
+	String[][] getSubops();
+
+	/**
 	 * Gets the menu action index of the shift-click action.
 	 *
 	 * @return the index of the shift-click action
