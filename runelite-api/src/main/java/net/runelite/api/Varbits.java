@@ -994,6 +994,15 @@ public final class Varbits
 	public static final int LEAGUES_MAGIC_COMBAT_MASTERY_LEVEL = 11582;
 
 	/**
+	 * The slayer master which is present at Burthorpe.
+	 * <p>
+	 * 0 = Turael
+	 * 1, 2 = Aya
+	 * 3 = Null
+	 */
+	public static final int BURTHORPE_SLAYER_MASTER = 10782;
+
+	/**
 	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">Draynor manor basement</a>
 	 */
 
