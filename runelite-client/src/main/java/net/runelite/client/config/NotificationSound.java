@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,19 +22,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.config;
 
-object ProjectVersions {
-    const val launcherVersion = "1.0.0"
-    const val rlVersion = "1.10.49"
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-    const val openosrsVersion = "4.31.2"
+@Getter
+@RequiredArgsConstructor
+public enum NotificationSound
+{
+	NATIVE("Native"),
+	CUSTOM("Custom"),
+	OFF("Off");
 
-    const val rsversion = 228
-    const val cacheversion = 165
+	private final String name;
 
-    const val lombokVersion = "1.18.30"
-
-    const val flatLafVersion = "3.2.5-rl4"
-
-    const val unethicaliteVersion = "1.0.20-STABLE"
+	@Override
+	public String toString()
+	{
+		return name;
+	}
 }
