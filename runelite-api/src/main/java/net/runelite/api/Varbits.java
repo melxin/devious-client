@@ -1003,6 +1003,16 @@ public final class Varbits
 	public static final int BURTHORPE_SLAYER_MASTER = 10782;
 
 	/**
+	 * The state of Jarvis' gravestone.
+	 * <p>
+	 * 0, 2, 3 = Bush (eg. saved Jarvis, or did not partake in the 2017 Halloween event)
+	 * 1 = Gravestone
+	 *
+	 * @see <a href="https://oldschool.runescape.wiki/w/Gravestone_(Jarvis)">Gravestone (Jarvis) - OSRS Wiki</a>
+	 */
+	public static final int JARVIS_GRAVESTONE = 6008;
+
+	/**
 	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">Draynor manor basement</a>
 	 */
 
