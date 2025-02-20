@@ -34,6 +34,9 @@ public interface RSActor extends RSRenderable, Actor
 	@Import("index")
 	int getId();
 
+	@Import("index")
+	int getIndex();
+
 	@Import("targetIndex")
 	@Override
 	int getRSInteracting();
