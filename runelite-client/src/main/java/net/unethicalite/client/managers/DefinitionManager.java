@@ -83,7 +83,7 @@ public class DefinitionManager
 	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onNpcCompositionChanged(NPCCompositionChanged event)
 	{
-		NPC npc = Static.getClient().getCachedNPCs()[event.getNpcIndex()];
+		NPC npc = Static.getClient().getTopLevelWorldView().npcs().byIndex(event.getNpcIndex());
 		if (npc == null)
 		{
 			return;

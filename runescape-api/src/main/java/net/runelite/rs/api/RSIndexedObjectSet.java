@@ -10,4 +10,10 @@ public interface RSIndexedObjectSet extends IndexedObjectSet
 
 	@Import("get")
 	RSIndexedObjectNode get(long index);
+
+	@Override
+	default RSIndexedObjectNode byIndex(int index)
+	{
+		return get(index);
+	}
 }

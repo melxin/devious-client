@@ -88,7 +88,7 @@ public abstract class Entities<T extends SceneEntity>
 				case NPC_FIFTH_OPTION:
 				{
 					int index = menuEntry.getIdentifier();
-					out.add(Static.getClient().getCachedNPCs()[index]);
+					out.add(Static.getClient().getTopLevelWorldView().npcs().byIndex(index));
 					break;
 				}
 
@@ -120,7 +120,7 @@ public abstract class Entities<T extends SceneEntity>
 				case PLAYER_SEVENTH_OPTION:
 				case PLAYER_EIGHTH_OPTION:
 				{
-					out.add(Static.getClient().getCachedPlayers()[menuEntry.getIdentifier()]);
+					out.add(Static.getClient().getTopLevelWorldView().players().byIndex(menuEntry.getIdentifier()));
 					break;
 				}
 
