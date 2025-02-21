@@ -12,7 +12,7 @@ public interface RSIndexedObjectSet extends IndexedObjectSet
 	RSIndexedObjectNode get(long index);
 
 	@Override
-	default RSIndexedObjectNode byIndex(int index)
+	default Object byIndex(int index)
 	{
 		return get(index);
 	}
