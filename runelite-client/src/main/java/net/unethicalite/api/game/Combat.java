@@ -22,9 +22,7 @@ import java.util.function.Supplier;
 
 public class Combat
 {
-	private static final int SPEC_VARP = 301;
-	private static final int SPEC_ENERGY_VARP = 300;
-	private static final Supplier<Widget> SPEC_BUTTON = () -> Widgets.get(593, 37);
+	private static final Supplier<Widget> SPEC_BUTTON = () -> Widgets.get(WidgetInfo.COMBAT_SPECIAL_ATTACK_CLICKBOX);
 
 	private static final int VENOM_THRESHOLD = 1000000;
 
@@ -49,12 +47,12 @@ public class Combat
 
 	public static boolean isSpecEnabled()
 	{
-		return Vars.getVarp(SPEC_VARP) == 1;
+		return Vars.getVarp(VarPlayer.SPECIAL_ATTACK_ENABLED.getId()) == 1;
 	}
 
 	public static int getSpecEnergy()
 	{
-		return Vars.getVarp(SPEC_ENERGY_VARP) / 10;
+		return Vars.getVarp(VarPlayer.SPECIAL_ATTACK_PERCENT.getId()) / 10;
 	}
 
 	public static boolean isAntifired()
