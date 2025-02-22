@@ -1611,6 +1611,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("worldViewManager")
 	RSWorldViewManager getWorldViewManager();
 
+	@Construct
+	RSIndexedObjectSet newIndexedObjectSet(int size);
+
 	/**
 	 * Jagex launcher credentials
 	 */
