@@ -159,7 +159,6 @@ import net.runelite.rs.api.RSTileItem;
 import net.runelite.rs.api.RSUsername;
 import net.runelite.rs.api.RSWidget;
 import net.runelite.rs.api.RSWorld;
-import net.runelite.rs.api.RSWorldEntity;
 import net.runelite.rs.api.RSWorldView;
 import com.google.common.primitives.Ints;
 import org.slf4j.Logger;
@@ -1908,15 +1907,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public WorldView getWorldView(int id)
 	{
-		if (id == -1)
-		{
-			return client.getTopLevelWorldView();
-		}
-		else
-		{
-			RSWorldEntity worldEntity = (RSWorldEntity) client.getTopLevelWorldView().getRSWorldEntities().get(id);
-			return worldEntity == null ? null : worldEntity.getWorldView();
-		}
+		return id == -1 ? getTopLevelWorldView() : client.getWorldViewManager().getWorldView(id);
 	}
 
 	@SuppressWarnings("InfiniteRecursion")
