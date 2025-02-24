@@ -98,8 +98,18 @@ subprojects {
                 }
             }
             filter {
-                includeModule("net.runelite.rs", "vanilla")
+                //includeModule("net.runelite.rs", "vanilla")
                 includeModule("net.runelite", "fernflower")
+            }
+        }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    url = uri("https://raw.githubusercontent.com/melxin/hosting/master")
+                }
+            }
+            filter {
+                includeModule("net.runelite.rs", "vanilla")
             }
         }
 
