@@ -389,6 +389,7 @@ import static net.runelite.api.ItemID.ELITE_VOID_ROBE_OR;
 import static net.runelite.api.ItemID.ELITE_VOID_TOP_L;
 import static net.runelite.api.ItemID.ELITE_VOID_TOP_LOR;
 import static net.runelite.api.ItemID.ELITE_VOID_TOP_OR;
+import static net.runelite.api.ItemID.EMBERLIGHT;
 import static net.runelite.api.ItemID.ENSOULED_ABYSSAL_HEAD;
 import static net.runelite.api.ItemID.ENSOULED_ABYSSAL_HEAD_13508;
 import static net.runelite.api.ItemID.ENSOULED_AVIANSIE_HEAD;
@@ -600,6 +601,7 @@ import static net.runelite.api.ItemID.PROSPECTOR_BOOTS;
 import static net.runelite.api.ItemID.PROSPECTOR_HELMET;
 import static net.runelite.api.ItemID.PROSPECTOR_JACKET;
 import static net.runelite.api.ItemID.PROSPECTOR_LEGS;
+import static net.runelite.api.ItemID.PURGING_STAFF;
 import static net.runelite.api.ItemID.RANGER_HAT_L;
 import static net.runelite.api.ItemID.RING_OF_DUELING1;
 import static net.runelite.api.ItemID.RING_OF_DUELING2;
@@ -655,6 +657,7 @@ import static net.runelite.api.ItemID.SARADOMIN_GODSWORD;
 import static net.runelite.api.ItemID.SARADOMIN_GODSWORD_OR;
 import static net.runelite.api.ItemID.SARADOMIN_GODSWORD_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.SARADOMIN_HALO_L;
+import static net.runelite.api.ItemID.SCORCHING_BOW;
 import static net.runelite.api.ItemID.SCYTHE_OF_VITUR;
 import static net.runelite.api.ItemID.SCYTHE_OF_VITUR_UNCHARGED;
 import static net.runelite.api.ItemID.SEERS_RING;
@@ -715,6 +718,7 @@ import static net.runelite.api.ItemID.TORAGS_PLATELEGS_75;
 import static net.runelite.api.ItemID.TORMENTED_BRACELET;
 import static net.runelite.api.ItemID.TORMENTED_BRACELET_OR;
 import static net.runelite.api.ItemID.TORMENTED_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.TORMENTED_SYNAPSE;
 import static net.runelite.api.ItemID.TORTOISE_SHELL;
 import static net.runelite.api.ItemID.TORTURE_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.TORVA_FULL_HELM;
@@ -1116,6 +1120,7 @@ public enum ItemMapping
 	ITEM_GHRAZI_RAPIER(GHRAZI_RAPIER, HOLY_GHRAZI_RAPIER),
 	ITEM_MASTER_SCROLL_BOOK(MASTER_SCROLL_BOOK_EMPTY, MASTER_SCROLL_BOOK),
 	ITEM_ARCANE_SIGIL(ARCANE_SIGIL, ELIDINIS_WARD_F, ELIDINIS_WARD_OR),
+	ITEM_TORMENTED_SYNAPSE(TORMENTED_SYNAPSE, EMBERLIGHT, SCORCHING_BOW, PURGING_STAFF),
 
 	// Trouver Parchment
 	ITEM_TROUVER_PARCHMENT(
