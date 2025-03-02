@@ -55,7 +55,7 @@ public class MinimalModule extends AbstractModule
 {
 	private final boolean developerMode;
 	private final OkHttpClient okHttpClient;
-	private final Supplier<Applet> clientLoader;
+	private final Supplier<Client> clientLoader;
 	private final File config;
 	private final OptionSet optionSet;
 	private final boolean insecureWriteCredentials;
@@ -113,16 +113,16 @@ public class MinimalModule extends AbstractModule
 
 	@Provides
 	@Singleton
-	Applet provideApplet()
+	Applet provideApplet(Client client)
 	{
-		return clientLoader.get();
+		return (Applet) client;
 	}
 
 	@Provides
 	@Singleton
-	Client provideClient(@Nullable Applet applet)
+	Client provideClient()
 	{
-		return applet instanceof Client ? (Client) applet : null;
+		return clientLoader.get();
 	}
 
 	@Provides
