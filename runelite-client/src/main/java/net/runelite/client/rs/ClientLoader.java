@@ -60,7 +60,7 @@ public class ClientLoader implements Supplier<Client>
 	private static final String INJECTED_CLIENT_NAME = "/injected-client.oprs";
 	
 	private static final int NUM_ATTEMPTS = 6;
-	
+
 	private final ClientConfigLoader clientConfigLoader;
 	private final WorldSupplier worldSupplier;
 	private final RuntimeConfigLoader runtimeConfigLoader;
@@ -205,15 +205,7 @@ public class ClientLoader implements Supplier<Client>
 
 	private void writeInjectedClient(File cachedInjected) throws IOException
 	{
-		String cachedHash = "";
-		try
-		{
-			cachedHash = com.google.common.io.Files.asByteSource(cachedInjected).hash(Hashing.sha256()).toString();
-		}
-		catch (IOException ex)
-		{
-			log.error("Failed to write injected client", ex);
-		}
+		String cachedHash = cachedInjected.exists() ? com.google.common.io.Files.asByteSource(cachedInjected).hash(Hashing.sha256()).toString() : "";
 
 		byte[] currentInjected = ByteStreams.toByteArray(ClientLoader.class.getResourceAsStream(INJECTED_CLIENT_NAME));
 		String currentHash = Hashing.sha256().hashBytes(currentInjected).toString();
