@@ -70,12 +70,12 @@ potion_store=48
 incinerator=49
 incinerator_confirm=50
 potionstore_content=52
-equipment_parent=78
-equipment_set_bonus=119
-settings_button=123
-equipment_button=124
-popup=126
-equipment_stat_bonus=132
+equipment_parent=79
+equipment_set_bonus=120
+settings_button=124
+equipment_button=125
+popup=127
+equipment_stat_bonus=133
 
 [bank_inventory]
 id=15
@@ -128,6 +128,24 @@ coffer=2
 [blast_mine]
 id=598
 container=2
+
+[castlewars_lobby]
+id=131
+time_remaining=2
+
+[castlewars_saradomin]
+id=58
+castle_and_rock_group_status=3
+game_timer=16
+score_box=18
+leave_waiting_room=24
+
+[castlewars_zamorak]
+id=59
+castle_and_rock_group_status=3
+score_box=17
+leave_waiting_room=23
+game_timer=26
 
 [chambers_of_xeric_storage_unit_private]
 id=271

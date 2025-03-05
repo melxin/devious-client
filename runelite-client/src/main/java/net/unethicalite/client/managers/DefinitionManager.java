@@ -83,7 +83,7 @@ public class DefinitionManager
 	@Subscribe(priority = Integer.MAX_VALUE)
 	private void onNpcCompositionChanged(NPCCompositionChanged event)
 	{
-		NPC npc = Static.getClient().getCachedNPCs()[event.getNpcIndex()];
+		NPC npc = Static.getClient().getTopLevelWorldView().npcs().byIndex(event.getNpcIndex());
 		if (npc == null)
 		{
 			return;
@@ -278,31 +278,28 @@ public class DefinitionManager
 	{
 		for (Integer entityId : entityIds)
 		{
-			if (entityId < client.getCachedNPCs().length)
+			NPC npc = client.getTopLevelWorldView().npcs().byIndex(entityId);
+			if (npc != null && npc.getComposition() != null)
 			{
-				NPC npc = client.getCachedNPCs()[entityId];
-				if (npc != null && npc.getComposition() != null)
+				NPCComposition current = npc.getTransformedComposition();
+				NPCComposition transformed = npc.getComposition().transform();
+				if (current == transformed)
 				{
-					NPCComposition current = npc.getTransformedComposition();
-					NPCComposition transformed = npc.getComposition().transform();
-					if (current == transformed)
-					{
-						continue;
-					}
-
-					npc.setTransformedComposition(transformed);
-
-					if (configValue == 0)
-					{
-						log.debug("NPC {} reverted to default state", entityId);
-					}
-					else
-					{
-						log.debug("NPC {} transformed", entityId);
-					}
-
 					continue;
 				}
+
+				npc.setTransformedComposition(transformed);
+
+				if (configValue == 0)
+				{
+					log.debug("NPC {} reverted to default state", entityId);
+				}
+				else
+				{
+					log.debug("NPC {} transformed", entityId);
+				}
+
+				continue;
 			}
 
 			ObjectComposition objectComposition = client.getObjectDefinition(entityId);

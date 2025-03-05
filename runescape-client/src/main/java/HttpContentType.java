@@ -1,34 +1,30 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tw")
+@ObfuscatedName("td")
 @Implements("HttpContentType")
 public class HttpContentType {
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Ltw;"
+		descriptor = "Ltd;"
 	)
 	@Export("APPLICATION_JSON")
 	public static final HttpContentType APPLICATION_JSON;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Ltw;"
+		descriptor = "Ltd;"
 	)
 	@Export("TEXT_PLAIN")
 	static final HttpContentType TEXT_PLAIN;
-	@ObfuscatedName("az")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Ltw;"
+		descriptor = "Ltd;"
 	)
 	@Export("APPLICATION_X_WWW_FORM_URLENCODED")
 	static final HttpContentType APPLICATION_X_WWW_FORM_URLENCODED;
-	@ObfuscatedName("am")
-	@Export("userHomeDirectory")
-	static String userHomeDirectory;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ad")
 	@Export("contentType")
 	String contentType;
 
@@ -42,28 +38,13 @@ public class HttpContentType {
 		this.contentType = var1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "455008847"
+		garbageValue = "624148964"
 	)
 	@Export("getValue")
 	public String getValue() {
 		return this.contentType;
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1950558171"
-	)
-	static void method9544() {
-		Iterator var0 = Messages.Messages_hashTable.iterator();
-
-		while (var0.hasNext()) {
-			Message var1 = (Message)var0.next();
-			var1.clearIsFromIgnored();
-		}
-
 	}
 }

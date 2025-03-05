@@ -47,8 +47,6 @@ public interface Actor extends Renderable, SceneEntity
 	 */
 	WorldView getWorldView();
 
-	void setWorldView(WorldView worldView);
-
 	/**
 	 * Gets the combat level of the actor.
 	 *

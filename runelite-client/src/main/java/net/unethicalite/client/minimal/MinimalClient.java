@@ -48,7 +48,6 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.game.WorldService;
 import net.runelite.client.rs.ClientLoader;
-import net.runelite.client.rs.ClientUpdateCheckMode;
 import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.FatalErrorDialog;
 import net.runelite.client.ui.overlay.OverlayManager;
@@ -136,9 +135,6 @@ public class MinimalClient
 	private Client client;
 	@Inject
 	private MinimalToolbar minimalToolbar;
-	@Inject
-	@Nullable
-	private Applet applet;
 	@Inject
 	private MinimalPluginManager minimalPluginManager;
 	@Inject
@@ -242,11 +238,7 @@ public class MinimalClient
 		try
 		{
 			final RuntimeConfigLoader runtimeConfigLoader = new RuntimeConfigLoader(okHttpClient);
-			final ClientLoader clientLoader = new ClientLoader(okHttpClient, ClientUpdateCheckMode.AUTO,
-					runtimeConfigLoader,
-					(String) options.valueOf(
-							"jav_config")
-			);
+			final ClientLoader clientLoader = new ClientLoader(okHttpClient, runtimeConfigLoader, (String) options.valueOf("jav_config"));
 
 			new Thread(() ->
 			{
@@ -401,19 +393,17 @@ public class MinimalClient
 		}
 
 		// Start the applet
-		if (applet != null)
-		{
-			copyJagexCache();
+		copyJagexCache();
 
-			// Client size must be set prior to init
-			applet.setSize(Constants.GAME_FIXED_SIZE);
+		// Client size must be set prior to init
+		var applet = (Applet) client;
+		applet.setSize(Constants.GAME_FIXED_SIZE);
 
-			System.setProperty("jagex.disableBouncyCastle", "true");
-			System.setProperty("jagex.userhome", Unethicalite.getCacheDirectory().getParent());
+		System.setProperty("jagex.disableBouncyCastle", "true");
+		System.setProperty("jagex.userhome", Unethicalite.getCacheDirectory().getParent());
 
-			applet.init();
-			applet.start();
-		}
+		applet.init();
+		applet.start();
 
 		// Load user configuration
 		configManager.load();

@@ -26,11 +26,18 @@
 package net.runelite.rs.api;
 
 import net.runelite.api.Actor;
+import net.runelite.api.WorldView;
 import net.runelite.mapping.Construct;
 import net.runelite.mapping.Import;
 
 public interface RSActor extends RSRenderable, Actor
 {
+	@Import("index")
+	int getId();
+
+	@Import("index")
+	int getIndex();
+
 	@Import("targetIndex")
 	@Override
 	int getRSInteracting();
@@ -250,4 +257,14 @@ public interface RSActor extends RSRenderable, Actor
 
 	@Import("overheadTextCyclesRemaining")
 	void setOverheadCycle(int cycle);
+
+	@Import("worldViewId")
+	int getWorldViewId();
+
+	@Import("worldViewId")
+	void setWorldViewId(int id);
+
+	@Import("getWorldView")
+	@Override
+	WorldView getWorldView();
 }

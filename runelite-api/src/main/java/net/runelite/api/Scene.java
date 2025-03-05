@@ -230,4 +230,9 @@ public interface Scene extends Renderable
 	 * @return the map regions
 	 */
 	int[] getMapRegions();
+
+	byte getOverrideAmount();
+	byte getOverrideHue();
+	byte getOverrideSaturation();
+	byte getOverrideLuminance();
 }

@@ -4,48 +4,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ft")
+@ObfuscatedName("eb")
 @Implements("AuthenticationScheme")
 public enum AuthenticationScheme implements Enum {
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lft;"
+		descriptor = "Leb;"
 	)
 	@Export("USERNAME_PASSWORD_REMEMBER")
-	USERNAME_PASSWORD_REMEMBER(1, 0),
-	@ObfuscatedName("ah")
+	USERNAME_PASSWORD_REMEMBER(4, 0),
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lft;"
+		descriptor = "Leb;"
 	)
 	@Export("TOKEN_REMEMBER")
-	TOKEN_REMEMBER(4, 1),
-	@ObfuscatedName("az")
+	TOKEN_REMEMBER(3, 1),
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lft;"
+		descriptor = "Leb;"
 	)
 	@Export("USERNAME_PASSWORD")
-	USERNAME_PASSWORD(3, 2),
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lft;"
-	)
-	@Export("TOKEN")
-	TOKEN(2, 3),
+	USERNAME_PASSWORD(2, 2),
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lft;"
+		descriptor = "Leb;"
 	)
-	field1663(0, 4);
+	@Export("TOKEN")
+	TOKEN(1, 3),
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Leb;"
+	)
+	field1554(0, 4);
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("aa")
+	@Export("ItemDefinition_inMembersWorld")
+	public static boolean ItemDefinition_inMembersWorld;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1834694195
+		intValue = -1668492585
 	)
 	@Export("schemeId")
 	public final int schemeId;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 274014195
+		intValue = -733125649
 	)
 	@Export("packetId")
 	final int packetId;
@@ -55,22 +58,13 @@ public enum AuthenticationScheme implements Enum {
 		this.packetId = var4;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "118"
+		garbageValue = "32"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.packetId;
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lej;",
-		garbageValue = "1748459436"
-	)
-	static AttackOption[] method3561() {
-		return new AttackOption[]{AttackOption.field1378, AttackOption.field1379, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_alwaysRightClick, AttackOption.AttackOption_hidden};
 	}
 }
