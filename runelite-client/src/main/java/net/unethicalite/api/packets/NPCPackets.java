@@ -105,11 +105,11 @@ public class NPCPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPCT(), client.getPacketWriter().getIsaacCipher());
+		packetBufferNode.getPacketBuffer().writeShort(sourceSlot);
+		packetBufferNode.getPacketBuffer().writeShortLE(sourceItemId);
+		packetBufferNode.getPacketBuffer().writeShort(npcIndex);
+		packetBufferNode.getPacketBuffer().writeIntLE(sourceWidgetId);
 		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
-		packetBufferNode.getPacketBuffer().writeShortLE(sourceSlot);
-		packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);
-		packetBufferNode.getPacketBuffer().writeShortAdd(sourceItemId);
 		return packetBufferNode;
 	}
 
@@ -124,7 +124,7 @@ public class NPCPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC1(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShortAddLE(npcIndex);
+		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
 		return packetBufferNode;
 	}
 
@@ -134,7 +134,7 @@ public class NPCPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC2(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
-		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 
@@ -144,7 +144,7 @@ public class NPCPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC3(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
-		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeByteAdd(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 
@@ -153,8 +153,8 @@ public class NPCPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC4(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShort(npcIndex);
+		packetBufferNode.getPacketBuffer().writeByteNeg(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
 		return packetBufferNode;
 	}
 
@@ -163,8 +163,8 @@ public class NPCPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC5(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeShort(npcIndex);
-		packetBufferNode.getPacketBuffer().writeByteSub(ctrlDown ? 1 : 0);
+		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
+		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 }

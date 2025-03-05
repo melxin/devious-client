@@ -28,7 +28,6 @@ package net.runelite.client.plugins.npchighlight;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.MoreObjects;
 import com.google.inject.Provides;
-import java.applet.Applet;
 import java.awt.Color;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -54,6 +53,7 @@ import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
+import net.runelite.api.WorldView;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
@@ -431,7 +431,7 @@ public class NpcIndicatorsPlugin extends Plugin
 			.setType(MenuAction.RUNELITE)
 			.onClick(e -> SwingUtilities.invokeLater(() ->
 			{
-				RuneliteColorPicker colorPicker = colorPickerManager.create(SwingUtilities.windowForComponent((Applet) client),
+				RuneliteColorPicker colorPicker = colorPickerManager.create(client,
 					Color.WHITE, "Tag Color", false);
 				colorPicker.setOnClose(c ->
 				{
@@ -498,8 +498,8 @@ public class NpcIndicatorsPlugin extends Plugin
 	private void tag(MenuEntry entry)
 	{
 		final int id = entry.getIdentifier();
-		final NPC[] cachedNPCs = client.getCachedNPCs();
-		final NPC npc = cachedNPCs[id];
+		WorldView wv = client.getTopLevelWorldView();
+		final NPC npc = wv.npcs().byIndex(id);
 
 		if (npc == null || npc.getName() == null)
 		{
@@ -520,7 +520,7 @@ public class NpcIndicatorsPlugin extends Plugin
 			}
 			else
 			{
-				if (!client.isInInstancedRegion())
+				if (!wv.isInstance())
 				{
 					memorizeNpc(npc);
 					npcTags.add(id);

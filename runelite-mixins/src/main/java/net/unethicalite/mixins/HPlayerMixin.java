@@ -20,16 +20,7 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 	@Override
 	public int getIndex()
 	{
-		for (int i = 0; i < client.getCachedPlayers().length; i++)
-		{
-			RSPlayer player = (RSPlayer) client.getCachedPlayers()[i];
-			if (player != null && player.equals(this))
-			{
-				return i;
-			}
-		}
-
-		return -1;
+		return this.getId();
 	}
 
 	@Inject

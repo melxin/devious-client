@@ -36,7 +36,7 @@ buildscript {
     dependencies {
         classpath("org.ajoberstar.grgit:grgit-core:5.2.2")
         classpath("com.openosrs:script-assembler-plugin:1.0.3")
-        classpath("com.openosrs:injector-plugin:2.0.28")
+        classpath("com.openosrs:injector-plugin:2.0.29")
         classpath("com.openosrs:interface-parser-plugin:1.0.3")
     }
 }
@@ -85,7 +85,8 @@ subprojects {
                 }
             }
             filter {
-                includeGroup("net.runelite.rs")
+                //includeGroup("net.runelite.rs")
+                includeModule("net.runelite.rs", "cache")
                 includeModule("net.runelite", "discord")
                 includeModule("net.runelite", "orange-extensions")
             }
@@ -97,7 +98,18 @@ subprojects {
                 }
             }
             filter {
+                //includeModule("net.runelite.rs", "vanilla")
                 includeModule("net.runelite", "fernflower")
+            }
+        }
+        exclusiveContent {
+            forRepository {
+                maven {
+                    url = uri("https://raw.githubusercontent.com/melxin/hosting/master")
+                }
+            }
+            filter {
+                includeModule("net.runelite.rs", "vanilla")
             }
         }
 

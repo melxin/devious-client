@@ -133,6 +133,7 @@ import net.runelite.rs.api.RSFloorOverlayDefinition;
 import net.runelite.rs.api.RSFont;
 import net.runelite.rs.api.RSFriendSystem;
 import net.runelite.rs.api.RSGameEngine;
+import net.runelite.rs.api.RSIndexedObjectSet;
 import net.runelite.rs.api.RSIndexedSprite;
 import net.runelite.rs.api.RSInterfaceParent;
 import net.runelite.rs.api.RSItemContainer;
@@ -158,7 +159,6 @@ import net.runelite.rs.api.RSTileItem;
 import net.runelite.rs.api.RSUsername;
 import net.runelite.rs.api.RSWidget;
 import net.runelite.rs.api.RSWorld;
-import net.runelite.rs.api.RSWorldEntity;
 import net.runelite.rs.api.RSWorldView;
 import com.google.common.primitives.Ints;
 import org.slf4j.Logger;
@@ -178,7 +178,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.IntPredicate;
+import java.util.stream.Collectors;
 
 import static net.runelite.api.MenuAction.PLAYER_EIGHTH_OPTION;
 import static net.runelite.api.MenuAction.PLAYER_FIFTH_OPTION;
@@ -1741,40 +1743,18 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public Player getHintArrowPlayer()
 	{
-		if (getHintArrowType() == HintArrowType.PLAYER)
-		{
-			int idx = client.getHintArrowPlayerTargetIdx();
-			RSPlayer[] players = client.getTopLevelWorldView().getPlayers();
-
-			if (idx < 0 || idx >= players.length)
-			{
-				return null;
-			}
-
-			return players[idx];
-		}
-
-		return null;
+		return this.getHintArrowType() == HintArrowType.PLAYER
+			? (Player) client.getTopLevelWorldView().getRSPlayers().get(client.getHintArrowPlayerTargetIdx())
+			: null;
 	}
 
 	@Inject
 	@Override
 	public NPC getHintArrowNpc()
 	{
-		if (getHintArrowType() == HintArrowType.NPC)
-		{
-			int idx = client.getHintArrowNpcTargetIdx();
-			RSNPC[] npcs = client.getTopLevelWorldView().getNpcs();
-
-			if (idx < 0 || idx >= npcs.length)
-			{
-				return null;
-			}
-
-			return npcs[idx];
-		}
-
-		return null;
+		return this.getHintArrowType() == HintArrowType.NPC
+			? (NPC) client.getTopLevelWorldView().getRSNpcs().get(client.getHintArrowNpcTargetIdx())
+			: null;
 	}
 
 	@Override
@@ -1928,15 +1908,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public WorldView getWorldView(int id)
 	{
-		if (id == -1)
-		{
-			return client.getTopLevelWorldView();
-		}
-		else
-		{
-			RSWorldEntity worldEntity = client.getTopLevelWorldView().getWorldEntities()[id];
-			return worldEntity == null ? null : worldEntity.getWorldView();
-		}
+		return id == -1 ? getTopLevelWorldView() : client.getWorldViewManager().getWorldView(id);
 	}
 
 	@SuppressWarnings("InfiniteRecursion")
@@ -3053,9 +3025,9 @@ public abstract class RSClientMixin implements RSClient
 	@Nullable
 	public RSNPC getFollower()
 	{
-		int var1 = client.getFollowerIndex();
-		RSNPC[] var2 = this.getTopLevelWorldView().getNpcs();
-		return var1 >= 0 && var1 < var2.length ? var2[var1] : null;
+		int idx = client.getFollowerIndex();
+		RSIndexedObjectSet npcs = this.getTopLevelWorldView().getRSNpcs();
+		return idx >= 0 ? (RSNPC) npcs.get(idx) : null;
 	}
 
 	// Render menu
@@ -3393,5 +3365,67 @@ public abstract class RSClientMixin implements RSClient
 		{
 			return (Model) (rsAnimB != null ? rsAnimB.transformWidgetModel(rsModel, frameB) : rsModel.toSharedModel(true));
 		}
+	}
+
+	@Inject
+	private static final List<Player> cachedPlayers = new CopyOnWriteArrayList<>();
+
+	@Inject
+	private static final List<NPC> cachedNpcs = new CopyOnWriteArrayList<>();
+
+	@Inject
+	@Override
+	public void addCachedPlayer(RSPlayer player)
+	{
+		cachedPlayers.add(player);
+	}
+
+	@Inject
+	@Override
+	public void removeCachedPlayer(RSPlayer player)
+	{
+		cachedPlayers.remove(player);
+	}
+
+	@Inject
+	@Override
+	public void addCachedNpc(RSNPC npc)
+	{
+		cachedNpcs.add(npc);
+	}
+
+	@Inject
+	@Override
+	public void removeCachedNpc(RSNPC npc)
+	{
+		cachedNpcs.remove(npc);
+	}
+
+	@Inject
+	@Override
+	public List<Player> getPlayers()
+	{
+		if (client.isClientThread())
+		{
+			RSWorldView wv = getTopLevelWorldView();
+			return wv == null ? Collections.emptyList() : wv.players()
+				.stream()
+				.collect(Collectors.toList());
+		}
+		return cachedPlayers;
+	}
+
+	@Inject
+	@Override
+	public List<NPC> getNpcs()
+	{
+		if (client.isClientThread())
+		{
+			RSWorldView wv = getTopLevelWorldView();
+			return wv == null ? Collections.emptyList() : wv.npcs()
+				.stream()
+				.collect(Collectors.toList());
+		}
+		return cachedNpcs;
 	}
 }

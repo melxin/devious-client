@@ -1,150 +1,196 @@
-import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hh")
+@ObfuscatedName("kc")
 @Implements("ModelData0")
 public class ModelData0 {
+	@ObfuscatedName("fi")
+	@ObfuscatedSignature(
+		descriptor = "Lcg;"
+	)
+	@Export("loginState")
+	static LoginState loginState;
+
 	ModelData0() {
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("kj")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lja;",
-		garbageValue = "7"
+		descriptor = "(Ldp;IIIII)Ldv;",
+		garbageValue = "1874642795"
 	)
-	public static VarbitComposition method4806(int var0) {
-		VarbitComposition var1 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = class431.VarbitDefinition_archive.takeFile(14, var0);
-			var1 = new VarbitComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+	static final PendingSpawn method5540(WorldView var0, int var1, int var2, int var3, int var4) {
+		for (PendingSpawn var5 = (PendingSpawn)var0.pendingSpawns.last(); var5 != null; var5 = (PendingSpawn)var0.pendingSpawns.previous()) {
+			if (var5.plane == var1 && var2 == var5.x && var3 == var5.y && var4 == var5.type) {
+				return var5;
 			}
-
-			VarbitComposition.VarbitDefinition_cached.put(var1, (long)var0);
-			return var1;
 		}
+
+		return null;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("mi")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lhb;",
-		garbageValue = "-1674690556"
+		descriptor = "(Lnz;II)I",
+		garbageValue = "-1485094539"
 	)
-	@Export("getFrames")
-	static Frames getFrames(int var0) {
-		Frames var1 = (Frames)SequenceDefinition.SequenceDefinition_cachedFrames.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			AbstractArchive var3 = SequenceDefinition.SequenceDefinition_animationsArchive;
-			AbstractArchive var4 = class466.SequenceDefinition_skeletonsArchive;
-			boolean var5 = true;
-			int[] var6 = var3.getGroupFileIds(var0);
+	static final int method5541(Widget var0, int var1) {
+		if (var0.cs1Instructions != null && var1 < var0.cs1Instructions.length) {
+			try {
+				int[] var2 = var0.cs1Instructions[var1];
+				int var3 = 0;
+				int var4 = 0;
+				byte var5 = 0;
 
-			for (int var7 = 0; var7 < var6.length; ++var7) {
-				byte[] var8 = var3.getFile(var0, var6[var7]);
-				if (var8 == null) {
-					var5 = false;
-				} else {
-					int var9 = (var8[0] & 255) << 8 | var8[1] & 255;
-					byte[] var10 = var4.getFile(var9, 0);
-					if (var10 == null) {
-						var5 = false;
+				while (true) {
+					int var6 = var2[var4++];
+					int var7 = 0;
+					byte var8 = 0;
+					if (var6 == 0) {
+						return var3;
+					}
+
+					if (var6 == 1) {
+						var7 = Client.currentLevels[var2[var4++]];
+					}
+
+					if (var6 == 2) {
+						var7 = Client.levels[var2[var4++]];
+					}
+
+					if (var6 == 3) {
+						var7 = Client.experience[var2[var4++]];
+					}
+
+					int var9;
+					Widget var10;
+					int var11;
+					int var12;
+					if (var6 == 4) {
+						var9 = var2[var4++] << 16;
+						var9 += var2[var4++];
+						var10 = class376.widgetDefinition.method6918(var9);
+						var11 = var2[var4++];
+						if (var11 != -1 && (!class138.ItemDefinition_get(var11).isMembersOnly || Client.isMembersWorld)) {
+							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
+								if (var11 + 1 == var10.itemIds[var12]) {
+									var7 += var10.itemQuantities[var12];
+								}
+							}
+						}
+					}
+
+					if (var6 == 5) {
+						var7 = Varps.Varps_main[var2[var4++]];
+					}
+
+					if (var6 == 6) {
+						var7 = Skills.Skills_experienceTable[Client.levels[var2[var4++]] - 1];
+					}
+
+					if (var6 == 7) {
+						var7 = Varps.Varps_main[var2[var4++]] * 100 / 46875;
+					}
+
+					if (var6 == 8) {
+						var7 = class132.localPlayer.combatLevel;
+					}
+
+					if (var6 == 9) {
+						for (var9 = 0; var9 < 25; ++var9) {
+							if (Skills.Skills_enabled[var9]) {
+								var7 += Client.levels[var9];
+							}
+						}
+					}
+
+					if (var6 == 10) {
+						var9 = var2[var4++] << 16;
+						var9 += var2[var4++];
+						var10 = class376.widgetDefinition.method6918(var9);
+						var11 = var2[var4++];
+						if (var11 != -1 && (!class138.ItemDefinition_get(var11).isMembersOnly || Client.isMembersWorld)) {
+							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
+								if (var11 + 1 == var10.itemIds[var12]) {
+									var7 = 999999999;
+									break;
+								}
+							}
+						}
+					}
+
+					if (var6 == 11) {
+						var7 = Client.runEnergy;
+					}
+
+					if (var6 == 12) {
+						var7 = Client.weight;
+					}
+
+					if (var6 == 13) {
+						var9 = Varps.Varps_main[var2[var4++]];
+						int var13 = var2[var4++];
+						var7 = (var9 & 1 << var13) != 0 ? 1 : 0;
+					}
+
+					if (var6 == 14) {
+						var9 = var2[var4++];
+						var7 = class241.getVarbit(var9);
+					}
+
+					if (var6 == 15) {
+						var8 = 1;
+					}
+
+					if (var6 == 16) {
+						var8 = 2;
+					}
+
+					if (var6 == 17) {
+						var8 = 3;
+					}
+
+					if (var6 == 18) {
+						var7 = (class132.localPlayer.x >> 7) + class200.topLevelWorldView.baseX;
+					}
+
+					if (var6 == 19) {
+						var7 = (class132.localPlayer.y >> 7) + class200.topLevelWorldView.baseY;
+					}
+
+					if (var6 == 20) {
+						var7 = var2[var4++];
+					}
+
+					if (var8 == 0) {
+						if (var5 == 0) {
+							var3 += var7;
+						}
+
+						if (var5 == 1) {
+							var3 -= var7;
+						}
+
+						if (var5 == 2 && var7 != 0) {
+							var3 /= var7;
+						}
+
+						if (var5 == 3) {
+							var3 *= var7;
+						}
+
+						var5 = 0;
+					} else {
+						var5 = var8;
 					}
 				}
+			} catch (Exception var14) {
+				return -1;
 			}
-
-			Frames var2;
-			if (!var5) {
-				var2 = null;
-			} else {
-				try {
-					var2 = new Frames(var3, var4, var0, false);
-				} catch (Exception var12) {
-					var2 = null;
-				}
-			}
-
-			if (var2 != null) {
-				SequenceDefinition.SequenceDefinition_cachedFrames.put(var2, (long)var0);
-			}
-
-			return var2;
+		} else {
+			return -2;
 		}
-	}
-
-	@ObfuscatedName("gq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2138033295"
-	)
-	static void method4808() {
-		Client.field512 = true;
-		if (HttpRequestTask.varcs != null && HttpRequestTask.varcs.hasUnwrittenChanges()) {
-			HttpRequestTask.varcs.write();
-		}
-
-		class92.method2637();
-		ScriptFrame.method1230();
-		if (class168.mouseRecorder != null) {
-			class168.mouseRecorder.isRunning = false;
-		}
-
-		class168.mouseRecorder = null;
-		Client.packetWriter.close();
-		if (GameEngine.taskHandler != null) {
-			try {
-				GameEngine.taskHandler.close();
-			} catch (Exception var2) {
-			}
-		}
-
-		GameEngine.taskHandler = null;
-		class4.clear();
-		class240.method5249();
-		Client.worldViewManager.clear();
-		class420.worldMap = null;
-		UserComparator3.method3347(0, 0);
-		class153.method3619();
-		Client.playingJingle = false;
-		World.method1957();
-		if (class328.pcmPlayer1 != null) {
-			class328.pcmPlayer1.shutdown();
-		}
-
-		HitSplatDefinition.field2760.method7855();
-		TaskHandler.method4916();
-		if (class280.urlRequester != null) {
-			class280.urlRequester.close();
-		}
-
-		class150.method3592();
-		JagexCache.JagexCache_dat2File = null;
-		JagexCache.JagexCache_idx255File = null;
-		UserComparator4.JagexCache_idxFiles = null;
-		class93.method2651();
-		ReflectionCheck.masterDisk = null;
-		Client.archiveLoaders.clear();
-		Client.field692 = 0;
-		HitSplatDefinition.field2760 = new JagNetThread();
-		class280.urlRequester = new SecureUrlRequester(Client.client.https, 228);
-
-		try {
-			class30.method483("oldschool", class255.field2724, class438.field4820.name, 0, 23);
-		} catch (IOException var1) {
-			throw new RuntimeException(var1);
-		}
-
-		ReflectionCheck.masterDisk = new ArchiveDisk(255, JagexCache.JagexCache_dat2File, JagexCache.JagexCache_idx255File, 500000);
-		GameEngine.taskHandler = new TaskHandler();
-		Client.client.method544();
-		Clock.method5078(class95.field1157);
-		class360.updateGameState(0);
 	}
 }

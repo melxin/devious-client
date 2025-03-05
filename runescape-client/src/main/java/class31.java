@@ -1,130 +1,96 @@
 import java.applet.Applet;
-import java.io.File;
-import java.io.IOException;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bd")
+@ObfuscatedName("ba")
 public class class31 {
+	@ObfuscatedName("ab")
+	public static Applet field153;
 	@ObfuscatedName("ay")
-	static Applet field138;
-	@ObfuscatedName("ah")
-	static String field137;
-	@ObfuscatedName("kz")
+	public static String field144;
+	@ObfuscatedName("in")
 	@ObfuscatedGetter(
-		intValue = -2011348113
+		longValue = 6705849333685993077L
 	)
-	@Export("cameraZ")
-	static int cameraZ;
+	static long field147;
 
 	static {
-		field138 = null;
-		field137 = "";
+		field153 = null;
+		field144 = "";
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "98"
+		descriptor = "(B)V",
+		garbageValue = "-16"
 	)
-	static int method496(int var0, int var1) {
-		FloorOverlayDefinition var3 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0);
-		FloorOverlayDefinition var2;
-		if (var3 != null) {
-			var2 = var3;
+	static void method427() {
+		Varcs.field1473 = new int[2000];
+		int var0 = 0;
+		int var1 = 240;
+
+		int var3;
+		for (byte var2 = 12; var0 < 16; var1 -= var2) {
+			var3 = EnumComposition.method3909((double)((float)var1 / 360.0F), 0.9998999834060669D, (double)(0.425F * (float)var0 / 16.0F + 0.075F));
+			Varcs.field1473[var0] = var3;
+			++var0;
+		}
+
+		var1 = 48;
+
+		for (int var5 = var1 / 6; var0 < Varcs.field1473.length; var1 -= var5) {
+			var3 = var0 * 2;
+
+			for (int var4 = EnumComposition.method3909((double)((float)var1 / 360.0F), 0.9998999834060669D, 0.5D); var0 < var3 && var0 < Varcs.field1473.length; ++var0) {
+				Varcs.field1473[var0] = var4;
+			}
+		}
+
+	}
+
+	@ObfuscatedName("hg")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "0"
+	)
+	static final void method413() {
+		if (Client.logoutTimer > 0) {
+			class60.logOut();
 		} else {
-			byte[] var4 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
-			var3 = new FloorOverlayDefinition();
-			if (var4 != null) {
-				var3.decode(new Buffer(var4), var0);
-			}
-
-			var3.postDecode();
-			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var3, (long)var0);
-			var2 = var3;
-		}
-
-		if (var2 == null) {
-			return var1;
-		} else {
-			int var5;
-			int var6;
-			if (var2.secondaryRgb >= 0) {
-				var6 = class166.method3805(var2.secondaryHue, var2.secondarySaturation, var2.secondaryLightness);
-				var5 = ClanSettings.method3688(var6, 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var5] | -16777216;
-			} else if (var2.texture >= 0) {
-				var6 = ClanSettings.method3688(Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture), 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var6] | -16777216;
-			} else if (var2.primaryRgb == 16711935) {
-				return var1;
-			} else {
-				var6 = class166.method3805(var2.hue, var2.saturation, var2.lightness);
-				var5 = ClanSettings.method3688(var6, 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var5] | -16777216;
-			}
+			Client.timer.method7545();
+			class511.updateGameState(40);
+			class280.field3142 = Client.packetWriter.getSocket();
+			Client.packetWriter.removeSocket();
 		}
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("mu")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ljm;",
-		garbageValue = "-70"
+		descriptor = "(IIIIII)V",
+		garbageValue = "2125705893"
 	)
-	@Export("WorldMapElement_get")
-	public static WorldMapElement WorldMapElement_get(int var0) {
-		return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;ZB)Luv;",
-		garbageValue = "-12"
-	)
-	@Export("getPreferencesFile")
-	public static AccessFile getPreferencesFile(String var0, String var1, boolean var2) {
-		File var3 = new File(JagexCache.cacheDir, "preferences" + var0 + ".dat");
-		if (var3.exists()) {
-			try {
-				AccessFile var10 = new AccessFile(var3, "rw", 10000L);
-				return var10;
-			} catch (IOException var9) {
-			}
+	@Export("drawScrollBar")
+	static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
+		ClanChannelMember.scrollBarSprites[0].drawAt(var0, var1);
+		ClanChannelMember.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field594);
+		int var5 = var3 * (var3 - 32) / var4;
+		if (var5 < 8) {
+			var5 = 8;
 		}
 
-		String var4 = "";
-		if (class73.cacheGamebuild == 33) {
-			var4 = "_rc";
-		} else if (class73.cacheGamebuild == 34) {
-			var4 = "_wip";
-		}
-
-		File var5 = new File(HttpContentType.userHomeDirectory, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
-		AccessFile var6;
-		if (!var2 && var5.exists()) {
-			try {
-				var6 = new AccessFile(var5, "rw", 10000L);
-				return var6;
-			} catch (IOException var8) {
-			}
-		}
-
-		try {
-			var6 = new AccessFile(var3, "rw", 10000L);
-			return var6;
-		} catch (IOException var7) {
-			throw new RuntimeException();
-		}
-	}
-
-	@ObfuscatedName("bo")
-	@ObfuscatedSignature(
-		descriptor = "(ILdm;ZI)I",
-		garbageValue = "-2143778245"
-	)
-	static int method494(int var0, Script var1, boolean var2) {
-		return 2;
+		int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field730);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0, var6 + var1 + 16, var5, Client.field592);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 1, var6 + var1 + 16, var5, Client.field592);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 16, 16, Client.field592);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 17, 16, Client.field592);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 15, var6 + var1 + 16, var5, Client.field561);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field561);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var5 + var1 + 15, 16, Client.field561);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0 + 1, var6 + var5 + var1 + 14, 15, Client.field561);
 	}
 }
