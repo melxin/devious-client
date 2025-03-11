@@ -107,7 +107,12 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("indexCheck")
 	RSIndexCheck getIndexCheck();
 
+	@Import("worldHost")
+	@Override
+	String getWorldHost();
+
 	@Import("worldId")
+	@Override
 	int getWorld();
 
 	@Import("fps")
