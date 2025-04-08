@@ -45,7 +45,7 @@ public interface TileItem extends Renderable, SceneEntity
 
 	/**
 	 * @return the ID of the item
-	 * @see ItemID
+	 * @see net.runelite.api.gameval.ItemID
 	 */
 	int getId();
 
