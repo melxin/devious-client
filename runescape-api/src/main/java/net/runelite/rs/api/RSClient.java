@@ -1577,7 +1577,7 @@ public interface RSClient extends RSGameEngine, Client
 	String getPassword();
 
 	@Import("calculateTag")
-	long calculateTag(int var0, int var1, int var2, boolean var3, int var4, int var5);
+	long calculateTag(int var0, int var1, int var2, int var3, boolean var4, int var5, int var6);
 
 	@Import("clickedWidget")
 	@Override

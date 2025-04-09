@@ -69,11 +69,11 @@ public abstract class HClientMixin implements RSClient
 
 	@Copy("drawModelComponents")
 	@Replace("drawModelComponents")
-	static void copy$drawModelComponents(Widget[] var0, int var1)
+	static void copy$drawModelComponents(Widget[] var0, int var1, int var2, int var3, int var4)
 	{
 		if (!lowCpu)
 		{
-			copy$drawModelComponents(var0, var1);
+			copy$drawModelComponents(var0, var1, var2, var3, var4);
 		}
 	}
 
