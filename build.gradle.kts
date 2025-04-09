@@ -91,11 +91,10 @@ subprojects {
                 includeModule("net.runelite", "orange-extensions")
             }
         }
-
         exclusiveContent {
             forRepository {
                 maven {
-                    url = uri("https://raw.githubusercontent.com/melxin/hosting/master")
+                    url = uri("https://raw.githubusercontent.com/melxin/devious-artifacts/master")
                 }
             }
             filter {
@@ -103,11 +102,10 @@ subprojects {
                 includeModule("net.runelite", "fernflower")
             }
         }
-
         exclusiveContent {
             forRepository {
                 maven {
-                    url = uri("https://raw.githubusercontent.com/melxin/osrs-gamepack-hosting/master")
+                    url = uri("https://raw.githubusercontent.com/melxin/hosting/master")
                 }
             }
             filter {
