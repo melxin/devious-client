@@ -33,10 +33,11 @@ import lombok.Getter;
  * VarPlayers are stored per RuneScape player save, and synchronized
  * from the server to the client. The client can change them preemptively
  * if it thinks they will change the next tick as a lag-hiding measure.
- * The client CANNOT directly make the server change a varbit.
+ * The client CANNOT directly make the server change a varp.
  */
 @AllArgsConstructor
 @Getter
+@Deprecated
 public enum VarPlayer
 {
 	POUCH_STATUS(261),
@@ -198,7 +199,7 @@ public enum VarPlayer
 	MOUSE_BUTTONS(170),
 
 	/**
-	 * {@link NpcID} for the HP HUD
+	 * {@link net.runelite.api.gameval.NpcID} for the HP HUD
 	 */
 	HP_HUD_NPC_ID(1683),
 

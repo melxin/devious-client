@@ -29,6 +29,7 @@ import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import java.io.IOException;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.function.BooleanSupplier;
 import javax.inject.Inject;
 import javax.inject.Named;
 import net.runelite.api.ChatMessageType;
@@ -40,11 +41,11 @@ import net.runelite.api.GameState;
 import net.runelite.api.MessageNode;
 import net.runelite.api.NPC;
 import net.runelite.api.NPCComposition;
-import net.runelite.api.VarPlayer;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.VarbitChanged;
+import net.runelite.api.gameval.VarPlayerID;
 import net.runelite.client.Notifier;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.chat.ChatClient;
@@ -55,6 +56,7 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.npcoverlay.NpcOverlayService;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
+import org.junit.After;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -146,12 +148,32 @@ public class SlayerPluginTest
 	{
 		Guice.createInjector(BoundFieldModule.of(this)).injectMembers(this);
 
+		when(client.getGameState()).thenReturn(GameState.LOGIN_SCREEN);
+
 		doAnswer(a ->
 		{
 			final Runnable r = a.getArgument(0);
 			r.run();
 			return null;
 		}).when(clientThread).invokeLater(any(Runnable.class));
+
+		doAnswer(a ->
+		{
+			final BooleanSupplier b = a.getArgument(0);
+			return b.getAsBoolean();
+		}).when(clientThread).invoke(any(BooleanSupplier.class));
+
+		EnumComposition e = mock(EnumComposition.class);
+		when(e.getStringVals()).thenReturn(new String[]{"The Abyss"});
+		when(client.getEnum(EnumID.SLAYER_TASK_LOCATION)).thenReturn(e);
+
+		slayerPlugin.startUp();
+	}
+
+	@After
+	public void after()
+	{
+		slayerPlugin.shutDown();
 	}
 
 	@Test
@@ -167,10 +189,6 @@ public class SlayerPluginTest
 	@Test
 	public void testTaskLookup() throws IOException
 	{
-		EnumComposition e = mock(EnumComposition.class);
-		when(e.getStringVals()).thenReturn(new String[]{"The Abyss"});
-		when(client.getEnum(EnumID.SLAYER_TASK_LOCATION)).thenReturn(e);
-
 		net.runelite.http.api.chat.Task task = new net.runelite.http.api.chat.Task();
 		task.setTask("Abyssal demons");
 		task.setLocation("The Abyss");
@@ -228,22 +246,22 @@ public class SlayerPluginTest
 		loggedIn.setGameState(GameState.LOGGED_IN);
 		slayerPlugin.onGameStateChanged(loggedIn);
 
-		when(client.getVarpValue(VarPlayer.SLAYER_TASK_SIZE)).thenReturn(42);
-		when(client.getVarpValue(VarPlayer.SLAYER_TASK_CREATURE)).thenReturn(1);
+		when(client.getVarpValue(VarPlayerID.SLAYER_COUNT)).thenReturn(42);
+		when(client.getVarpValue(VarPlayerID.SLAYER_TARGET)).thenReturn(1);
 		when(client.getEnum(EnumID.SLAYER_TASK_CREATURE))
-				.thenAnswer(a ->
-				{
-					EnumComposition e = mock(EnumComposition.class);
-					when(e.getStringValue(anyInt())).thenReturn("mocked npc");
-					return e;
-				});
+			.thenAnswer(a ->
+			{
+				EnumComposition e = mock(EnumComposition.class);
+				when(e.getStringValue(anyInt())).thenReturn("mocked npc");
+				return e;
+			});
 
 		VarbitChanged varbitChanged = new VarbitChanged();
-		varbitChanged.setVarpId(VarPlayer.SLAYER_TASK_SIZE.getId());
+		varbitChanged.setVarpId(VarPlayerID.SLAYER_COUNT);
 		slayerPlugin.onVarbitChanged(varbitChanged);
 
 		varbitChanged = new VarbitChanged();
-		varbitChanged.setVarpId(VarPlayer.SLAYER_TASK_CREATURE.getId());
+		varbitChanged.setVarpId(VarPlayerID.SLAYER_TARGET);
 		slayerPlugin.onVarbitChanged(varbitChanged);
 
 		slayerPlugin.onGameTick(new GameTick());
@@ -289,8 +307,8 @@ public class SlayerPluginTest
 	@Test
 	public void testDisconnect()
 	{
-		when(client.getVarpValue(VarPlayer.SLAYER_TASK_SIZE)).thenReturn(42);
-		when(client.getVarpValue(VarPlayer.SLAYER_TASK_CREATURE)).thenReturn(1);
+		when(client.getVarpValue(VarPlayerID.SLAYER_COUNT)).thenReturn(42);
+		when(client.getVarpValue(VarPlayerID.SLAYER_TARGET)).thenReturn(1);
 		when(client.getEnum(EnumID.SLAYER_TASK_CREATURE))
 			.thenAnswer(a ->
 			{
@@ -320,19 +338,19 @@ public class SlayerPluginTest
 		loggedIn.setGameState(GameState.LOGGED_IN);
 		slayerPlugin.onGameStateChanged(loggedIn);
 
-		when(client.getVarpValue(VarPlayer.SLAYER_TASK_SIZE)).thenReturn(0);
-		when(client.getVarpValue(VarPlayer.SLAYER_TASK_CREATURE)).thenReturn(0);
+		when(client.getVarpValue(VarPlayerID.SLAYER_COUNT)).thenReturn(0);
+		when(client.getVarpValue(VarPlayerID.SLAYER_TARGET)).thenReturn(0);
 
 		VarbitChanged taskSizeChanged = new VarbitChanged();
-		taskSizeChanged.setVarpId(VarPlayer.SLAYER_TASK_SIZE.getId());
+		taskSizeChanged.setVarpId(VarPlayerID.SLAYER_COUNT);
 		slayerPlugin.onVarbitChanged(taskSizeChanged);
 
 		VarbitChanged taskCreatureChanged = new VarbitChanged();
-		taskCreatureChanged.setVarpId(VarPlayer.SLAYER_TASK_CREATURE.getId());
+		taskCreatureChanged.setVarpId(VarPlayerID.SLAYER_TARGET);
 		slayerPlugin.onVarbitChanged(taskCreatureChanged);
 
-		when(client.getVarpValue(VarPlayer.SLAYER_TASK_SIZE)).thenReturn(42);
-		when(client.getVarpValue(VarPlayer.SLAYER_TASK_CREATURE)).thenReturn(1);
+		when(client.getVarpValue(VarPlayerID.SLAYER_COUNT)).thenReturn(42);
+		when(client.getVarpValue(VarPlayerID.SLAYER_TARGET)).thenReturn(1);
 
 		slayerPlugin.onVarbitChanged(taskSizeChanged);
 		slayerPlugin.onVarbitChanged(taskCreatureChanged);

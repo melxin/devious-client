@@ -96,7 +96,7 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 	@Override
 	public long getTag()
 	{
-		return client.calculateTag(0, 0, 0, false, getIndex(), getWorldView().getId());
+		return client.calculateTag(0, 0, 0, 0, false, getIndex(), getWorldView().getId());
 	}
 
 	@Inject
