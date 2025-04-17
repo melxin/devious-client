@@ -33,8 +33,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import net.runelite.api.Client;
+import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.overlay.Overlay;
@@ -77,9 +77,9 @@ class InventoryGridOverlay extends Overlay
 		}
 
 		// grid is only supported on bank inventory and inventory
-		if (draggingWidget.getId() != WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getId()
-			        && draggingWidget.getId() != WidgetInfo.BANK_EQUIPMENT_INVENTORY_ITEMS_CONTAINER.getId()
-				&& draggingWidget.getId() != WidgetInfo.INVENTORY.getId())
+		if (draggingWidget.getId() != InterfaceID.Bankside.ITEMS
+			&& draggingWidget.getId() != InterfaceID.Bankside.WORNOPS
+			&& draggingWidget.getId() != InterfaceID.Inventory.ITEMS)
 		{
 			return null;
 		}
@@ -99,7 +99,7 @@ class InventoryGridOverlay extends Overlay
 
 		if (draggedItem.getId() == -1
 				|| !(draggingWidget.isIf3() ? client.getDragTime() > draggingWidget.getDragDeadTime() : client.getItemPressedDuration() >= 5)
-				|| !hoverActive && initialMousePoint.distance(mousePoint) < DISTANCE_TO_ACTIVATE_HOVER)
+			|| !hoverActive && initialMousePoint.distance(mousePoint) < DISTANCE_TO_ACTIVATE_HOVER)
 		{
 			return null;
 		}
@@ -147,9 +147,9 @@ class InventoryGridOverlay extends Overlay
 	{
 		if (parentWidget.isIf3())
 		{
-			Widget wi = parentWidget.getChild(idx);
+		Widget wi = parentWidget.getChild(idx);
 			return new WidgetItem(wi.getItemId(), wi.getItemQuantity(), -1, wi.getBounds(), parentWidget, wi.getBounds());
-		}
+	}
 		else
 		{
 			return parentWidget.getWidgetItem(idx);

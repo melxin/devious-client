@@ -162,7 +162,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Gets the current animation the actor is performing.
 	 *
 	 * @return the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	int getAnimation();
 
@@ -170,14 +170,14 @@ public interface Actor extends Renderable, SceneEntity
 	 * Gets the secondary animation the actor is performing. Usually an idle animation, or one of the walking ones.
 	 *
 	 * @return the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	int getPoseAnimation();
 
 	/**
 	 * Set the idle pose animation.
 	 * @param animation
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	void setPoseAnimation(int animation);
 
@@ -198,7 +198,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * for their pose animation.
 	 *
 	 * @return the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	int getIdlePoseAnimation();
 
@@ -209,7 +209,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Animation used for rotating left if the actor is also not walking
 	 *
 	 * @return the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	int getIdleRotateLeft();
 
@@ -219,7 +219,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Animation used for rotating right if the actor is also not walking
 	 *
 	 * @return the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	int getIdleRotateRight();
 
@@ -229,7 +229,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Animation used for walking
 	 *
 	 * @return the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	int getWalkAnimation();
 
@@ -239,7 +239,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Animation used for rotating left while walking
 	 *
 	 * @return the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	int getWalkRotateLeft();
 
@@ -249,7 +249,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Animation used for rotating right while walking
 	 *
 	 * @return the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	int getWalkRotateRight();
 
@@ -259,7 +259,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Animation used for an about-face while walking
 	 *
 	 * @return the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	int getWalkRotate180();
 
@@ -269,7 +269,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Animation used for running
 	 *
 	 * @return the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	int getRunAnimation();
 
@@ -279,7 +279,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Sets an animation for the actor to perform.
 	 *
 	 * @param animation the animation ID
-	 * @see AnimationID
+	 * @see net.runelite.api.gameval.AnimationID
 	 */
 	void setAnimation(int animation);
 
@@ -320,7 +320,7 @@ public interface Actor extends Renderable, SceneEntity
 	/**
 	 * Check if the actor has a spotanim
 	 * @param spotAnimId the spot anim id
-	 * @see GraphicID
+	 * @see net.runelite.api.gameval.SpotanimID
 	 * @return
 	 */
 	boolean hasSpotAnim(int spotAnimId);
@@ -328,7 +328,7 @@ public interface Actor extends Renderable, SceneEntity
 	/**
 	 * Create an actor spotanim
 	 * @param id key for the {@link #getSpotAnims()} table
-	 * @param spotAnimId spotanim id {@link GraphicID}
+	 * @param spotAnimId spotanim id {@link net.runelite.api.gameval.SpotanimID}
 	 * @param height height offspot for spot anim
 	 * @param delay initial delay, in client ticks, before spotanim is active
 	 */
@@ -350,7 +350,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Actors can have multiple spotanims, this gets only one of them. Use {@link #hasSpotAnim(int)} instead.
 	 *
 	 * @return the spotanim of the actor
-	 * @see GraphicID
+	 * @see net.runelite.api.gameval.SpotanimID
 	 * @deprecated see {@link #hasSpotAnim(int)}
 	 */
 	@Deprecated
@@ -360,7 +360,7 @@ public interface Actor extends Renderable, SceneEntity
 	 * Set the graphic/spotanim that is currently on the actor.
 	 *
 	 * @param graphic The spotanim id
-	 * @see GraphicID
+	 * @see net.runelite.api.gameval.SpotanimID
 	 * @deprecated see {@link #createSpotAnim(int, int, int, int)}
 	 */
 	@Deprecated

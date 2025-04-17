@@ -1731,7 +1731,8 @@ public final class SpriteID
 	public static final int HEALTHBAR_PURPLE_BACK_160PX = 4727;
 	/* Unmapped: 4728~4765 */
 	public static final int COLOSSEUM_DOOM = 4766;
-	/* Unmapped: 4767~4770 */
+	public static final int BURN_DAMAGE = 4767;
+	/* Unmapped: 4768~4770 */
 	public static final int HEALTHBAR_GREEN_FRONT_30PX = 4771;
 	public static final int HEALTHBAR_GREEN_BACK_30PX = 4772;
 	public static final int HEALTHBAR_GREEN_FRONT_40PX = 4773;
@@ -1842,4 +1843,6 @@ public final class SpriteID
 	public static final int HEALTHBAR_LAST_STAND_BACK = 5864;
 	/* Unmapped: 5865~6344 */
 	public static final int HISCORE_ROYAL_TITANS = 6345;
+	/* Unmapped: 6346~6389 */
+	public static final int HISCORE_COLLECTIONS_LOGGED = 6390;
 }

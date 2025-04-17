@@ -1,22 +1,22 @@
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("or")
+@ObfuscatedName("ot")
 @Implements("Strings")
 public class Strings {
-	@ObfuscatedName("fe")
-	public static String field4367;
-	@ObfuscatedName("kv")
-	public static String field4503;
-	@ObfuscatedName("ky")
-	public static String field4504;
-	@ObfuscatedName("ly")
+	@ObfuscatedName("fr")
+	public static String field4268;
+	@ObfuscatedName("kj")
 	public static String field4505;
+	@ObfuscatedName("ki")
+	public static String field4522;
+	@ObfuscatedName("li")
+	public static String field4564;
 
 	static {
-		field4367 = "Please visit the support page for assistance.";
-		field4503 = "";
-		field4504 = "Page has opened in the browser.";
+		field4268 = "Please visit the support page for assistance.";
 		field4505 = "";
+		field4522 = "Page has opened in the browser.";
+		field4564 = "";
 	}
 }
