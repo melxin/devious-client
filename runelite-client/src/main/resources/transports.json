@@ -2591,7 +2591,22 @@
       "plane": 1
     },
     "action": "Climb-up",
-    "objectId": 16671,
+    "objectId": 56230,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3205,
+      "y": 3228,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3206,
+      "y": 3229,
+      "plane": 2
+    },
+    "action": "Top-floor",
+    "objectId": 56230,
     "requirements": {}
   },
   {
@@ -2621,7 +2636,22 @@
       "plane": 1
     },
     "action": "Climb-up",
-    "objectId": 16671,
+    "objectId": 56230,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3206,
+      "y": 3229,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3206,
+      "y": 3229,
+      "plane": 2
+    },
+    "action": "Top-floor",
+    "objectId": 56230,
     "requirements": {}
   },
   {
@@ -2666,7 +2696,22 @@
       "plane": 1
     },
     "action": "Climb-down",
-    "objectId": 16673,
+    "objectId": 56231,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3206,
+      "y": 3229,
+      "plane": 2
+    },
+    "destination": {
+      "x": 3205,
+      "y": 3228,
+      "plane": 0
+    },
+    "action": "Bottom-floor",
+    "objectId": 56231,
     "requirements": {}
   },
   {
@@ -2711,7 +2756,22 @@
       "plane": 1
     },
     "action": "Climb-up",
-    "objectId": 16671,
+    "objectId": 56230,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3205,
+      "y": 3208,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3205,
+      "y": 3208,
+      "plane": 2
+    },
+    "action": "Top-floor",
+    "objectId": 56230,
     "requirements": {}
   },
   {
@@ -2741,7 +2801,22 @@
       "plane": 1
     },
     "action": "Climb-up",
-    "objectId": 16671,
+    "objectId": 56230,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3205,
+      "y": 3209,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3205,
+      "y": 3209,
+      "plane": 2
+    },
+    "action": "Top-floor",
+    "objectId": 56230,
     "requirements": {}
   },
   {
@@ -2771,7 +2846,22 @@
       "plane": 1
     },
     "action": "Climb-down",
-    "objectId": 16673,
+    "objectId": 56231,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3205,
+      "y": 3209,
+      "plane": 2
+    },
+    "destination": {
+      "x": 3206,
+      "y": 3208,
+      "plane": 0
+    },
+    "action": "Bottom-floor",
+    "objectId": 56231,
     "requirements": {}
   },
   {

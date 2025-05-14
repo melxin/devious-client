@@ -78,7 +78,7 @@ enum TeleportLocationData
 	TEARS_OF_GUTHIX(TeleportType.JEWELLERY, "Games Necklace" , "Tears of Guthix", new WorldPoint(3245, 9500, 0), "games_necklace_teleport_icon.png"),
 	CORPOREAL_BEAST(TeleportType.JEWELLERY, "Games Necklace" , "Corporeal Beast", new WorldPoint(2967, 4384, 0), "games_necklace_teleport_icon.png"),
 	WINTERTODT_CAMP(TeleportType.JEWELLERY, "Games Necklace" , "Wintertodt Camp", new WorldPoint(1624, 3938, 0), "games_necklace_teleport_icon.png"),
-	PVP_ARENA(TeleportType.JEWELLERY, "Ring of Dueling" , "Al Kharid PvP Arena", new WorldPoint(3315, 3235, 0), "ring_of_dueling_teleport_icon.png"),
+	EMIRS_ARENA(TeleportType.JEWELLERY, "Ring of Dueling" , "Emir's Arena", new WorldPoint(3315, 3235, 0), "ring_of_dueling_teleport_icon.png"),
 	FEROX_ENCLAVE(TeleportType.JEWELLERY, "Ring of Dueling" , "Ferox Enclave", new WorldPoint(3151, 3636, 0), "ring_of_dueling_teleport_icon.png"),
 	CASTLE_WARS(TeleportType.JEWELLERY, "Ring of Dueling" , "Castle Wars", new WorldPoint(2441, 3091, 0), "ring_of_dueling_teleport_icon.png"),
 	FORTIS_COLOSSEUM(TeleportType.JEWELLERY, "Ring of Dueling" , "Fortis Colosseum", new WorldPoint(1793, 3107, 0), "ring_of_dueling_teleport_icon.png"),
@@ -209,6 +209,7 @@ enum TeleportLocationData
 	WATSON_SCROLL(TeleportType.SCROLL, "Watson Teleport", new WorldPoint(1645, 3579, 0), "scroll_teleport_icon.png"),
 	SPIDER_CAVE_SCROLL(TeleportType.SCROLL, "Spider cave teleport", new WorldPoint(3658, 3403, 0), "scroll_teleport_icon.png"),
 	COLOSSAL_WYRM_SCROLL(TeleportType.SCROLL, "Colossal Wyrm Teleport", new WorldPoint(1641, 2921, 0), "scroll_teleport_icon.png"),
+	CHASM_TELEPORT_SCROLL(TeleportType.SCROLL, "Chasm of Fire teleport", new WorldPoint(1306, 10075, 2), "scroll_teleport_icon.png"),
 
 	// Skillcapes
 	ACHIEVEMENT_CAPE_TWO_PINTS(TeleportType.OTHER, "Achievement Cape", "Two-pints", new WorldPoint(2574, 3324, 0), "achievement_cape_icon.png"),

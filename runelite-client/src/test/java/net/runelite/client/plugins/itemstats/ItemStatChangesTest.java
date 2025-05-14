@@ -22,19 +22,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.plugins.itemstats;
 
-import java.io.IOException;
 import org.junit.Test;
 
-public class MainTest
+public class ItemStatChangesTest
 {
-	//@Test
-	public void test() throws IOException, InterruptedException
+	@Test
+	public void testInit()
 	{
-		Main main = new Main();
-		for (;;)
-		{
-			Thread.sleep(500L);
-		}
+		new ItemStatChanges();
 	}
+
 }

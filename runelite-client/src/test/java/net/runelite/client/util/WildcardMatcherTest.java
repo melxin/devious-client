@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018, Adam <Adam@sigterm.info>
+ * Copyright (c) 2018, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,19 +22,23 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.util;
 
-import java.io.IOException;
+import static net.runelite.client.util.WildcardMatcher.matches;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-public class MainTest
+public class WildcardMatcherTest
 {
-	//@Test
-	public void test() throws IOException, InterruptedException
+	@Test
+	public void testMatches()
 	{
-		Main main = new Main();
-		for (;;)
-		{
-			Thread.sleep(500L);
-		}
+		assertTrue(matches("rune*", "rune pouch"));
+		assertTrue(matches("rune*", "Rune pouch"));
+		assertFalse(matches("Abyssal whip", "Adamant dagger"));
+		assertTrue(matches("rune*", "Runeite Ore"));
+		assertTrue(matches("Abyssal whip", "Abyssal whip"));
+		assertTrue(matches("string $ with special character", "string $ with special character"));
 	}
 }

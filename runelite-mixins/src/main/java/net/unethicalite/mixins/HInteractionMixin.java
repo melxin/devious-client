@@ -245,6 +245,35 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 		}
 		else
 		{
+			/*
+			 * The RuneScape client may deprioritize an action in the menu by incrementing the opcode with 2000,
+			 * undo it here so we can get the correct opcode
+			 */
+			boolean decremented = false;
+			if (opcode >= 2000)
+			{
+				decremented = true;
+				opcode -= 2000;
+			}
+
+			if (printMenuActions)
+			{
+				client.getLogger().info(
+					"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={} ItemId={} WorldViewId={}",
+					event.getMenuOption(), event.getMenuTarget(), event.getId(),
+					event.getMenuAction(), opcode + (decremented ? 2000 : 0),
+					event.getParam0(), event.getParam1(), canvasX, canvasY, event.getItemId(), event.getWorldViewId()
+				);
+
+				if (menuEntry != null)
+				{
+					client.getLogger().info(
+						"|MenuEntry|: Idx={} MenuOption={} MenuTarget={} Id={} MenuAction={} Param0={} Param1={} Consumer={} IsItemOp={} ItemOp={} ItemID={} WorldViewId={} Widget={}",
+						menuEntry.getIdx(), menuEntry.getOption(), menuEntry.getTarget(), menuEntry.getIdentifier(), menuEntry.getType(), menuEntry.getParam0(), menuEntry.getParam1(), menuEntry.getConsumer(), menuEntry.isItemOp(), menuEntry.getItemOp(), menuEntry.getItemId(), menuEntry.getWorldViewId(), menuEntry.getWidget()
+					);
+				}
+			}
+
 			copy$menuAction(event.getParam0(), event.getParam1(),
 					event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
 					event.getId(), event.getItemId(), event.getWorldViewId(), event.getMenuOption(), event.getMenuTarget(),
