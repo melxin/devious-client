@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2016-2018, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,19 +22,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.plugins.itemstats;
 
-object ProjectVersions {
-    const val launcherVersion = "1.0.0"
-    const val rlVersion = "1.11.8"
+import org.junit.Test;
 
-    const val openosrsVersion = "4.31.2"
+public class ItemStatChangesTest
+{
+	@Test
+	public void testInit()
+	{
+		new ItemStatChanges();
+	}
 
-    const val rsversion = 230
-    const val cacheversion = 165
-
-    const val lombokVersion = "1.18.30"
-
-    const val flatLafVersion = "3.2.5-rl4"
-
-    const val unethicaliteVersion = "1.0.20-STABLE"
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2025, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,19 +22,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.events;
 
-object ProjectVersions {
-    const val launcherVersion = "1.0.0"
-    const val rlVersion = "1.11.8"
+import java.util.Collection;
+import lombok.Value;
+import net.runelite.api.NPCComposition;
+import net.runelite.client.game.ItemStack;
 
-    const val openosrsVersion = "4.31.2"
-
-    const val rsversion = 230
-    const val cacheversion = 165
-
-    const val lombokVersion = "1.18.30"
-
-    const val flatLafVersion = "3.2.5-rl4"
-
-    const val unethicaliteVersion = "1.0.20-STABLE"
+/**
+ * NPC loot received from the in-game loot tracker.
+ */
+@Value
+public class ServerNpcLoot
+{
+	NPCComposition composition;
+	Collection<ItemStack> items;
 }
