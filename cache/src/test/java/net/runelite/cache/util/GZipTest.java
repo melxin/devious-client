@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2025, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,43 +22,35 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-grammar rs2asm;
+package net.runelite.cache.util;
 
-prog: NEWLINE* (header NEWLINE+)* (line NEWLINE+)+ ;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.zip.Deflater;
+import static org.junit.Assert.assertArrayEquals;
+import org.junit.Test;
 
-header: id | int_arg_count | obj_arg_count ;
+public class GZipTest
+{
+	private static final int GZIP_MAGIC = 0x8b1f;
 
-id: '.id ' id_value ;
-int_arg_count: '.int_arg_count ' int_arg_value ;
-obj_arg_count: '.obj_arg_count ' obj_arg_value ;
-
-id_value: INT ;
-int_arg_value: INT ;
-obj_arg_value: INT ;
-
-line: instruction | label | switch_lookup ;
-instruction: instruction_name instruction_operand ;
-label: IDENTIFIER ':' ;
-
-instruction_name: name_string | name_opcode ;
-name_string: IDENTIFIER ;
-name_opcode: INT ;
-
-instruction_operand: operand_int | operand_qstring | operand_label | operand_symbol | ;
-operand_int: INT ;
-operand_qstring: QSTRING ;
-operand_label: IDENTIFIER ;
-operand_symbol: SYMBOL ;
-
-switch_lookup: switch_key ':' switch_value ;
-switch_key: INT ;
-switch_value: IDENTIFIER ;
-
-NEWLINE: ( '\r' | '\n' )+ ;
-INT: '-'? [0-9]+ ;
-QSTRING: '"' (~('"' | '\\' | '\r' | '\n') | '\\' ('"' | '\\'))* '"' ;
-IDENTIFIER: [a-zA-Z0-9_]+ ;
-SYMBOL: ':' [a-zA-Z0-9_:]+ ;
-COMMENT: ';' ~( '\r' | '\n' )* -> channel(HIDDEN) ;
-
-WS: (' ' | '\t')+ -> channel(HIDDEN) ;
+	@Test
+	public void testCompress() throws IOException
+	{
+		byte[] data = GZip.compress("data".getBytes(StandardCharsets.UTF_8));
+		byte[] header = {
+			(byte) GZIP_MAGIC,        // Magic number (short)
+			(byte) (GZIP_MAGIC >> 8), // Magic number (short)
+			Deflater.DEFLATED,        // Compression method (CM)
+			0,                        // Flags (FLG)
+			0,                        // Modification time MTIME (int)
+			0,                        // Modification time MTIME (int)
+			0,                        // Modification time MTIME (int)
+			0,                        // Modification time MTIME (int)
+			0,                        // Extra flags (XFLG)
+			0                         // Operating system (OS)
+		};
+		assertArrayEquals(header, Arrays.copyOfRange(data, 0, header.length));
+	}
+}

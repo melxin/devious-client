@@ -45,6 +45,7 @@ import net.unethicalite.api.events.NPCCompositionChanged;
 
 import java.awt.Polygon;
 import java.awt.Shape;
+import java.util.Arrays;
 import java.util.Iterator;
 
 @Mixin(RSNPC.class)
@@ -218,5 +219,37 @@ public abstract class RSNPCMixin implements RSNPC
 		int tileHeight = Perspective.getTileHeight(client, tileHeightPoint, client.getPlane());
 
 		return model.getConvexHull(getX(), getY(), getCurrentOrientation(), tileHeight);
+	}
+
+	@Inject
+	@Override
+	public int[] getOverheadArchiveIds()
+	{
+		if (this.getNpcOverheadIcons() != null)
+		{
+			int[] overheadArchiveIds = this.getNpcOverheadIcons().getOverheadArchiveIds();
+			return (int[]) Arrays.copyOf(overheadArchiveIds, overheadArchiveIds.length);
+		}
+		else
+		{
+			RSNPCComposition composition = this.getComposition();
+			return composition != null && composition.getModels() != null ? (int[]) Arrays.copyOf(composition.getModels(), composition.getModels().length) : null;
+		}
+	}
+
+	@Inject
+	@Override
+	public short[] getOverheadSpriteIds()
+	{
+		if (this.getNpcOverheadIcons() != null)
+		{
+			short[] overheadSpriteIds = this.getNpcOverheadIcons().getOverheadSpriteIds();
+			return (short[]) Arrays.copyOf(overheadSpriteIds, overheadSpriteIds.length);
+		}
+		else
+		{
+			RSNPCComposition composition = this.getComposition();
+			return composition != null && composition.getTextureToReplace() != null ? (short[]) Arrays.copyOf(composition.getTextureToReplace(), composition.getTextureToReplace().length) : null;
+		}
 	}
 }
