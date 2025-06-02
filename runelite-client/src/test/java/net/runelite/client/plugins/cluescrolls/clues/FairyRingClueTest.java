@@ -22,14 +22,30 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.http.api.ws;
+package net.runelite.client.plugins.cluescrolls.clues;
 
-public class WebsocketMessage
+import java.util.Set;
+import java.util.stream.Collectors;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import org.junit.Test;
+
+public class FairyRingClueTest
 {
-	protected boolean _party;
-
-	public boolean isParty()
+	@Test
+	public void forTextEmptyString()
 	{
-		return _party;
+		assertNull(FairyRingClue.forText(""));
+	}
+
+	@Test
+	public void uniqueIds()
+	{
+		final Set<Integer> clueIds = FairyRingClue.CLUES.stream()
+			.mapToInt(FairyRingClue::getItemId)
+			.boxed()
+			.collect(Collectors.toUnmodifiableSet());
+
+		assertEquals(FairyRingClue.CLUES.size(), clueIds.size());
 	}
 }

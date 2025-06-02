@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, Jordan Atwood <jordan.atwood423@gmail.com>
+ * Copyright (c) 2025, Jordan Atwood <nightfirecat@nightfirec.at>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,14 +22,23 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.http.api.ws;
+package net.runelite.client.plugins.cluescrolls.clues;
 
-public class WebsocketMessage
+import java.util.Set;
+import java.util.stream.Collectors;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
+public class MapClueTest
 {
-	protected boolean _party;
-
-	public boolean isParty()
+	@Test
+	public void uniqueIds()
 	{
-		return _party;
+		final Set<Integer> clueIds = MapClue.CLUES.stream()
+			.mapToInt(MapClue::getItemId)
+			.boxed()
+			.collect(Collectors.toUnmodifiableSet());
+
+		assertEquals(MapClue.CLUES.size(), clueIds.size());
 	}
 }
