@@ -232,7 +232,7 @@ public class RuneLiteModule extends AbstractModule
 					{
 						if (url.host().endsWith(domain))
 						{
-							throw new IOException("Network call to " + url + " blocked ourside of LIVE environment");
+							throw new IOException("Network call to " + url + " blocked outside of LIVE environment");
 						}
 					}
 				}
