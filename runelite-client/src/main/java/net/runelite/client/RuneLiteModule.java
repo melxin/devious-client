@@ -143,7 +143,6 @@ public class RuneLiteModule extends AbstractModule
 		bindConstant().annotatedWith(Names.named("cachedUUID")).to(cachedUUID);
 		bind(File.class).annotatedWith(Names.named("runeLiteDir")).toInstance(RuneLite.RUNELITE_DIR);
 		bind(ScheduledExecutorService.class).toInstance(new ExecutorServiceExceptionLogger(Executors.newSingleThreadScheduledExecutor()));
-		bind(OkHttpClient.class).toInstance(bootupHttpClient);
 		bind(RuntimeConfigLoader.class).toInstance(configLoader);
 		bind(MenuManager.class);
 		bind(ChatMessageManager.class);
