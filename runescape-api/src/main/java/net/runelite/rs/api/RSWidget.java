@@ -604,4 +604,12 @@ public interface RSWidget extends Widget
 
 	@Import("actions")
 	String[] getRawActions();
+
+	@Import("targetPriority")
+	@Override
+	int getTargetPriority();
+
+	@Import("targetPriority")
+	@Override
+	void setTargetPriority(int priority);
 }
