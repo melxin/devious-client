@@ -105,4 +105,8 @@ public interface RSNPCComposition extends NPCComposition
 
 	@Import("transformVarbit")
 	int getTransformVarbit();
+
+	@Import("footprintSize")
+	@Override
+	int getFootprintSize();
 }

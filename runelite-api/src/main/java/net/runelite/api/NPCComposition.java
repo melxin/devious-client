@@ -139,4 +139,10 @@ public interface NPCComposition extends ParamHolder
 	 * @return
 	 */
 	int getHeightScale();
+
+	/**
+	 * Get the npc footprint size
+	 * @return
+	 */
+	int getFootprintSize();
 }
