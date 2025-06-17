@@ -991,14 +991,25 @@ public interface Widget extends Interactable, Identifiable
 	Widget setFilled(boolean filled);
 
 	/**
-	 * Verb for spell targets
+	 * Verb for op targets
 	 */
 	String getTargetVerb();
 
 	/**
-	 * Verb for spell targets
+	 * Verb for op targets
 	 */
 	void setTargetVerb(String targetVerb);
+
+	/**
+	 * Get the priority that the target verb op is at
+	 */
+	int getTargetPriority();
+
+	/**
+	 * Set the priority that the target verb op is at
+	 * @param priority priority, default 4
+	 */
+	void setTargetPriority(int priority);
 
 	/**
 	 * Can widgets under this widgets be clicked in this widgets bounding box

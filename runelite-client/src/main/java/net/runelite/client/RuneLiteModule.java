@@ -63,6 +63,7 @@ import okhttp3.OkHttpClient;
 import javax.annotation.Nullable;
 import javax.inject.Named;
 import javax.inject.Singleton;
+import javax.swing.SwingUtilities;
 import java.applet.Applet;
 import java.io.File;
 import java.io.IOException;
@@ -80,7 +81,7 @@ import java.util.function.Supplier;
 @AllArgsConstructor
 public class RuneLiteModule extends AbstractModule
 {
-	private final OkHttpClient okHttpClient;
+	private final OkHttpClient bootupHttpClient;
 	private final Supplier<Client> clientLoader;
 	private final RuntimeConfigLoader configLoader;
 	private final boolean developerMode;
@@ -142,7 +143,6 @@ public class RuneLiteModule extends AbstractModule
 		bindConstant().annotatedWith(Names.named("cachedUUID")).to(cachedUUID);
 		bind(File.class).annotatedWith(Names.named("runeLiteDir")).toInstance(RuneLite.RUNELITE_DIR);
 		bind(ScheduledExecutorService.class).toInstance(new ExecutorServiceExceptionLogger(Executors.newSingleThreadScheduledExecutor()));
-		bind(OkHttpClient.class).toInstance(okHttpClient);
 		bind(RuntimeConfigLoader.class).toInstance(configLoader);
 		bind(MenuManager.class);
 		bind(ChatMessageManager.class);
@@ -207,6 +207,37 @@ public class RuneLiteModule extends AbstractModule
 	ChatColorConfig provideChatColorConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(ChatColorConfig.class);
+	}
+
+	@Provides
+	@Singleton
+	OkHttpClient provideHttpClient(Client client)
+	{
+		return bootupHttpClient.newBuilder()
+			.addInterceptor(chain ->
+			{
+				if (client.isClientThread())
+				{
+					throw new IOException("Blocking network calls are not allowed on the client thread");
+				}
+				if (SwingUtilities.isEventDispatchThread())
+				{
+					throw new IOException("Blocking network calls are not allowed on the event dispatch thread");
+				}
+				if (client.getEnvironment() != 0)
+				{
+					HttpUrl url = chain.request().url();
+					for (String domain : RuneLiteProperties.getJagexBlockedDomains())
+					{
+						if (url.host().endsWith(domain))
+						{
+							throw new IOException("Network call to " + url + " blocked outside of LIVE environment");
+						}
+					}
+				}
+				return chain.proceed(chain.request());
+			})
+			.build();
 	}
 
 	@Provides

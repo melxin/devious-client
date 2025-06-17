@@ -150,6 +150,8 @@ public interface ClientPacket
 
 	ClientPacket IF_BUTTON10();
 
+	ClientPacket IF_BUTTONX();
+
 	ClientPacket WIDGET_TYPE();
 
 	default Map<ClientPacket, String> getClientPackets()
@@ -227,6 +229,7 @@ public interface ClientPacket
 				Map.entry(IF_BUTTON2(), "IF_BUTTON2"),
 				Map.entry(EVENT_MOUSE_CLICK(), "EVENT_MOUSE_CLICK"),
 				Map.entry(IF_BUTTON10(), "IF_BUTTON10"),
+				Map.entry(IF_BUTTONX(), "IF_BUTTONX"),
 				Map.entry(WIDGET_TYPE(), "WIDGET_TYPE")
 		);
 	}
