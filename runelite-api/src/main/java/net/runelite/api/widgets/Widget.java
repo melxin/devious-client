@@ -372,7 +372,7 @@ public interface Widget extends Interactable, Identifiable
 	 * Gets the sprite ID displayed in the widget.
 	 *
 	 * @return the sprite ID
-	 * @see net.runelite.api.SpriteID
+	 * @see net.runelite.api.gameval.SpriteID
 	 */
 	int getSpriteId();
 
@@ -390,7 +390,7 @@ public interface Widget extends Interactable, Identifiable
 	 * Sets the sprite ID displayed in the widget.
 	 *
 	 * @param spriteId the sprite ID
-	 * @see net.runelite.api.SpriteID
+	 * @see net.runelite.api.gameval.SpriteID
 	 */
 	Widget setSpriteId(int spriteId);
 
