@@ -2846,16 +2846,30 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public RSModelData mergeModels(ModelData[] var0, int var1)
+	public RSModelData mergeModels(ModelData[] models, int length)
 	{
-		return newModelData(Arrays.copyOf(var0, var1, getModelDataArray().getClass()), var1);
+		return newModelData(Arrays.copyOf(models, length, getModelDataArray().getClass()), length);
 	}
 
 	@Inject
 	@Override
-	public RSModelData mergeModels(ModelData... var0)
+	public RSModelData mergeModels(ModelData... models)
 	{
-		return mergeModels(var0, var0.length);
+		return mergeModels(models, models.length);
+	}
+
+	@Inject
+	@Override
+	public RSModel mergeModels(Model[] models, int length)
+	{
+		return newModel((RSModel[]) models, length);
+	}
+
+	@Inject
+	@Override
+	public RSModel mergeModels(Model... models)
+	{
+		return mergeModels(models, models.length);
 	}
 
 	@Inject
@@ -3354,9 +3368,44 @@ public abstract class RSClientMixin implements RSClient
 			targetIndex = -(((Player) target).getId() + 1);
 		}
 
-		final RSProjectile projectile = this.newProjectile(plane, startX >> 7, startY >> 7, startZ, 0, plane, targetX >> 7, targetY >> 7, 0, targetIndex, id, startCycle, slope, startHeight, endHeight);
+		final WorldPoint sourcePoint = WorldPoint.fromLocal(client, startX, startY, plane);
+		final WorldPoint targetPoint = WorldPoint.fromLocal(client, targetX, targetY, plane);
+		final RSProjectile projectile = this.newProjectile(plane, sourcePoint.getX(), sourcePoint.getY(), startZ, 0, plane, targetPoint.getX(), targetPoint.getY(), 0, targetIndex, id, startCycle, endCycle, slope, 0);
 		projectile.setWorldView(getTopLevelWorldView());
 		this.getProjectiles().addFirst(projectile);//projectile.setDestination(targetX, targetY, Perspective.getTileHeight(client, new LocalPoint(targetX, targetY, this), plane), startCycle);
+		return projectile;
+	}
+
+	@Inject
+	@Override
+	public Projectile createProjectile(int spotanimId,
+		WorldPoint source, int sourceHeightOffset, @Nullable Actor sourceActor,
+		WorldPoint target, int targetHeightOffset, @Nullable Actor targetActor,
+		int startCycle, int endCycle, int slope, int startPos)
+	{
+		int sourceIndex = 0;
+		if (sourceActor instanceof RSNPC)
+		{
+			sourceIndex = ((RSNPC) sourceActor).getIndex() + 1;
+		}
+		else if (sourceActor instanceof RSPlayer)
+		{
+			sourceIndex = -(((RSPlayer) sourceActor).getId() + 1);
+		}
+
+		int targetIndex = 0;
+		if (targetActor instanceof RSNPC)
+		{
+			targetIndex = ((RSNPC) targetActor).getIndex() + 1;
+		}
+		else if (targetActor instanceof RSPlayer)
+		{
+			targetIndex = -(((RSPlayer) targetActor).getId() + 1);
+		}
+
+		final RSProjectile projectile = this.newProjectile(source.getPlane(), source.getX(), source.getY(), sourceHeightOffset, sourceIndex, target.getPlane(), target.getX(), target.getY(), targetHeightOffset, targetIndex, spotanimId, startCycle, endCycle, slope, startPos);
+		projectile.setWorldView(getTopLevelWorldView());
+		this.getProjectiles().addFirst(projectile);
 		return projectile;
 	}
 

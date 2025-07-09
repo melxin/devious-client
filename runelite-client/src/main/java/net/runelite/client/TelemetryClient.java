@@ -25,15 +25,19 @@
 package net.runelite.client;
 
 import com.google.gson.Gson;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
 import java.nio.file.Files;
 import java.time.Duration;
-import javax.inject.Inject;
-import javax.inject.Named;
+import java.util.Collections;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.util.OSType;
 import net.runelite.http.api.RuneLiteAPI;
 import net.runelite.http.api.telemetry.Telemetry;
 import okhttp3.Call;
@@ -46,22 +50,12 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 @Slf4j
-class TelemetryClient
+@RequiredArgsConstructor
+public class TelemetryClient
 {
 	private final OkHttpClient okHttpClient;
 	private final Gson gson;
 	private final HttpUrl apiBase;
-
-	@Inject
-	private TelemetryClient(OkHttpClient okHttpClient,
-		Gson gson,
-		@Named("runelite.api.base") HttpUrl apiBase
-	)
-	{
-		this.okHttpClient = okHttpClient;
-		this.gson = gson;
-		this.apiBase = apiBase;
-	}
 
 	void submitTelemetry()
 	{
@@ -121,7 +115,7 @@ class TelemetryClient
 					.replace(username, "%USERNAME%")
 					.replace(home, "%HOME%");
 
-				submitError("vm crash", hsErr);
+				submitError("vm crash", hsErr, Collections.emptyMap());
 			}
 		}
 		catch (Exception ex)
@@ -130,13 +124,21 @@ class TelemetryClient
 		}
 	}
 
-	public void submitError(String type, String error)
+	public void submitError(String type, String error, Map<String, String> params)
 	{
-		HttpUrl url = apiBase.newBuilder()
+		HttpUrl.Builder urlBuilder = apiBase.newBuilder()
 			.addPathSegment("telemetry")
 			.addPathSegment("error")
 			.addQueryParameter("type", type)
-			.build();
+			.addQueryParameter("osname", System.getProperty("os.name"))
+			.addQueryParameter("osver", System.getProperty("os.version"))
+			.addQueryParameter("osarch", System.getProperty("os.arch"))
+			.addQueryParameter("javaversion", System.getProperty("java.version"))
+			.addQueryParameter("javavendor", System.getProperty("java.vendor"))
+			.addQueryParameter("cpumodel", cpuName());
+		params.forEach(urlBuilder::addQueryParameter);
+
+		HttpUrl url = urlBuilder.build();
 
 		Request request = new Request.Builder()
 			.url(url)
@@ -175,6 +177,40 @@ class TelemetryClient
 			long totalPhysicalMemorySize = ((com.sun.management.OperatingSystemMXBean) operatingSystemMXBean).getTotalPhysicalMemorySize();
 			telemetry.setTotalMemory(totalPhysicalMemorySize);
 		}
+		telemetry.setCpuName(cpuName());
 		return telemetry;
+	}
+
+	private static String cpuName()
+	{
+		if (OSType.getOSType() != OSType.Windows)
+		{
+			return null;
+		}
+
+		try
+		{
+			Process p = Runtime.getRuntime().exec("wmic cpu get name");
+
+			try (var in = new BufferedReader(new InputStreamReader(p.getInputStream())))
+			{
+				String line;
+				while ((line = in.readLine()) != null)
+				{
+					line = line.trim();
+					if (line.isEmpty() || line.equalsIgnoreCase("name"))
+					{
+						continue;
+					}
+
+					return line;
+				}
+			}
+		}
+		catch (IOException ex)
+		{
+			log.debug("unable to get cpu name", ex);
+		}
+		return null;
 	}
 }
