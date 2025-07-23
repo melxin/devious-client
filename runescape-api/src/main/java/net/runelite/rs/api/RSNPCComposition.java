@@ -109,4 +109,8 @@ public interface RSNPCComposition extends NPCComposition
 	@Import("footprintSize")
 	@Override
 	int getFootprintSize();
+
+	@Import("stats")
+	@Override
+	int[] getStats();
 }
