@@ -531,6 +531,12 @@ public interface Actor extends Renderable, SceneEntity
 	 */
 	void setDead(boolean dead);
 
+	/**
+	 * Get the height offset of the actor from their current animation
+	 * @return
+	 */
+	int getAnimationHeightOffset();
+
 	boolean isMoving();
 
 	default boolean isAnimating()
