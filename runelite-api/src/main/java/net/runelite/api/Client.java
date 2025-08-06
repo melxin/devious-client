@@ -888,7 +888,7 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Gets the value of a given VarClientInt
 	 *
-	 * @param var the {@link VarClientInt}
+	 * @param var the {@link net.runelite.api.gameval.VarClientID}
 	 * @return the value
 	 */
 	int getVarcIntValue(@VarCInt int var);
@@ -896,7 +896,7 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Gets the value of a given VarClientStr
 	 *
-	 * @param var the {@link VarClientStr}
+	 * @param var the {@link net.runelite.api.gameval.VarClientID}
 	 * @return the value
 	 */
 	String getVarcStrValue(@VarCStr int var);
@@ -904,7 +904,7 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Sets a VarClientString to the passed value
 	 *
-	 * @param var the {@link VarClientStr}
+	 * @param var the {@link net.runelite.api.gameval.VarClientID}
 	 * @param value the new value
 	 */
 	void setVarcStrValue(@VarCStr int var, String value);
@@ -912,7 +912,7 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Sets a VarClientInt to the passed value
 	 *
-	 * @param var the {@link VarClientInt}
+	 * @param var the {@link net.runelite.api.gameval.VarClientID}
 	 * @param value the new value
 	 */
 	void setVarcIntValue(@VarCInt int var, int value);
