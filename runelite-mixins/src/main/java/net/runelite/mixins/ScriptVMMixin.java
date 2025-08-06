@@ -46,6 +46,7 @@ import static net.runelite.cache.script.Opcodes.CAM_FORCEANGLE;
 import static net.runelite.cache.script.Opcodes.INVOKE;
 import static net.runelite.cache.script.Opcodes.RETURN;
 import static net.runelite.cache.script.RuneLiteOpcodes.RUNELITE_EXECUTE;
+import net.runelite.rs.api.RSDynamicArray;
 
 @Mixin(RSClient.class)
 public abstract class ScriptVMMixin implements RSClient
@@ -258,13 +259,15 @@ public abstract class ScriptVMMixin implements RSClient
 	@Override
 	public int getArraySizes(int arrayId)
 	{
-		return client.getArraySizes()[arrayId];
+		final RSDynamicArray array = (RSDynamicArray) client.getObjectLocals()[arrayId];
+		return array.getSize();
 	}
 
 	@Inject
 	@Override
 	public int[] getArray(int arrayId)
 	{
-		return client.getArrays()[arrayId];
+		final RSDynamicArray array = (RSDynamicArray) client.getObjectLocals()[arrayId];
+		return array.getArray();
 	}
 }

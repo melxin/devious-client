@@ -111,7 +111,6 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.api.overlay.OverlayIndex;
 import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetConfig;
 import net.runelite.api.widgets.WidgetConfigNode;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
@@ -159,6 +158,7 @@ import net.runelite.rs.api.RSTile;
 import net.runelite.rs.api.RSTileItem;
 import net.runelite.rs.api.RSUsername;
 import net.runelite.rs.api.RSWidget;
+import net.runelite.rs.api.RSWidgetConfigNode;
 import net.runelite.rs.api.RSWorld;
 import net.runelite.rs.api.RSWorldView;
 import com.google.common.primitives.Ints;
@@ -1293,7 +1293,7 @@ public abstract class RSClientMixin implements RSClient
 	public RSSpritePixels createItemSprite(int itemId, int quantity, int border, int shadowColor, int stackable, boolean noted)
 	{
 		assert isClientThread() : "createItemSprite must be called on client thread";
-		return createRSItemSprite(itemId, quantity, border, shadowColor, stackable, noted);
+		return createRSItemSprite(itemId, quantity, border, shadowColor, stackable, noted, 36, 32);
 	}
 
 	@Inject
@@ -1541,6 +1541,11 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public static void settingsChanged(int idx)
 	{
+		if (idx == -1)
+		{
+			return;
+		}
+
 		// Varp changed
 		VarbitChanged varbitChanged = new VarbitChanged();
 		varbitChanged.setVarpId(idx);
@@ -2354,7 +2359,7 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@Replace("getWidgetFlags")
+	/*@Replace("getWidgetFlags")
 	public static int getWidgetFlags(Widget widget)
 	{
 		WidgetConfigNode widgetConfigNode = (WidgetConfigNode) client.getWidgetFlags().get(((long) widget.getId() << 32) + (long) widget.getIndex());
@@ -2376,6 +2381,25 @@ public abstract class RSClientMixin implements RSClient
 		}
 
 		return widgetClickMask;
+	}*/
+
+	@Inject
+	@Override
+	@Nullable
+	public WidgetConfigNode getWidgetConfig(Widget w)
+	{
+		final RSWidgetConfigNode rsWidgetConfigNode = (RSWidgetConfigNode) client.getWidgetFlags().get((long) w.getId());
+		final int idx = w.getIndex();
+
+		for (RSWidgetConfigNode wcNode = rsWidgetConfigNode; wcNode != null; wcNode = wcNode.getNextWidgetConfigNode())
+		{
+			if (idx >= wcNode.getStart() && idx <= wcNode.getEnd())
+			{
+				return wcNode;
+			}
+		}
+
+		return null;
 	}
 
 	@Inject

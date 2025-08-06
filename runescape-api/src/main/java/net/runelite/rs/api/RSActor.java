@@ -68,32 +68,38 @@ public interface RSActor extends RSRenderable, Actor
 
 	// Animation
 
-	@Import("sequence")
-	int getRSAnimation();
+	@Import("poseAnimationSequence")
+	RSAnimationSequence getPoseAnimationSequence();
 
-	@Import("sequence")
-	@Override
-	void setAnimation(int animation);
+	@Import("animationSequence")
+	RSAnimationSequence getAnimationSequence();
 
-	@Import("sequenceFrame")
-	@Override
-	int getAnimationFrame();
+	//@Import("sequence")
+	//int getRSAnimation();
 
-	@Import("sequenceFrame")
-	@Override
-	int getActionFrame();
+	//@Import("sequence")
+	//@Override
+	//void setAnimation(int animation);
 
-	@Import("sequenceFrame")
-	@Override
-	void setAnimationFrame(int frame);
+	//@Import("sequenceFrame")
+	//@Override
+	//int getAnimationFrame();
 
-	@Import("sequenceFrame")
-	@Override
-	void setActionFrame(int frame);
+	//@Import("sequenceFrame")
+	//@Override
+	//int getActionFrame();
 
-	@Import("sequenceFrameCycle")
-	@Override
-	int getActionFrameCycle();
+	//@Import("sequenceFrame")
+	//@Override
+	//void setAnimationFrame(int frame);
+
+	//@Import("sequenceFrame")
+	//@Override
+	//void setActionFrame(int frame);
+
+	//@Import("sequenceFrameCycle")
+	//@Override
+	//int getActionFrameCycle();
 
 	// Spot animation (aka graphic)
 
@@ -102,7 +108,7 @@ public interface RSActor extends RSRenderable, Actor
 	RSIterableNodeHashTable getSpotAnims();
 
 	@Construct
-	RSActorSpotAnim newActorSpotAnim(int id, int height, int delay, int frame);
+	RSActorSpotAnim newActorSpotAnim(int id, int height, int delay);
 
 	@Import("graphicsCount")
 	int getGraphicsCount();
@@ -148,22 +154,22 @@ public interface RSActor extends RSRenderable, Actor
 
 	// Movement animation (aka poseAnimation)
 
-	@Import("movementSequence")
-	@Override
-	int getPoseAnimation();
+	//@Import("movementSequence")
+	//@Override
+	//int getPoseAnimation();
 
-	@Import("movementSequence")
-	@Override
-	void setPoseAnimation(int animation);
+	//@Import("movementSequence")
+	//@Override
+	//void setPoseAnimation(int animation);
 
-	@Import("movementFrame")
+	//@Import("movementFrame")
 	int getPoseFrame();
 
-	@Import("movementFrame")
+	//@Import("movementFrame")
 	void setPoseFrame(int frame);
 
-	@Import("movementFrameCycle")
-	int getPoseFrameCycle();
+	//@Import("movementFrameCycle")
+	//int getPoseFrameCycle();
 
 	@Import("defaultHeight")
 	@Override
