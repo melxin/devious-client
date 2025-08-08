@@ -151,7 +151,8 @@ public class Model extends Renderable {
 	@Export("faceTextures")
 	short[] faceTextures;
 	@ObfuscatedName("cj")
-	byte[] field2893;
+	@Export("faceBias")
+	byte[] faceBias;
 	@ObfuscatedName("cm")
 	public byte field2878;
 	@ObfuscatedName("cu")
@@ -303,7 +304,7 @@ public class Model extends Renderable {
 		this.faceAlphas = var1.faceAlphas;
 		this.textureFaces = var1.textureFaces;
 		this.faceTextures = var1.faceTextures;
-		this.field2893 = var1.field2893;
+		this.faceBias = var1.faceBias;
 		this.field2878 = var1.field2878;
 		this.texIndices1 = var1.texIndices1;
 		this.texIndices2 = var1.texIndices2;
@@ -398,9 +399,9 @@ public class Model extends Renderable {
 			Arrays.fill(this.textureFaces, (byte)-1);
 		}
 
-		if (this.field2893 == null && var1.field2893 != null) {
-			this.field2893 = new byte[var2];
-			Arrays.fill(this.field2893, (byte)0);
+		if (this.faceBias == null && var1.faceBias != null) {
+			this.faceBias = new byte[var2];
+			Arrays.fill(this.faceBias, (byte)0);
 		}
 
 	}
@@ -441,8 +442,8 @@ public class Model extends Renderable {
 					}
 				}
 
-				if (this.field2893 != null && var1.field2893 != null) {
-					this.field2893[this.indicesCount] = var1.field2893[var2];
+				if (this.faceBias != null && var1.faceBias != null) {
+					this.faceBias[this.indicesCount] = var1.faceBias[var2];
 				}
 
 				++this.indicesCount;
@@ -615,7 +616,7 @@ public class Model extends Renderable {
 		var2.faceRenderPriorities = this.faceRenderPriorities;
 		var2.textureFaces = this.textureFaces;
 		var2.faceTextures = this.faceTextures;
-		var2.field2893 = this.field2893;
+		var2.faceBias = this.faceBias;
 		var2.field2878 = this.field2878;
 		var2.texIndices1 = this.texIndices1;
 		var2.texIndices2 = this.texIndices2;
@@ -1830,7 +1831,7 @@ public class Model extends Renderable {
 				Rasterizer3D.clips.currentFaceAlpha = (this.faceAlphas[var1] == -1 ? 253 : this.faceAlphas[var1]) & 255;
 			}
 
-			int var5 = this.field2893 == null ? 0 : this.field2893[var1] * 2;
+			int var5 = this.faceBias == null ? 0 : this.faceBias[var1] * 2;
 			float var6 = ClanSettings.method3890(field2828[var2] - (float)var5);
 			float var7 = ClanSettings.method3890(field2828[var3] - (float)var5);
 			float var8 = ClanSettings.method3890(field2828[var4] - (float)var5);
@@ -1985,7 +1986,7 @@ public class Model extends Renderable {
 		var14 = field2860[0];
 		int var15 = field2860[1];
 		int var16 = field2860[2];
-		int var17 = this.field2893 == null ? 0 : this.field2893[var1] * 2;
+		int var17 = this.faceBias == null ? 0 : this.faceBias[var1] * 2;
 		float var18 = ClanSettings.method3890(field2853[0] - (float)var17);
 		float var19 = ClanSettings.method3890(field2853[1] - (float)var17);
 		float var20 = ClanSettings.method3890(field2853[2] - (float)var17);

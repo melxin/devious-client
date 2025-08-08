@@ -2328,7 +2328,7 @@ public class ModelData extends Renderable {
 		var8.faceTextures = this.faceTextures;
 		var8.field2883 = this.field2504;
 		var8.field2894 = this.field2505;
-		var8.field2893 = this.field2499;
+		var8.faceBias = this.field2499;
 		return var8;
 	}
 

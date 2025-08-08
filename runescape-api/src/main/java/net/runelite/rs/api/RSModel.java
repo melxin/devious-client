@@ -140,6 +140,10 @@ public interface RSModel extends RSRenderable, Model
 	@Override
 	short[] getFaceTextures();
 
+	@Import("faceBias")
+	@Override
+	byte[] getFaceBias();
+
 	@Import("xzRadius")
 	@Override
 	int getXYZMag();
