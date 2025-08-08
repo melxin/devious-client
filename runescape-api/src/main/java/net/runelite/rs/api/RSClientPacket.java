@@ -118,14 +118,14 @@ public interface RSClientPacket extends ClientPacket
 	@Import("DOCHEAT")
 	RSClientPacket DOCHEAT();
 
-	@Import("IF_BUTTON9")
-	RSClientPacket IF_BUTTON9();
+	//@Import("IF_BUTTON9")
+	//RSClientPacket IF_BUTTON9();
 
 	@Import("CLAN_KICKUSER")
 	RSClientPacket CLAN_KICKUSER();
 
-	@Import("IF_BUTTON8")
-	RSClientPacket IF_BUTTON8();
+	//@Import("IF_BUTTON8")
+	//RSClientPacket IF_BUTTON8();
 
 	@Import("OPOBJ5")
 	RSClientPacket OPOBJ5();
@@ -133,11 +133,11 @@ public interface RSClientPacket extends ClientPacket
 	@Import("IGNORE_DELUSER")
 	RSClientPacket IGNORE_DELUSER();
 
-	@Import("IF_BUTTON5")
-	RSClientPacket IF_BUTTON5();
+	//@Import("IF_BUTTON5")
+	//RSClientPacket IF_BUTTON5();
 
-	@Import("IF_BUTTON4")
-	RSClientPacket IF_BUTTON4();
+	//@Import("IF_BUTTON4")
+	//RSClientPacket IF_BUTTON4();
 
 	@Import("OPOBJ4")
 	RSClientPacket OPOBJ4();
@@ -145,8 +145,8 @@ public interface RSClientPacket extends ClientPacket
 	@Import("OPOBJ3")
 	RSClientPacket OPOBJ3();
 
-	@Import("IF_BUTTON7")
-	RSClientPacket IF_BUTTON7();
+	//@Import("IF_BUTTON7")
+	//RSClientPacket IF_BUTTON7();
 
 	@Import("CHAT_SETFILTER")
 	RSClientPacket CHAT_SETFILTER();
@@ -154,8 +154,8 @@ public interface RSClientPacket extends ClientPacket
 	@Import("OPOBJ2")
 	RSClientPacket OPOBJ2();
 
-	@Import("IF_BUTTON6")
-	RSClientPacket IF_BUTTON6();
+	//@Import("IF_BUTTON6")
+	//RSClientPacket IF_BUTTON6();
 
 	@Import("OPHELDD")
 	RSClientPacket OPHELDD();
@@ -208,23 +208,23 @@ public interface RSClientPacket extends ClientPacket
 	@Import("RESUME_STRINGDIALOG")
 	RSClientPacket RESUME_STRINGDIALOG();
 
-	@Import("IF_BUTTON1")
-	RSClientPacket IF_BUTTON1();
+	//@Import("IF_BUTTON1")
+	//RSClientPacket IF_BUTTON1();
 
 	@Import("MOVE_GAMECLICK")
 	RSClientPacket MOVE_GAMECLICK();
 
-	@Import("IF_BUTTON3")
-	RSClientPacket IF_BUTTON3();
+	//@Import("IF_BUTTON3")
+	//RSClientPacket IF_BUTTON3();
 
-	@Import("IF_BUTTON2")
-	RSClientPacket IF_BUTTON2();
+	//@Import("IF_BUTTON2")
+	//RSClientPacket IF_BUTTON2();
 
 	@Import("EVENT_MOUSE_CLICK")
 	RSClientPacket EVENT_MOUSE_CLICK();
 
-	@Import("IF_BUTTON10")
-	RSClientPacket IF_BUTTON10();
+	//@Import("IF_BUTTON10")
+	//RSClientPacket IF_BUTTON10();
 
 	@Import("IF_BUTTONX")
 	RSClientPacket IF_BUTTONX();
