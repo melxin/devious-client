@@ -247,7 +247,7 @@ public class PluginListPanel extends PluginPanel
 			final Plugin plugin = listItem.getPluginConfig().getPlugin();
 			if (plugin != null)
 			{
-				listItem.setPluginEnabled(pluginManager.isPluginEnabled(plugin));
+				listItem.setPluginEnabled(pluginManager.isPluginActive(plugin));
 			}
 		});
 
