@@ -4,55 +4,68 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("of")
+@ObfuscatedName("nw")
 @Implements("WidgetConfigNode")
 public class WidgetConfigNode extends Node {
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lru;"
+	)
+	@Export("ItemDefinition_fontPlain11")
+	static Font ItemDefinition_fontPlain11;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 841739245
+		intValue = -84860095
+	)
+	@Export("start")
+	final int start;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1851820471
+	)
+	@Export("end")
+	final int end;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = -2073771595
 	)
 	@Export("clickMask")
 	final int clickMask;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = 1616303513
+		intValue = -368810727
 	)
 	@Export("opMask")
 	final int opMask;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Lnw;"
+	)
+	@Export("nextWidgetConfigNode")
+	WidgetConfigNode nextWidgetConfigNode;
 
-	public WidgetConfigNode(int var1, int var2) {
-		this.clickMask = var1;
-		this.opMask = var2;
+	WidgetConfigNode(int var1, int var2, int var3, int var4) {
+		this.start = var1;
+		this.end = var2;
+		this.clickMask = var3;
+		this.opMask = var4;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "290260604"
+		garbageValue = "-970726199"
 	)
-	public int method7725() {
+	public int method7475() {
 		return this.clickMask;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "-71"
+		garbageValue = "40"
 	)
-	public int method7726() {
+	public int method7474() {
 		return this.opMask;
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(Lps;Lps;ZLrf;B)V",
-		garbageValue = "23"
-	)
-	public static void method7730(AbstractArchive var0, AbstractArchive var1, boolean var2, Font var3) {
-		Decimator.ItemDefinition_archive = var0;
-		FadeInTask.ItemDefinition_modelArchive = var1;
-		Script.ItemDefinition_inMembersWorld = var2;
-		class550.ItemDefinition_fileCount = Decimator.ItemDefinition_archive.getGroupFileCount(10);
-		class603.ItemDefinition_fontPlain11 = var3;
 	}
 }

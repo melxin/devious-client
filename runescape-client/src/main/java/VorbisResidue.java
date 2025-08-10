@@ -3,48 +3,50 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("do")
+@ObfuscatedName("dl")
 @Implements("VorbisResidue")
 public class VorbisResidue {
-	@ObfuscatedName("ap")
+	@ObfuscatedName("al")
 	@Export("residueType")
 	int residueType;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ab")
 	@Export("begin")
 	int begin;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ac")
 	@Export("end")
 	int end;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("av")
 	@Export("partitionSize")
 	int partitionSize;
-	@ObfuscatedName("al")
+	@ObfuscatedName("au")
 	@Export("classifications")
 	int classifications;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("as")
 	@Export("classbook")
 	int classbook;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ah")
 	@Export("cascade")
 	int[] cascade;
 
-	VorbisResidue() {
-		class114 var1 = VorbisSample.field1422;
-		this.residueType = var1.method3296(16);
-		this.begin = var1.method3296(24);
-		this.end = var1.method3296(24);
-		this.partitionSize = var1.method3296(24) + 1;
-		this.classifications = var1.method3296(6) + 1;
-		this.classbook = var1.method3296(8);
+	@ObfuscatedSignature(
+		descriptor = "(Leh;)V"
+	)
+	VorbisResidue(class114 var1) {
+		this.residueType = var1.method3409(16);
+		this.begin = var1.method3409(24);
+		this.end = var1.method3409(24);
+		this.partitionSize = var1.method3409(24) + 1;
+		this.classifications = var1.method3409(6) + 1;
+		this.classbook = var1.method3409(8);
 		int[] var2 = new int[this.classifications];
 
 		int var3;
 		for (var3 = 0; var3 < this.classifications; ++var3) {
 			int var4 = 0;
-			int var5 = var1.method3296(3);
-			boolean var6 = var1.method3295() != 0;
+			int var5 = var1.method3409(3);
+			boolean var6 = var1.method3408() != 0;
 			if (var6) {
-				var4 = var1.method3296(5);
+				var4 = var1.method3409(5);
 			}
 
 			var2[var3] = var4 << 3 | var5;
@@ -53,78 +55,78 @@ public class VorbisResidue {
 		this.cascade = new int[this.classifications * 8];
 
 		for (var3 = 0; var3 < this.classifications * 8; ++var3) {
-			this.cascade[var3] = (var2[var3 >> 3] & 1 << (var3 & 7)) != 0 ? var1.method3296(8) : -1;
+			this.cascade[var3] = (var2[var3 >> 3] & 1 << (var3 & 7)) != 0 ? var1.method3409(8) : -1;
 		}
 
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "([FIZLef;)V"
+		descriptor = "([FIZLeh;[Leo;)V"
 	)
-	void method3007(float[] var1, int var2, boolean var3, class114 var4) {
-		int var5;
-		for (var5 = 0; var5 < var2; ++var5) {
-			var1[var5] = 0.0F;
+	void method3096(float[] var1, int var2, boolean var3, class114 var4, VorbisCodebook[] var5) {
+		int var6;
+		for (var6 = 0; var6 < var2; ++var6) {
+			var1[var6] = 0.0F;
 		}
 
 		if (!var3) {
-			var5 = VorbisSample.field1393[this.classbook].field1381;
-			int var6 = this.end - this.begin;
-			int var7 = var6 / this.partitionSize;
-			int[] var8 = new int[var7];
+			var6 = var5[this.classbook].field1395;
+			int var7 = this.end - this.begin;
+			int var8 = var7 / this.partitionSize;
+			int[] var9 = new int[var8];
 
-			for (int var9 = 0; var9 < 8; ++var9) {
-				int var10 = 0;
+			for (int var10 = 0; var10 < 8; ++var10) {
+				int var11 = 0;
 
-				while (var10 < var7) {
-					int var11;
+				while (var11 < var8) {
 					int var12;
-					if (var9 == 0) {
-						var11 = VorbisSample.field1393[this.classbook].method3206(var4);
+					int var13;
+					if (var10 == 0) {
+						var12 = var5[this.classbook].method3291(var4);
 
-						for (var12 = var5 - 1; var12 >= 0; --var12) {
-							if (var10 + var12 < var7) {
-								var8[var10 + var12] = var11 % this.classifications;
+						for (var13 = var6 - 1; var13 >= 0; --var13) {
+							if (var11 + var13 < var8) {
+								var9[var11 + var13] = var12 % this.classifications;
 							}
 
-							var11 /= this.classifications;
+							var12 /= this.classifications;
 						}
 					}
 
-					for (var11 = 0; var11 < var5; ++var11) {
-						var12 = var8[var10];
-						int var13 = this.cascade[var9 + var12 * 8];
-						if (var13 >= 0) {
-							int var14 = var10 * this.partitionSize + this.begin;
-							VorbisCodebook var15 = VorbisSample.field1393[var13];
-							int var16;
+					for (var12 = 0; var12 < var6; ++var12) {
+						var13 = var9[var11];
+						int var14 = this.cascade[var10 + var13 * 8];
+						if (var14 >= 0) {
+							int var15 = var11 * this.partitionSize + this.begin;
+							VorbisCodebook var16 = var5[var14];
+							int var17;
 							if (this.residueType == 0) {
-								var16 = this.partitionSize / var15.field1381;
+								var17 = this.partitionSize / var16.field1395;
 
-								for (int var20 = 0; var20 < var16; ++var20) {
-									float[] var21 = var15.method3207(var4);
+								for (int var21 = 0; var21 < var17; ++var21) {
+									float[] var22 = var16.method3294(var4);
 
-									for (int var19 = 0; var19 < var15.field1381; ++var19) {
-										var1[var14 + var20 + var19 * var16] += var21[var19];
+									for (int var20 = 0; var20 < var16.field1395; ++var20) {
+										var1[var15 + var21 + var20 * var17] += var22[var20];
 									}
 								}
 							} else {
-								var16 = 0;
+								var17 = 0;
 
-								while (var16 < this.partitionSize) {
-									float[] var17 = var15.method3207(var4);
+								while (var17 < this.partitionSize) {
+									float[] var18 = var16.method3294(var4);
 
-									for (int var18 = 0; var18 < var15.field1381; ++var18) {
-										var1[var14 + var16] += var17[var18];
-										++var16;
+									for (int var19 = 0; var19 < var16.field1395; ++var19) {
+										var1[var15 + var17] += var18[var19];
+										++var17;
 									}
 								}
 							}
 						}
 
-						++var10;
-						if (var10 >= var7) {
+						++var11;
+						if (var11 >= var8) {
 							break;
 						}
 					}
