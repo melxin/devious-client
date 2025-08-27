@@ -1114,6 +1114,11 @@ public interface Client extends OAuthApi, GameEngine
 	List<Integer> getDBRowsByValue(int table, int column, int tupleIndex, Object value);
 
 	/**
+	 * Gets all rows in a DBTable
+	 */
+	List<Integer> getDBTableRows(int table);
+
+	/**
 	 * Get a map element config by id
 	 *
 	 * @param id the id
