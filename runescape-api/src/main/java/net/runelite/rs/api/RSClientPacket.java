@@ -223,9 +223,6 @@ public interface RSClientPacket extends ClientPacket
 	@Import("EVENT_MOUSE_CLICK")
 	RSClientPacket EVENT_MOUSE_CLICK();
 
-	@Import("EVENT_MOUSE_CLICK_V2")
-	RSClientPacket EVENT_MOUSE_CLICK_V2();
-
 	//@Import("IF_BUTTON10")
 	//RSClientPacket IF_BUTTON10();
 
