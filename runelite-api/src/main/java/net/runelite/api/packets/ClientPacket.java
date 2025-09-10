@@ -148,8 +148,6 @@ public interface ClientPacket
 
 	ClientPacket EVENT_MOUSE_CLICK();
 
-	ClientPacket EVENT_MOUSE_CLICK_V2();
-
 	ClientPacket IF_BUTTON10();
 
 	ClientPacket IF_BUTTONX();

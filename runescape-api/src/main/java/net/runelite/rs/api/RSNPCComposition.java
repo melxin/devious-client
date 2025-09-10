@@ -14,6 +14,10 @@ public interface RSNPCComposition extends NPCComposition
 	@Override
 	int[] getModels();
 
+	@Import("chatHeadModels")
+	@Override
+	int[] getChatheadModels();
+
 	@Import("actions")
 	@Override
 	String[] getActions();
@@ -36,9 +40,9 @@ public interface RSNPCComposition extends NPCComposition
 	@Override
 	boolean isMinimapVisible();
 
-	@Import("isVisible")
-	@Override
-	boolean isVisible();
+	//@Import("isVisible")
+	//@Override
+	//boolean isVisible();
 
 	@Import("id")
 	@Override
