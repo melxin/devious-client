@@ -44,9 +44,9 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.ui.ClientPanel;
 import net.runelite.client.ui.ClientUI;
 import net.runelite.client.ui.ContainableFrame;
+import net.runelite.client.ui.OSXFullScreenAdapter;
 import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.OSType;
-import net.runelite.client.util.OSXUtil;
 import net.runelite.client.util.WinUtil;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
@@ -65,6 +65,7 @@ import java.applet.Applet;
 import java.awt.Canvas;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics;
@@ -235,7 +236,10 @@ public class MinimalUI
 			frame = new ContainableFrame();
 
 			// Try to enable fullscreen on OSX
-			OSXUtil.tryEnableFullscreen(frame);
+			if (OSType.getOSType() == OSType.MacOS)
+			{
+				OSXFullScreenAdapter.install(frame);
+			}
 
 			frame.setTitle(RuneLiteProperties.getTitle());
 			frame.setIconImage(ICON);
@@ -678,7 +682,8 @@ public class MinimalUI
 		switch (OSType.getOSType())
 		{
 			case MacOS:
-				OSXUtil.requestForeground();
+				Desktop.getDesktop().requestForeground(true);
+				frame.setState(Frame.NORMAL);
 				break;
 			case Windows:
 				WinUtil.requestForeground(frame);

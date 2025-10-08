@@ -33,7 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
-class OSXFullScreenAdapter extends FullScreenAdapter
+public class OSXFullScreenAdapter extends FullScreenAdapter
 {
 	private final Frame frame;
 
@@ -51,7 +51,7 @@ class OSXFullScreenAdapter extends FullScreenAdapter
 		frame.setExtendedState(Frame.NORMAL);
 	}
 
-	static void install(Frame frame)
+	public static void install(Frame frame)
 	{
 		FullScreenUtilities.addFullScreenListenerTo(frame, new OSXFullScreenAdapter(frame));
 	}
