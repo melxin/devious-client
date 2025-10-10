@@ -1692,6 +1692,12 @@ public interface RSClient extends RSGameEngine, Client
 	 * Cached random.dat
 	 */
 
+	@Import("randomDatData")
+	byte[] getRSRandomDat();
+
+	@Import("randomDatData")
+	void setRSRandomDat(byte[] data);
+
 	byte[] getCachedRandomDatData(String username);
 	void writeCachedRandomDatData(String username, byte[] data);
 	boolean useCachedRandomDat();
