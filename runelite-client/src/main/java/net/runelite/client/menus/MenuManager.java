@@ -79,7 +79,10 @@ public class MenuManager
 	 */
 	public void addManagedCustomMenu(WidgetMenuOption customMenuOption, Consumer<MenuEntry> callback)
 	{
-		managedMenuOptions.put(customMenuOption.getWidgetId(), customMenuOption);
+		for (int id : customMenuOption.getWidgetIds())
+		{
+			managedMenuOptions.put(id, customMenuOption);
+		}
 		customMenuOption.callback = callback;
 	}
 
@@ -90,7 +93,10 @@ public class MenuManager
 	 */
 	public void removeManagedCustomMenu(WidgetMenuOption customMenuOption)
 	{
-		managedMenuOptions.remove(customMenuOption.getWidgetId(), customMenuOption);
+		for (int id : customMenuOption.getWidgetIds())
+		{
+			managedMenuOptions.remove(id, customMenuOption);
+		}
 	}
 
 	private static boolean menuContainsCustomMenu(MenuEntry[] menuEntries, WidgetMenuOption customMenuOption)
@@ -165,8 +171,7 @@ public class MenuManager
 				WidgetMenuOptionClicked widgetMenuOptionClicked = new WidgetMenuOptionClicked();
 				widgetMenuOptionClicked.setMenuOption(event.getMenuOption());
 				widgetMenuOptionClicked.setMenuTarget(event.getMenuTarget());
-				widgetMenuOptionClicked.setWidget(curMenuOption.getWidget());
-				widgetMenuOptionClicked.setWidgetId(curMenuOption.getWidgetId());
+				widgetMenuOptionClicked.setWidgetIds(curMenuOption.getWidgetIds());
 
 				eventBus.post(widgetMenuOptionClicked);
 

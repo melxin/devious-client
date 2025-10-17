@@ -39,10 +39,10 @@ public class MousePackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.EVENT_MOUSE_CLICK(), client.getPacketWriter().getIsaacCipher());
+		packetBufferNode.getPacketBuffer().writeByteSub(0);
 		packetBufferNode.getPacketBuffer().writeShortAdd(x);
-		packetBufferNode.getPacketBuffer().writeShort(mouseInfo);
+		packetBufferNode.getPacketBuffer().writeShortLE(mouseInfo);
 		packetBufferNode.getPacketBuffer().writeShortLE(y);
-		packetBufferNode.getPacketBuffer().writeByteNeg(0);
 		return packetBufferNode;
 	}
 }

@@ -70,12 +70,12 @@ potion_store=48
 incinerator=49
 incinerator_confirm=50
 potionstore_content=52
-equipment_parent=79
-equipment_set_bonus=120
-settings_button=124
-equipment_button=125
-popup=127
-equipment_stat_bonus=133
+equipment_parent=80
+equipment_set_bonus=121
+settings_button=125
+equipment_button=126
+popup=128
+equipment_stat_bonus=134
 
 [bank_inventory]
 id=15
@@ -342,10 +342,10 @@ teleport_button=26
 [fairy_ring_panel]
 id=381
 header=2
-list=7
-favorites=8
-separator=9
-scrollbar=152
+list=8
+favorites=9
+separator=10
+scrollbar=166
 
 [fixed_viewport]
 id=548
@@ -563,8 +563,8 @@ run_orb_text=28
 spec_orb=33
 worldmap_orb=48
 wiki_banner_parent=49
-wiki_banner=50
-worldmap_options=53
+wiki_banner=51
+worldmap_options=54
 
 [mlm]
 id=382
