@@ -135,6 +135,11 @@ public class MinimapPlugin extends Plugin
 
 	private void updateMinimapWidgetVisibility(boolean hide)
 	{
+		if (client.getGameState() != GameState.LOGGED_IN)
+		{
+			return;
+		}
+
 		boolean vanillaHideMinimap = client.getVarbitValue(VarbitID.MINIMAP_TOGGLE) == 1;
 
 		setHidden(InterfaceID.ToplevelOsrsStretch.MAP_MINIMAP, hide || vanillaHideMinimap);
