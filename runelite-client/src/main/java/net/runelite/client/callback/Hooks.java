@@ -36,7 +36,6 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
-import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -45,7 +44,6 @@ import net.runelite.api.Client;
 import net.runelite.api.MainBufferProvider;
 import net.runelite.api.Renderable;
 import net.runelite.api.Skill;
-import net.runelite.api.events.Draw;
 import net.runelite.api.worldmap.WorldMapRenderer;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.FakeXpDrop;
@@ -102,6 +100,8 @@ public class Hooks implements Callbacks
 	private final Notifier notifier;
 	private final ClientUI clientUi;
 
+	private final RenderCallbackManager renderCallbackManager;
+
 	private Dimension lastStretchedDimensions;
 	private VolatileImage stretchedImage;
 	private Graphics2D stretchedGraphics;
@@ -113,13 +113,21 @@ public class Hooks implements Callbacks
 	private static MainBufferProvider lastMainBufferProvider;
 	private static Graphics2D lastGraphics;
 
+	/**
+	 * use {@link RenderCallbackManager} instead
+	 */
 	@FunctionalInterface
-	public interface RenderableDrawListener
+	@Deprecated
+	public interface RenderableDrawListener extends RenderCallback
 	{
 		boolean draw(Renderable renderable, boolean ui);
-	}
 
-	private final List<RenderableDrawListener> renderableDrawListeners = new ArrayList<>();
+		@Override
+		default boolean drawEntity(Renderable renderable, boolean ui)
+		{
+			return draw(renderable, ui);
+		}
+	}
 
 	/**
 	 * Get the Graphics2D for the MainBufferProvider image
@@ -158,7 +166,8 @@ public class Hooks implements Callbacks
 		ClientThread clientThread,
 		DrawManager drawManager,
 		Notifier notifier,
-		ClientUI clientUi
+		ClientUI clientUi,
+		RenderCallbackManager renderCallbackManager
 	)
 	{
 		this.client = client;
@@ -174,6 +183,7 @@ public class Hooks implements Callbacks
 		this.drawManager = drawManager;
 		this.notifier = notifier;
 		this.clientUi = clientUi;
+		this.renderCallbackManager = renderCallbackManager;
 		eventBus.register(this);
 	}
 
@@ -352,10 +362,6 @@ public class Hooks implements Callbacks
 		}
 
 		final Graphics2D graphics2d = getGraphics(mainBufferProvider);
-
-		Draw draw = Draw.getInstance();
-		draw.setGraphics(graphics2d);
-		eventBus.post(draw);
 
 		try
 		{
@@ -595,14 +601,22 @@ public class Hooks implements Callbacks
 		eventBus.post(fakeXpDrop);
 	}
 
+	/**
+	 * use {@link RenderCallbackManager#register(RenderCallback)} instead
+	 */
+	@Deprecated
 	public void registerRenderableDrawListener(RenderableDrawListener listener)
 	{
-		renderableDrawListeners.add(listener);
+		renderCallbackManager.register(listener);
 	}
 
+	/**
+	 * use {@link RenderCallbackManager#unregister(RenderCallback)} instead
+	 */
+	@Deprecated
 	public void unregisterRenderableDrawListener(RenderableDrawListener listener)
 	{
-		renderableDrawListeners.remove(listener);
+		renderCallbackManager.unregister(listener);
 	}
 
 	@Override
@@ -610,17 +624,11 @@ public class Hooks implements Callbacks
 	{
 		try
 		{
-			for (RenderableDrawListener renderableDrawListener : renderableDrawListeners)
-			{
-				if (!renderableDrawListener.draw(renderable, drawingUi))
-				{
-					return false;
-				}
-			}
+			return renderCallbackManager.drawEntity(renderable, drawingUi);
 		}
 		catch (Exception ex)
 		{
-			log.error("exception from renderable draw listener", ex);
+			log.error("exception from render callback", ex);
 		}
 		return true;
 	}
