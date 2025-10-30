@@ -123,7 +123,7 @@ public class Hooks implements Callbacks
 		boolean draw(Renderable renderable, boolean ui);
 
 		@Override
-		default boolean drawEntity(Renderable renderable, boolean ui)
+		default boolean addEntity(Renderable renderable, boolean ui)
 		{
 			return draw(renderable, ui);
 		}
@@ -624,7 +624,7 @@ public class Hooks implements Callbacks
 	{
 		try
 		{
-			return renderCallbackManager.drawEntity(renderable, drawingUi);
+			return renderCallbackManager.addEntity(renderable, drawingUi);
 		}
 		catch (Exception ex)
 		{
