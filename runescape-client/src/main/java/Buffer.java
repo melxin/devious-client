@@ -663,8 +663,7 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "-1425476520"
 	)
-	@Export("writeIntME")
-	public int writeIntME() {
+	public int method3492() {
 		int var1 = this.packBytesToInt();
 		return var1 >>> 1 ^ -(var1 & 1);
 	}

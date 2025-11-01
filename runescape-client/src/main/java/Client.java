@@ -4304,7 +4304,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							int[] var86 = var66.method10650();
 
 							for (var10 = 0; var10 < var24; ++var10) {
-								var86[var10] = var3.writeIntME();
+								var86[var10] = var3.method3492();
 							}
 
 							var100[var6 + 1] = var66;
