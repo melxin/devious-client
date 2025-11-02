@@ -421,7 +421,8 @@ public abstract class Actor extends Renderable implements CameraFocusableEntity 
 		descriptor = "(I)I",
 		garbageValue = "-903085797"
 	)
-	protected int vmethod5827() {
+	@Export("getAnimationHeightOffset")
+	protected int getAnimationHeightOffset() {
 		AnimationSequence var1 = this.method2507();
 		AnimationSequence var2 = this.method2508(var1);
 		AnimationSequence var3 = var2;

@@ -74,6 +74,10 @@ public interface RSActor extends RSRenderable, Actor, RSCameraFocusableEntity
 	@Import("animationSequence")
 	RSAnimationSequence getAnimationSequence();
 
+	@Import("getAnimationHeightOffset")
+	@Override
+	int getAnimationHeightOffset();
+
 	//@Import("sequence")
 	//int getRSAnimation();
 

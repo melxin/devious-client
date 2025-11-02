@@ -637,13 +637,6 @@ public abstract class RSActorMixin implements RSActor
 
 	@Inject
 	@Override
-	public int getAnimationHeightOffset()
-	{
-		return this.getAnimationSequence().getSequenceDefinition().getAnimationHeightOffset();
-	}
-
-	@Inject
-	@Override
 	public LocalPoint getCameraFocus()
 	{
 		return getLocalLocation();
