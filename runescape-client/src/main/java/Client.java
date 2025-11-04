@@ -3342,7 +3342,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 									var58.method10492(cycle);
 								}
 
-								field315.method11277(var46, var58.getY(), var58.getPlane(), false);
+								field315.method11277(var46, var58.getX(), var58.getY(), false);
 								if (var58.field5537.getSequenceDefinition() != null && var58.field5537.getSequenceDefinition().method4943() != -1) {
 									if (var58.field5523 > 0) {
 										--var58.field5523;
@@ -3543,16 +3543,16 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																			var69 = class330.localPlayer;
 																		}
 
-																		field468 = ((CameraFocusableEntity)var69).getY();
-																		field512 = ((CameraFocusableEntity)var69).getPlane();
+																		field468 = ((CameraFocusableEntity)var69).getX();
+																		field512 = ((CameraFocusableEntity)var69).getY();
 																		if (var66 != Occluder.topLevelWorldView) {
-																			ProjectionCoord var67 = class86.method2932(var66, ((CameraFocusableEntity)var69).getY(), ((CameraFocusableEntity)var69).getPlane());
+																			ProjectionCoord var67 = class86.method2932(var66, ((CameraFocusableEntity)var69).getX(), ((CameraFocusableEntity)var69).getY());
 																			field468 = (int)var67.x;
 																			field512 = (int)var67.y;
 																			var67.release();
 																		}
 
-																		var7 = ((CameraFocusableEntity)var69).getX();
+																		var7 = ((CameraFocusableEntity)var69).getPlane();
 																		if (class40.oculusOrbFocalPointX - field468 >= -500 && class40.oculusOrbFocalPointX - field468 <= 500 && class4.oculusOrbFocalPointY - field512 >= -500 && class4.oculusOrbFocalPointY - field512 <= 500) {
 																			if (field468 != class40.oculusOrbFocalPointX) {
 																				class40.oculusOrbFocalPointX += (field468 - class40.oculusOrbFocalPointX) / 16;
@@ -3601,12 +3601,12 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																			field447 += (var12 - field447) / 80;
 																		}
 
-																		var14 = ((CameraFocusableEntity)var69).getY();
-																		var15 = ((CameraFocusableEntity)var69).getPlane();
+																		var14 = ((CameraFocusableEntity)var69).getX();
+																		var15 = ((CameraFocusableEntity)var69).getY();
 																		var16 = NPCComposition.getTileHeight(var66, var14, var15, var7);
 																		var17 = (WorldEntity)Occluder.topLevelWorldView.worldEntities.get((long)var66.id);
 																		if (var17 != null) {
-																			var16 += NPCComposition.getTileHeight(Occluder.topLevelWorldView, var17.getY(), var17.getPlane(), var17.getX());
+																			var16 += NPCComposition.getTileHeight(Occluder.topLevelWorldView, var17.getX(), var17.getY(), var17.getPlane());
 																		}
 
 																		field469 = var16;

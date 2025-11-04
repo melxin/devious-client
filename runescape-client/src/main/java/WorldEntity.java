@@ -109,8 +109,8 @@ public class WorldEntity extends Node implements CameraFocusableEntity {
 		descriptor = "(I)I",
 		garbageValue = "446304328"
 	)
-	@Export("getX")
-	public int getX() {
+	@Export("getPlane")
+	public int getPlane() {
 		if (this.field5535 != -1) {
 			WorldView var1 = Client.worldViewManager.getWorldView(this.field5535);
 			if (var1 != null) {
@@ -434,8 +434,8 @@ public class WorldEntity extends Node implements CameraFocusableEntity {
 		descriptor = "(I)I",
 		garbageValue = "-1790262579"
 	)
-	@Export("getY")
-	public int getY() {
+	@Export("getX")
+	public int getX() {
 		return this.worldEntityCoord.getX();
 	}
 
@@ -444,8 +444,8 @@ public class WorldEntity extends Node implements CameraFocusableEntity {
 		descriptor = "(I)I",
 		garbageValue = "-727737924"
 	)
-	@Export("getPlane")
-	public int getPlane() {
+	@Export("getY")
+	public int getY() {
 		return this.worldEntityCoord.getY();
 	}
 

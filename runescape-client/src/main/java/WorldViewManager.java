@@ -190,8 +190,8 @@ public class WorldViewManager implements Iterable {
 	ProjectionCoord method2393() {
 		WorldView var1 = this.getWorldView();
 		Player var2 = var1.method2769(Client.localPlayerIndex);
-		ProjectionCoord var3 = class86.method2932(var1, var2.getY(), var2.getPlane());
-		var3.z = (float)var2.getX();
+		ProjectionCoord var3 = class86.method2932(var1, var2.getX(), var2.getY());
+		var3.z = (float)var2.getPlane();
 		return var3;
 	}
 

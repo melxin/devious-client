@@ -105,7 +105,7 @@ public class DevicePcmPlayerProvider implements class105 {
 		int var17 = NPCComposition.getTileHeight(var6, var10, var16, var3);
 		WorldEntity var13 = (WorldEntity)Occluder.topLevelWorldView.worldEntities.get((long)var6.id);
 		if (var13 != null) {
-			var17 += NPCComposition.getTileHeight(Occluder.topLevelWorldView, var13.getY(), var13.getPlane(), var13.getX());
+			var17 += NPCComposition.getTileHeight(Occluder.topLevelWorldView, var13.getX(), var13.getY(), var13.getPlane());
 		}
 
 		var5.z = (float)var17;

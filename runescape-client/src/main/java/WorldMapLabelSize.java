@@ -106,13 +106,13 @@ public class WorldMapLabelSize {
 			var4 = class236.calculateTag(0, 0, 0, 5, false, 0, 0);
 		} else if (var3 && var7 != class406.field4905) {
 			var8 = var7 == class406.field4903;
-			var4 = class236.calculateTag(var1.getX(), Coord.method7692(var1.getY()), Coord.method7692(var1.getPlane()), 4, !var8, var1.plane, var0.id);
+			var4 = class236.calculateTag(var1.getPlane(), Coord.method7692(var1.getX()), Coord.method7692(var1.getY()), 4, !var8, var1.plane, var0.id);
 		}
 
-		var1.worldEntityCoord.setZ(NPCComposition.getTileHeight(var0, var1.getY(), var1.getPlane(), var0.plane));
+		var1.worldEntityCoord.setZ(NPCComposition.getTileHeight(var0, var1.getX(), var1.getY(), var0.plane));
 		var1.worldView.scene.cycle = Client.cycle;
 		var1.initScenePlane(var2);
-		var8 = var0.scene.drawEntity(var0.plane, var1.getY(), var1.getPlane(), var1.getZ(), 60, var1.worldView.scene, var1.method10529(), var4, false);
+		var8 = var0.scene.drawEntity(var0.plane, var1.getX(), var1.getY(), var1.getZ(), 60, var1.worldView.scene, var1.method10529(), var4, false);
 		if (var8 && !var2) {
 			WorldView var9 = var1.worldView;
 			if (Client.renderSelf) {

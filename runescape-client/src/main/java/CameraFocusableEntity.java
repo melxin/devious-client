@@ -11,22 +11,22 @@ public interface CameraFocusableEntity {
 		descriptor = "(I)I",
 		garbageValue = "446304328"
 	)
-	@Export("getX")
-	int getX();
+	@Export("getPlane")
+	int getPlane();
 
 	@ObfuscatedName("dl")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
 		garbageValue = "-1790262579"
 	)
-	@Export("getY")
-	int getY();
+	@Export("getX")
+	int getX();
 
 	@ObfuscatedName("dr")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
 		garbageValue = "-727737924"
 	)
-	@Export("getPlane")
-	int getPlane();
+	@Export("getY")
+	int getY();
 }

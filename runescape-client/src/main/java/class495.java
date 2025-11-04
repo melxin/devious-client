@@ -57,7 +57,7 @@ class class495 implements Comparator {
 			int var5 = var2 + var1.x - 1;
 			int var6 = var2 + var1.y - 1;
 			class563 var7 = StudioGame.method8385();
-			var7.method11207(var0.field5538.method4619(), var0.getY(), var0.getPlane(), var0.method10529());
+			var7.method11207(var0.field5538.method4619(), var0.getX(), var0.getY(), var0.method10529());
 			boolean var8 = GrandExchangeOfferOwnWorldComparator.method828(var7, var3, var4, var5, var6);
 			var7.method11210();
 			return var8;

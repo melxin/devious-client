@@ -181,8 +181,8 @@ public final class Player extends Actor {
 		descriptor = "(I)I",
 		garbageValue = "446304328"
 	)
-	@Export("getX")
-	public int getX() {
+	@Export("getPlane")
+	public int getPlane() {
 		return this.plane;
 	}
 

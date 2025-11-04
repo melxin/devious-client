@@ -229,7 +229,7 @@ public class class62 {
 						WorldView var24 = var23.worldView;
 						if (var24.plane == var23.field5538.method4615()) {
 							if (var18 == -1) {
-								var22 = var23.getX();
+								var22 = var23.getPlane();
 							} else {
 								var22 = var19.field5538.method4615();
 							}

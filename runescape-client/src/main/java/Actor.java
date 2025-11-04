@@ -404,8 +404,8 @@ public abstract class Actor extends Renderable implements CameraFocusableEntity 
 		descriptor = "(I)I",
 		garbageValue = "446304328"
 	)
-	@Export("getX")
-	public int getX() {
+	@Export("getPlane")
+	public int getPlane() {
 		if (this.worldViewId != -1) {
 			WorldView var1 = Client.worldViewManager.getWorldView(this.worldViewId);
 			if (var1 != null) {
@@ -871,8 +871,8 @@ public abstract class Actor extends Renderable implements CameraFocusableEntity 
 		descriptor = "(I)I",
 		garbageValue = "-1790262579"
 	)
-	@Export("getY")
-	public int getY() {
+	@Export("getX")
+	public int getX() {
 		return this.x;
 	}
 
@@ -881,8 +881,8 @@ public abstract class Actor extends Renderable implements CameraFocusableEntity 
 		descriptor = "(I)I",
 		garbageValue = "-727737924"
 	)
-	@Export("getPlane")
-	public int getPlane() {
+	@Export("getY")
+	public int getY() {
 		return this.y;
 	}
 
@@ -893,17 +893,17 @@ public abstract class Actor extends Renderable implements CameraFocusableEntity 
 	)
 	Coord method2519(WorldView var1) {
 		if (var1 == Occluder.topLevelWorldView) {
-			return new Coord(this.getX(), this.getY(), this.getPlane());
+			return new Coord(this.getPlane(), this.getX(), this.getY());
 		} else {
 			WorldEntity var2 = (WorldEntity)Occluder.topLevelWorldView.worldEntities.get((long)var1.id);
 			if (var2 == null) {
-				return new Coord(this.getX(), this.getY(), this.getPlane());
+				return new Coord(this.getPlane(), this.getX(), this.getY());
 			} else {
-				int var3 = var2.getY();
-				int var4 = var2.getPlane();
-				int var5 = var2.getX();
-				int var6 = this.getY() - var2.method10552();
-				int var7 = this.getPlane() - var2.method10508();
+				int var3 = var2.getX();
+				int var4 = var2.getY();
+				int var5 = var2.getPlane();
+				int var6 = this.getX() - var2.method10552();
+				int var7 = this.getY() - var2.method10508();
 				double var8 = (double)(-var2.method10529()) * 3.141592653589793D / 1024.0D;
 				double var10 = Math.cos(var8);
 				double var12 = Math.sin(var8);

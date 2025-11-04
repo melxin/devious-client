@@ -253,8 +253,8 @@ public final class ObjectSound extends Node {
 							break label164;
 						}
 
-						var12 = var1 == null ? var2 : var1.getX();
-						var13 = var7 == null ? var9 : var7.getX();
+						var12 = var1 == null ? var2 : var1.getPlane();
+						var13 = var7 == null ? var9 : var7.getPlane();
 						if (var13 != var12) {
 							var8 = false;
 							break label164;

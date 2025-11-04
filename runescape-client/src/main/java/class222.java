@@ -152,8 +152,8 @@ public class class222 {
 				for (var9 = 0; var9 < var29.field1148.method10038(); ++var9) {
 					WorldEntity var10 = (WorldEntity)var29.worldEntities.get((long)var29.field1148.method10037(var9));
 					if (var10 != null) {
-						var11 = var10.getY() / 32 - Client.field468 / 32;
-						var31 = var10.getPlane() / 32 - Client.field512 / 32;
+						var11 = var10.getX() / 32 - Client.field468 / 32;
+						var31 = var10.getY() / 32 - Client.field512 / 32;
 						var32 = var10.field5538.method4640();
 						var34 = 1;
 						if (!var10.method10502()) {
@@ -205,7 +205,7 @@ public class class222 {
 							var11 = Client.hintArrow.method8454();
 							WorldEntity var12 = (WorldEntity)Occluder.topLevelWorldView.worldEntities.get((long)var11);
 							if (var12 != null) {
-								BufferedNetSocket.worldToMinimap(Occluder.topLevelWorldView, var12.getY(), var12.getPlane(), var1, var2, var5, class217.mapDotSprites[1], var4);
+								BufferedNetSocket.worldToMinimap(Occluder.topLevelWorldView, var12.getX(), var12.getY(), var1, var2, var5, class217.mapDotSprites[1], var4);
 							}
 						}
 					} else {

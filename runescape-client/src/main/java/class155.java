@@ -447,7 +447,7 @@ public class class155 extends class151 {
 				ProjectionCoord var9 = class86.method2932(var0, var1, var2);
 				var5 = (int)var9.x;
 				var6 = (int)var9.y;
-				var7 += NPCComposition.getTileHeight(Occluder.topLevelWorldView, var8.getY(), var8.getPlane(), Occluder.topLevelWorldView.plane);
+				var7 += NPCComposition.getTileHeight(Occluder.topLevelWorldView, var8.getX(), var8.getY(), Occluder.topLevelWorldView.plane);
 				var9.release();
 			}
 		}
