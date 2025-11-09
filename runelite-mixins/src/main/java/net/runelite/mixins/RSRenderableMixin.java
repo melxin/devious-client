@@ -11,14 +11,23 @@ public abstract class RSRenderableMixin implements RSRenderable
 	private boolean hidden = false;
 
 	@Inject
+	@Override
 	public void setHidden(boolean hidden)
 	{
 		this.hidden = hidden;
 	}
 
 	@Inject
+	@Override
 	public boolean isHidden()
 	{
 		return hidden;
+	}
+
+	@Inject
+	@Override
+	public int getAnimationHeightOffset()
+	{
+		return 0;
 	}
 }

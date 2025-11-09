@@ -24,17 +24,29 @@
  */
 package net.runelite.mixins;
 
+import net.runelite.api.WorldEntity;
+import net.runelite.api.events.WorldEntityDespawned;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Shadow;
+import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSNode;
+import net.runelite.rs.api.RSWorldEntity;
 
 @Mixin(RSNode.class)
 public abstract class RSNodeMixin implements RSNode
 {
+	@Shadow("client")
+	private static RSClient client;
+
 	@Inject
 	public void onUnlink()
 	{
+		if (this instanceof RSWorldEntity)
+		{
+			client.getCallbacks().post(new WorldEntityDespawned((WorldEntity) this));
+		}
 	}
 
 	@Inject

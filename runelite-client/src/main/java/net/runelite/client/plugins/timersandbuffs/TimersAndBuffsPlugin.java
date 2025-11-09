@@ -411,15 +411,12 @@ public class TimersAndBuffsPlugin extends Plugin
 		}
 
 		if (event.getVarbitId() == VarbitID.STAMINA_ACTIVE
-			|| event.getVarbitId() == VarbitID.STAMINA_DURATION
-			|| event.getVarbitId() == VarbitID.STAMINA_DURATION_EXTRA)
+			|| event.getVarbitId() == VarbitID.STAMINA_DURATION)
 		{
 			// staminaEffectActive is checked to match https://github.com/Joshua-F/cs2-scripts/blob/741271f0c3395048c1bad4af7881a13734516adf/scripts/%5Bproc%2Cbuff_bar_get_value%5D.cs2#L25
 			int staminaEffectActive = client.getVarbitValue(VarbitID.STAMINA_ACTIVE);
-			int staminaPotionEffectVarb = client.getVarbitValue(VarbitID.STAMINA_DURATION);
-			int enduranceRingEffectVarb = client.getVarbitValue(VarbitID.STAMINA_DURATION_EXTRA);
+			int totalStaminaEffect = client.getVarbitValue(VarbitID.STAMINA_DURATION);
 
-			final int totalStaminaEffect = staminaPotionEffectVarb + enduranceRingEffectVarb;
 			if (staminaEffectActive == 1 && config.showStamina())
 			{
 				updateVarTimer(STAMINA, totalStaminaEffect, i -> i * 10);
@@ -1021,7 +1018,7 @@ public class TimersAndBuffsPlugin extends Plugin
 			}
 			else if (message.endsWith(MARK_OF_DARKNESS_MESSAGE))
 			{
-				createGameTimer(MARK_OF_DARKNESS, getMarkOfDarknessDuration());
+				createGameTimer(MARK_OF_DARKNESS, getMarkOfDarknessDuration(magicLevel));
 			}
 			else if (message.contains(RESURRECT_THRALL_MESSAGE_START) && message.endsWith(RESURRECT_THRALL_MESSAGE_END))
 			{
@@ -1110,9 +1107,9 @@ public class TimersAndBuffsPlugin extends Plugin
 		}
 	}
 
-	private Duration getMarkOfDarknessDuration()
+	private Duration getMarkOfDarknessDuration(int magicLevel)
 	{
-		final Duration markOfDarknessDuration = Duration.of(300, RSTimeUnit.GAME_TICKS);
+		final Duration markOfDarknessDuration = Duration.of((long)magicLevel * 3, RSTimeUnit.GAME_TICKS);
 
 		final ItemContainer container = client.getItemContainer(InventoryID.WORN);
 		if (container != null)

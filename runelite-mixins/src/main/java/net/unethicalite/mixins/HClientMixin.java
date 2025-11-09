@@ -43,7 +43,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public abstract class HClientMixin implements RSClient
 {
 	@Inject
-	private static final int[] previousExp = new int[23];
+	private static final int[] previousExp = new int[25];
 	@Inject
 	private static final AtomicReference<MenuAutomated> automatedMenu = new AtomicReference<>(null);
 	@Inject

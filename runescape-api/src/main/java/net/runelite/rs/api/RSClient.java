@@ -1123,6 +1123,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	void setSelectedSpellWidget(int widgetID);
 
+	@Import("widgetFocusInputManager")
+	RSWidgetFocusInputManager getWidgetFocusedInputManager();
+
 	@Import("Sprite_drawScaled")
 	@Override
 	void scaleSprite(int[] canvas, int[] pixels, int color, int pixelX, int pixelY, int canvasIdx, int canvasOffset, int newWidth, int newHeight, int pixelWidth, int pixelHeight, int oldWidth);
@@ -1412,6 +1415,15 @@ public interface RSClient extends RSGameEngine, Client
 	long getUnlockedFpsTarget();
 
 	void posToCameraAngle(int var0, int var1);
+
+	@Import("cameraViewMode")
+	RSCameraViewMode getCameraViewMode();
+
+	@Import("cameraWorldViewId")
+	int getCameraWorldViewId();
+
+	@Import("cameraTargetIndex")
+	int getCameraTargetIndex();
 
 	@Override
 	default RSNodeDeque getAmbientSoundEffects()

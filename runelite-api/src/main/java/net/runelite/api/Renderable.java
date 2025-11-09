@@ -41,6 +41,8 @@ public interface Renderable extends Node
 
 	void setModelHeight(int modelHeight);
 
+	int getAnimationHeightOffset();
+
 	void setHidden(boolean hidden);
 	boolean isHidden();
 }

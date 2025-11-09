@@ -60,6 +60,10 @@ public interface DrawCallbacks
 	 * Enable zbuf renderer.
 	 */
 	int ZBUF = 0x10;
+	/**
+	 * Enable the {@link #zoneInFrustum(int, int, int, int)} callback
+	 */
+	int ZBUF_ZONE_FRUSTUM_CHECK = 0x20;
 
 	int PASS_OPAQUE = 0;
 	int PASS_ALPHA = 1;
@@ -112,6 +116,11 @@ public interface DrawCallbacks
 		return true;
 	}
 
+	default boolean zoneInFrustum(int zoneX, int zoneZ, int maxY, int minY)
+	{
+		return false;
+	}
+
 	default void loadScene(WorldView worldView, Scene scene)
 	{
 	}
@@ -147,7 +156,7 @@ public interface DrawCallbacks
 	{
 	}
 
-	default void drawTemp(Projection worldProjection, Scene scene, GameObject gameObject, Model m)
+	default void drawTemp(Projection worldProjection, Scene scene, GameObject gameObject, Model m, int orient, int x, int y, int z)
 	{
 	}
 
