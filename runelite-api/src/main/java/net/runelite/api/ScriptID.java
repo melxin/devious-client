@@ -354,6 +354,9 @@ public final class ScriptID
 	@ScriptArguments(integer = 2)
 	public static final int TOPLEVEL_REDRAW = 907;
 
+	@ScriptArguments(integer = 2)
+	public static final int TOPLEVEL_RESIZE_CUSTOMISE = 920;
+
 	/**
 	 * Called to set position of an xpdrop text and sprite(s)
 	 * <ul>
@@ -535,4 +538,10 @@ public final class ScriptID
 
 	@ScriptArguments(integer = 1)
 	public static final int DOM_LOOT_CLAIM = 7928;
+
+	@ScriptArguments(integer = 4)
+	public static final int CAMERA_SET_ZOOM_LIMITS = 605;
+
+	@ScriptArguments(integer = 6, string = 9)
+	public static final int INTERFACE_INV_DRAW_SLOT_BIG = 154;
 }

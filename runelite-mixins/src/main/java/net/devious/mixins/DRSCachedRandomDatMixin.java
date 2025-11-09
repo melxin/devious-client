@@ -146,7 +146,7 @@ public abstract class DRSCachedRandomDatMixin implements RSClient
 
 	@MethodHook("performLoginRequest")
 	@Inject
-	public static void onPerformLoginRequest(long var0, String var2)
+	public static void onPerformLoginRequest()
 	{
 		setRSCachedRandomDatData();
 	}

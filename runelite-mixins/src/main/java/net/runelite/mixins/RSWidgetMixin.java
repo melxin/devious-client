@@ -586,6 +586,13 @@ public abstract class RSWidgetMixin implements RSWidget
 
 	@Inject
 	@Override
+	public Widget createChild(int type)
+	{
+		return this.createChild(-1, type);
+	}
+
+	@Inject
+	@Override
 	public void revalidate()
 	{
 		assert client.isClientThread() : "revalidate must be called on client thread";
