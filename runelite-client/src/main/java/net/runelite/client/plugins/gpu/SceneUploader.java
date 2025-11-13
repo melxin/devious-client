@@ -869,9 +869,9 @@ class SceneUploader
 
 	static void computeFaceUvs(Model model, int face)
 	{
-		final float[] vertexX = model.getVerticesX();
-		final float[] vertexY = model.getVerticesY();
-		final float[] vertexZ = model.getVerticesZ();
+		final int[] vertexX = model.getVerticesX();
+		final int[] vertexY = model.getVerticesY();
+		final int[] vertexZ = model.getVerticesZ();
 
 		final int[] indices1 = model.getFaceIndices1();
 		final int[] indices2 = model.getFaceIndices2();
