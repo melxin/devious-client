@@ -1280,7 +1280,7 @@ public final class WidgetID
 		static final int ICE_RUSH = 79;
 		static final int ICE_BLITZ = 80;
 		static final int ICE_BURST = 81;
-		static final int ICE_BARRAGE = 82;
+		static final int ICE_BARRAGE = InterfaceID.MagicSpellbook.ICE_BARRAGE;
 		static final int BLOOD_RUSH = 83;
 		static final int BLOOD_BLITZ = 84;
 		static final int BLOOD_BURST = 85;
