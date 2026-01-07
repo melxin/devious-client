@@ -562,6 +562,8 @@ public class RuneLite
 
 		clientUI.show();
 
+		client.unblockStartup();
+
 		if (options.has("enable-telemetry"))
 		{
 			final TelemetryClient telemetryClient = injector.getInstance(TelemetryClient.class);
