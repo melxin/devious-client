@@ -24,7 +24,6 @@
  */
 package net.runelite.api;
 
-import java.awt.Polygon;
 import javax.annotation.Nullable;
 import org.intellij.lang.annotations.MagicConstant;
 
@@ -52,13 +51,6 @@ public interface Player extends Actor
 	 */
 	@Nullable
 	PlayerComposition getPlayerComposition();
-
-	/**
-	 * Gets the polygons that make up the players model.
-	 *
-	 * @return the model polygons
-	 */
-	Polygon[] getPolygons();
 
 	/**
 	 * Gets the current team cape team number the player is on.
