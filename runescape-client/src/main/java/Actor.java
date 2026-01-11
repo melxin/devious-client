@@ -785,7 +785,7 @@ public abstract class Actor extends Renderable implements CameraFocusableEntity 
 			byte var6 = var1.field3085;
 
 			for (ActorSpotAnim var7 = (ActorSpotAnim)var2.method8854(); var7 != null; var7 = (ActorSpotAnim)var2.next()) {
-				if (Client.cycle >= var7.field5559 && !var7.animationSequence.method9876(30)) {
+				if (Client.cycle >= var7.startCycle && !var7.animationSequence.method9876(30)) {
 					Model var8 = class181.SpotAnimationDefinition_get(var7.id).method4564();
 					if (var8 != null) {
 						var3 += var8.verticesCount;
@@ -799,7 +799,7 @@ public abstract class Actor extends Renderable implements CameraFocusableEntity 
 			var10.method5912(var1);
 
 			for (ActorSpotAnim var11 = (ActorSpotAnim)var2.method8854(); var11 != null; var11 = (ActorSpotAnim)var2.next()) {
-				if (Client.cycle >= var11.field5559 && !var11.animationSequence.method9876(30)) {
+				if (Client.cycle >= var11.startCycle && !var11.animationSequence.method9876(30)) {
 					Model var9 = class181.SpotAnimationDefinition_get(var11.id).getModel(var11.animationSequence.getFrame());
 					if (var9 != null) {
 						var9.offsetBy(0, -var11.height, 0);
@@ -840,7 +840,7 @@ public abstract class Actor extends Renderable implements CameraFocusableEntity 
 		IterableNodeHashTableIterator var1 = new IterableNodeHashTableIterator(this.spotAnimations);
 
 		for (ActorSpotAnim var2 = (ActorSpotAnim)var1.method8854(); var2 != null; var2 = (ActorSpotAnim)var1.next()) {
-			if (Client.cycle >= var2.field5559) {
+			if (Client.cycle >= var2.startCycle) {
 				SpotAnimationDefinition var3 = class181.SpotAnimationDefinition_get(var2.id);
 				if (var2.animationSequence.isActive() && var2.animationSequence.getSequenceDefinition().method4938(var2.animationSequence.getFrame())) {
 					return true;

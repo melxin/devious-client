@@ -13,6 +13,14 @@ public interface RSActorSpotAnim extends ActorSpotAnim
 	@Override
 	void setId(int id);
 
+	@Import("startCycle")
+	@Override
+	int getStartCycle();
+
+	@Import("startCycle")
+	@Override
+	void setStartCycle(int cycle);
+
 	@Import("height")
 	@Override
 	int getHeight();

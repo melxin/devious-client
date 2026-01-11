@@ -29,7 +29,8 @@ public class ActorSpotAnim extends Node {
 	@ObfuscatedGetter(
 		intValue = -1097832863
 	)
-	public int field5559;
+	@Export("startCycle")
+	public int startCycle;
 	@ObfuscatedName("an")
 	@ObfuscatedGetter(
 		intValue = 1008557345
@@ -40,11 +41,11 @@ public class ActorSpotAnim extends Node {
 	public ActorSpotAnim(int var1, int var2, int var3) {
 		this.id = -1;
 		this.animationSequence = new AnimationSequence();
-		this.field5559 = 0;
+		this.startCycle = 0;
 		this.height = 0;
 		this.id = var1;
 		this.height = var2;
-		this.field5559 = var3;
+		this.startCycle = var3;
 		if (this.id >= 0) {
 			this.animationSequence.setSequence(class181.SpotAnimationDefinition_get(this.id).sequence);
 		}

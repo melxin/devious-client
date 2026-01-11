@@ -129,7 +129,7 @@ public class class134 {
 		IterableNodeHashTableIterator var7 = new IterableNodeHashTableIterator(var1.method2532());
 
 		for (ActorSpotAnim var4 = (ActorSpotAnim)var7.method8854(); var4 != null; var4 = (ActorSpotAnim)var7.next()) {
-			if (var4.id != -1 && Client.cycle >= var4.field5559) {
+			if (var4.id != -1 && Client.cycle >= var4.startCycle) {
 				AnimationSequence var5 = var4.animationSequence;
 				if (!var5.isActive()) {
 					var4.remove();
