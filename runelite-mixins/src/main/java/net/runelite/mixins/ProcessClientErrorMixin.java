@@ -37,18 +37,24 @@ public abstract class ProcessClientErrorMixin implements RSClient
 	private static RSClient client;
 
 	@Replace("RunException_sendStackTrace")
-	static void processClientError(String string, Throwable throwable)
+	static void processClientError(String message, Throwable throwable)
 	{
-		if (throwable != null)
+		Throwable cause = throwable;
+
+		if (throwable instanceof RSRunException && "".equals(throwable.getMessage()))
 		{
-			Throwable throwableToScan = throwable;
-
-			if (throwable instanceof RSRunException)
-			{
-				throwableToScan = ((RSRunException) throwable).getParent();
-			}
-
-			client.getLogger().error("Game crash: {}", string, throwableToScan);
+			cause = throwable.getCause();
 		}
+
+		if (message == null)
+		{
+			client.getLogger().error("Client error", cause);
+		}
+		else
+		{
+			client.getLogger().error("Client error: {}", message, cause);
+		}
+
+		client.getCallbacks().error(message, cause);
 	}
 }

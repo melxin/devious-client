@@ -36,15 +36,22 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Collections;
 import java.util.List;
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.MainBufferProvider;
+import net.runelite.api.Player;
 import net.runelite.api.Renderable;
 import net.runelite.api.Skill;
-import net.runelite.api.worldmap.WorldMapRenderer;
+import net.runelite.api.WorldView;
+import net.runelite.api.coords.LocalPoint;
+import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.FakeXpDrop;
 import net.runelite.api.events.GameStateChanged;
@@ -56,7 +63,9 @@ import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.worldmap.WorldMap;
+import net.runelite.api.worldmap.WorldMapRenderer;
 import net.runelite.client.Notifier;
+import net.runelite.client.TelemetryClient;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -99,7 +108,8 @@ public class Hooks implements Callbacks
 	private final DrawManager drawManager;
 	private final Notifier notifier;
 	private final ClientUI clientUi;
-
+	@Nullable
+	private final TelemetryClient telemetryClient;
 	private final RenderCallbackManager renderCallbackManager;
 
 	private Dimension lastStretchedDimensions;
@@ -112,6 +122,10 @@ public class Hooks implements Callbacks
 
 	private static MainBufferProvider lastMainBufferProvider;
 	private static Graphics2D lastGraphics;
+
+	private long nextError;
+	private boolean rateLimitedError;
+	private int errorBackoff = 1;
 
 	/**
 	 * use {@link RenderCallbackManager} instead
@@ -167,6 +181,7 @@ public class Hooks implements Callbacks
 		DrawManager drawManager,
 		Notifier notifier,
 		ClientUI clientUi,
+		@Nullable TelemetryClient telemetryClient,
 		RenderCallbackManager renderCallbackManager
 	)
 	{
@@ -183,6 +198,7 @@ public class Hooks implements Callbacks
 		this.drawManager = drawManager;
 		this.notifier = notifier;
 		this.clientUi = clientUi;
+		this.telemetryClient = telemetryClient;
 		this.renderCallbackManager = renderCallbackManager;
 		eventBus.register(this);
 	}
@@ -631,6 +647,64 @@ public class Hooks implements Callbacks
 			log.error("exception from render callback", ex);
 		}
 		return true;
+	}
+
+	@Override
+	public void error(String message, Throwable reason)
+	{
+		if (telemetryClient == null)
+		{
+			return;
+		}
+
+		long now = System.currentTimeMillis();
+		if (now > nextError)
+		{
+			var sw = new StringWriter();
+			sw.append(message);
+
+			if (reason != null)
+			{
+				sw.append(" - ").append(reason.toString()).append('\n');
+				try (var pw = new PrintWriter(sw))
+				{
+					reason.printStackTrace(pw);
+				}
+			}
+
+			String coord = "unk";
+			Player player = client.getLocalPlayer();
+			if (player != null)
+			{
+				LocalPoint lp = player.getLocalLocation();
+				if (lp.getWorldView() == WorldView.TOPLEVEL || client.getClientThread() == Thread.currentThread())
+				{
+					WorldPoint p = WorldPoint.fromLocalInstance(client, lp);
+					coord = String.format("%d_%d_%d_%d_%d", p.getPlane(), p.getX() / 64, p.getY() / 64, p.getX() & 63, p.getY() & 63);
+				}
+			}
+
+			telemetryClient.submitError(
+				"client error",
+				sw.toString(),
+				Collections.singletonMap("coord", coord));
+
+			if (rateLimitedError)
+			{
+				errorBackoff++;
+				rateLimitedError = false;
+			}
+			else
+			{
+				errorBackoff = 1;
+			}
+
+			nextError = now + (10_000L * errorBackoff);
+		}
+		else
+		{
+			rateLimitedError = true;
+		}
 	}
 
 	@Override

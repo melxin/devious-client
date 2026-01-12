@@ -414,6 +414,11 @@ public class MinimalHooks implements Callbacks
 	}
 
 	@Override
+	public void error(String message, Throwable reason)
+	{
+	}
+
+	@Override
 	public void draw(MainBufferProvider mainBufferProvider, Graphics graphics, int x, int y)
 	{
 		if (graphics == null)

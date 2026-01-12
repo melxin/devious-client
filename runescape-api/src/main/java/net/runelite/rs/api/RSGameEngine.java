@@ -60,4 +60,7 @@ public interface RSGameEngine extends GameEngine
 
 	@Import("fullRedraw")
 	void setFullRedraw(boolean fullRedraw);
+
+	@Import("RunException_sendStackTrace")
+	void clientError(String message, Throwable throwable);
 }

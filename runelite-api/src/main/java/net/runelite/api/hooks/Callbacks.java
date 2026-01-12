@@ -206,6 +206,13 @@ public interface Callbacks
 	boolean draw(Renderable renderable, boolean drawingUi);
 
 	/**
+	 * Called when a client error occurs
+	 * @param message
+	 * @param reason
+	 */
+	void error(String message, Throwable reason);
+
+	/**
 	 * Called when the client wants to open a URL
 	 * @param url
 	 */

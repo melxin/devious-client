@@ -83,6 +83,10 @@ public abstract class RSGameEngineMixin implements RSGameEngine
 	{
 		thread = Thread.currentThread();
 		thread.setName("Client");
+		/*thread.setUncaughtExceptionHandler((message, throwable) ->
+		{
+			clientError((String) null, throwable);
+		});*/
 
 		try
 		{
@@ -92,9 +96,9 @@ public abstract class RSGameEngineMixin implements RSGameEngine
 				this.semaphore.acquire();
 			}
 		}
-		catch (Exception e)
+		catch (InterruptedException e)
 		{
-			client.getLogger().error("", e);
+			clientError((String) null, e);
 		}
 	}
 
