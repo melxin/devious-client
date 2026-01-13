@@ -170,10 +170,9 @@ public class RuneLite
 	@Inject
 	@Nullable
 	private RuntimeConfig runtimeConfig;
-
-	/*@Inject
+	@Inject
 	@Nullable
-	private TelemetryClient telemetryClient;*/
+	private TelemetryClient telemetryClient;
 
 	@Inject
 	private ScheduledExecutorService scheduledExecutorService;
@@ -316,6 +315,7 @@ public class RuneLite
 				runtimeConfigLoader,
 				developerMode,
 				options.has("safe-mode"),
+				options.has("enable-telemetry"),
 				options.valueOf(sessionfile),
 				options.valueOf(configfile),
 				options,
@@ -564,9 +564,8 @@ public class RuneLite
 
 		client.unblockStartup();
 
-		if (options.has("enable-telemetry"))
+		if (telemetryClient != null)
 		{
-			final TelemetryClient telemetryClient = injector.getInstance(TelemetryClient.class);
 			scheduledExecutorService.execute(() ->
 			{
 				telemetryClient.submitTelemetry();

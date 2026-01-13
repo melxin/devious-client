@@ -53,8 +53,8 @@ import net.runelite.http.api.xtea.XteaKey;
 import net.runelite.http.api.xtea.XteaRequest;
 
 @PluginDescriptor(
-	name = "Xtea",
-	hidden = true
+		name = "Xtea",
+		hidden = true
 )
 @Slf4j
 public class XteaPlugin extends Plugin
@@ -65,7 +65,7 @@ public class XteaPlugin extends Plugin
 	private Client client;
 
 	@Inject
-	private XteaClient xteaClient;
+	private net.runelite.client.plugins.xtea.XteaClient xteaClient;
 
 	@Inject
 	private ScheduledExecutorService executorService;
