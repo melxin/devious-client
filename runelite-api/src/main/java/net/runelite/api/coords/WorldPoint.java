@@ -25,12 +25,6 @@
  */
 package net.runelite.api.coords;
 
-import lombok.Value;
-import net.runelite.api.Client;
-import net.runelite.api.Locatable;
-import net.runelite.api.Perspective;
-import net.runelite.api.Tile;
-
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -40,10 +34,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
+import lombok.Value;
+import net.runelite.api.Client;
 import static net.runelite.api.Constants.CHUNK_SIZE;
 import static net.runelite.api.Constants.REGION_SIZE;
+import static net.runelite.api.Constants.SCENE_SIZE;
+import net.runelite.api.Locatable;
+import net.runelite.api.Perspective;
 import net.runelite.api.Scene;
+import net.runelite.api.Tile;
 import net.runelite.api.WorldView;
 
 /**
@@ -307,8 +306,11 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 		int chunkX = sceneX / CHUNK_SIZE;
 		int chunkY = sceneY / CHUNK_SIZE;
 
-		// get the template chunk for the chunk
-		int templateChunk = instanceTemplateChunks[plane][chunkX][chunkY];
+		int templateChunk = -1;
+		if (chunkX >= 0 && chunkX < (SCENE_SIZE / CHUNK_SIZE) && chunkY >= 0 && chunkY < (SCENE_SIZE / CHUNK_SIZE))
+		{
+			templateChunk = instanceTemplateChunks[plane][chunkX][chunkY];
+		}
 
 		int rotation = templateChunk >> 1 & 0x3;
 		int templateChunkY = (templateChunk >> 3 & 0x7FF) * CHUNK_SIZE;
