@@ -249,20 +249,6 @@ public final class ScriptID
 	public static final int FRIENDS_CHAT_SEND_KICK = 3764;
 
 	/**
-	 * Toggles the bank search
-	 *
-	 * <ul>
-	 * <li>int 1 (must be 1 or script immediately returns)</li>
-	 * </ul>
-	 *
-	 * Also takes 17 widget IDs corresponding to various bank widgets.
-	 * These can be retrieved from the getOnInvTransmit of BANK_ITEM_CONTAINER. Note that this array also
-	 * contains the script ID for the bank layout script in the first index
-	 */
-	@ScriptArguments(integer = 18)
-	public static final int BANKMAIN_SEARCH_TOGGLE = 281;
-
-	/**
 	 * Builds the widget that holds all of the players inside a friends chat
 	 */
 	@ScriptArguments(integer = 15)
@@ -330,7 +316,7 @@ public final class ScriptID
 	 * <li> int (WidgetID) * 16, various widgets making up the bank interface </li>
 	 * </ul>
 	 */
-	@ScriptArguments(integer = 17)
+	@ScriptArguments(integer = 20)
 	public static final int BANKMAIN_SEARCH_REFRESH = 283;
 
 	@ScriptArguments(integer = 6)
@@ -366,7 +352,7 @@ public final class ScriptID
 	@ScriptArguments(integer = 4, string = 1)
 	public static final int XPDROPS_SETDROPSIZE = 996;
 
-	@ScriptArguments(integer = 34)
+	@ScriptArguments(integer = 35)
 	public static final int BANKMAIN_INIT = 274;
 
 	/**
@@ -375,14 +361,28 @@ public final class ScriptID
 	 * <li>int (WidgetID) * 17, various widgets making up the bank interface</li>
 	 * </ul>
 	 */
-	@ScriptArguments(integer = 17)
+	@ScriptArguments(integer = 20)
 	public static final int BANKMAIN_BUILD = 277;
 
-	@ScriptArguments(integer = 19)
+	@ScriptArguments(integer = 22)
 	public static final int BANKMAIN_FINISHBUILDING = 505;
 
 	@ScriptArguments()
 	public static final int BANKMAIN_SEARCHING = 514;
+
+	/**
+	 * Toggles the bank search
+	 *
+	 * <ul>
+	 * <li>int 1 (must be 1 or script immediately returns)</li>
+	 * </ul>
+	 *
+	 * Also takes 17 widget IDs corresponding to various bank widgets.
+	 * These can be retrieved from the onInvTransmitListener of BANK_ITEM_CONTAINER. Note that this array also
+	 * contains the script ID for the bank layout script in the first index
+	 */
+	@ScriptArguments(integer = 21)
+	public static final int BANKMAIN_SEARCH_TOGGLE = 281;
 
 	@ScriptArguments(integer = 6)
 	public static final int BANKMAIN_SIZE_CHECK = 840;
@@ -544,4 +544,7 @@ public final class ScriptID
 
 	@ScriptArguments(integer = 6, string = 9)
 	public static final int INTERFACE_INV_DRAW_SLOT_BIG = 154;
+
+	@ScriptArguments(integer = 4)
+	public static final int BANKMAIN_POPUP_TAB_DRAW = 9221;
 }
